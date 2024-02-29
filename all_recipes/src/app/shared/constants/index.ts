@@ -23,3 +23,15 @@ export const USER_ICON: ImageType = {
   width: 20,
   height: 20,
 };
+
+export const RIGHT_ARROW_ICON: ImageType = {
+  src: "/icons/right-arrow-icon.png",
+  alt: "Right arrow icon",
+  width: 20,
+  height: 20,
+};
+
+/*--------------------------
+Navigaton Links
+--------------------------*/
+export const NAV_LINKS = ["ingredients", "meals", "diets", "cuisines"];
