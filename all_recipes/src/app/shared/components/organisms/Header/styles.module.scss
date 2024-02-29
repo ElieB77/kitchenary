@@ -1,0 +1,34 @@
+@use "../../../styles/utils/colors" as *;
+
+.header {
+  display: flex;
+  align-items: center;
+  padding-inline: 15px;
+  height: 60px;
+  border-bottom: solid 1px $border-color;
+
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: fit-content;
+
+    &__right {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+
+      &__grouped {
+        display: flex;
+        gap: 20px;
+      }
+
+      &__divider {
+        width: 1px;
+        height: 60px;
+        background-color: $border-color;
+      }
+    }
+  }
+}
