@@ -1,7 +1,23 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { EB_Garamond, Montserrat, Ephesis } from "next/font/google";
+import "@/app/shared/styles/main.scss";
+import Header from "../shared/components/organisms/Header";
+import { HAMBURGER_ICON, SEARCH_ICON, USER_ICON } from "../shared/constants";
 
-const inter = Inter({ subsets: ["latin"] });
+export const ebGaramond = EB_Garamond({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+});
+
+export const montserrat = Montserrat({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+});
+
+export const ephesis = Ephesis({
+  subsets: ["latin"],
+  weight: "400",
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -15,7 +31,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body className={ebGaramond.className}>
+        <Header
+          logo="Kitchenary"
+          userIcon={USER_ICON}
+          hamburgerIcon={HAMBURGER_ICON}
+          searchIcon={SEARCH_ICON}
+        />
+        {children}
+      </body>
     </html>
   );
 }
