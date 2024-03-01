@@ -1,0 +1,15 @@
+.categorySlider {
+  overflow: hidden;
+  width: 100vw;
+  margin-left: calc((100% - 100vw) / 2);
+
+  &__slider {
+    display: flex;
+    overflow-x: scroll;
+    padding-left: 15px;
+    gap: 50px;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+}
