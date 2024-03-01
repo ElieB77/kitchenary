@@ -1,7 +1,27 @@
 .title {
   font-weight: 300;
   text-align: center;
+  text-transform: uppercase;
+  font-weight: 700;
+  padding-bottom: 20px;
+  font-size: 50px;
+  position: relative;
+  white-space: normal !important;
+
   & span {
-    font-weight: 700;
+    font-weight: 300;
+    display: block;
+  }
+
+  & img {
+    width: 150px;
+    height: fit-content;
+    position: absolute !important;
+    top: 30px;
+    left: 50%;
+    z-index: -1;
+    transform: translate(-50%) translateY(-40px);
+    filter: invert(66%) sepia(94%) saturate(468%) hue-rotate(6deg)
+      brightness(102%) contrast(104%);
   }
 }
