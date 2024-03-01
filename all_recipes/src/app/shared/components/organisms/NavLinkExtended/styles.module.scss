@@ -1,0 +1,35 @@
+@use "../../../styles/utils/colors" as *;
+
+.navLinkExtended {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: $primary-color;
+  overflow-y: scroll;
+
+  &__wrapper {
+    padding-inline: 15px;
+    width: 100%;
+    padding-top: 50px;
+
+    &__header {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &__title {
+      padding: 40px 0 20px 0;
+      text-transform: uppercase;
+    }
+
+    &__links {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+  }
+}
