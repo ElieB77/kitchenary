@@ -15,7 +15,7 @@ const RoundedCard: FC<RoundedCardProps> = ({ image, title }) => {
       <div className={styles.roundedCard__image}>
         <Image {...image} />
       </div>
-      <h2 className={styles.roundedCard__title}>{title}</h2>
+      <h3 className={styles.roundedCard__title}>{title}</h3>
     </div>
   );
 };

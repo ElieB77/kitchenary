@@ -1,6 +1,16 @@
 import { ImageType } from "../types";
 
 /*------------------
+Images
+------------------*/
+export const SPLASH_IMG: ImageType = {
+  src: "/images/splash.svg",
+  alt: "Splash",
+  width: 500,
+  height: 500,
+};
+
+/*------------------
 Icons
 ------------------*/
 export const SEARCH_ICON: ImageType = {

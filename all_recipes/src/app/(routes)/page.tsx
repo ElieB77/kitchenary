@@ -1,20 +1,35 @@
-import Image from "next/image";
-import Card from "../features/recipes/components/organisms/Card";
-import { NOODLES_IMG } from "../features/recipes/constants";
+import { NOODLES_IMG, PANCAKE_IMG } from "../features/recipes/constants";
 import { RIGHT_ARROW_ICON, SEARCH_ICON } from "../shared/constants";
-import Button from "../shared/components/atoms/Button";
-import RoundedCard from "../features/recipes/components/organisms/RoundedCard";
-import SearchBar from "../features/search/components/molecules/SearchBar";
-import CardXL from "../features/recipes/components/organisms/CardXL";
-import Tab from "../features/search/components/atoms/Tab";
-import Title from "../shared/components/atoms/Title";
-import SearchSuggestions from "../features/search/components/organisms/SearchSuggestions";
-import { TABS } from "../features/search/constants";
+import RoundedCard from "../features/recipes/components/molecules/RoundedCard";
+import HomePage from "../shared/components/templates/HomePage";
 
 export default function Home() {
   return (
     <>
-      <CardXL
+      <HomePage
+        image={PANCAKE_IMG}
+        title={"pancakes recipes"}
+        description={
+          "Every stack of fluffy pancakes deserves a finishing touch of sweetness, but if that's not enough, we've got you covered. From classic buttermilk pancakes to indulgent chocolate chip stacks, these are the most syrup-drenched pancakes we've got!"
+        }
+        footerText={"Discover More Pancakes Here"}
+        icon={RIGHT_ARROW_ICON}
+        cards={
+          <>
+            <RoundedCard image={NOODLES_IMG} title={"Noodles"} />
+            <RoundedCard image={NOODLES_IMG} title={"Noodles"} />
+            <RoundedCard image={NOODLES_IMG} title={"Noodles"} />
+            <RoundedCard image={NOODLES_IMG} title={"Noodles"} />
+            <RoundedCard image={NOODLES_IMG} title={"Noodles"} />
+          </>
+        }
+        categorySliderTitleFirstWord={"tasty"}
+        categorySliderTitleSecondWord={"selection"}
+        trendingRecipesTitleFirstWord={"trending"}
+        trendingRecipesTitleSecondWord={"recipes"}
+      />
+    </>
+    /* <CardXL
         image={NOODLES_IMG}
         title={"beef noodles"}
         description={
@@ -44,7 +59,6 @@ export default function Home() {
       <Button text={"view all recipes"} icon={RIGHT_ARROW_ICON} />
 
       <RoundedCard image={NOODLES_IMG} title={"MEALS"} />
-      <SearchBar placeholder={"Search"} icon={SEARCH_ICON} />
-    </>
+      <SearchBar placeholder={"Search"} icon={SEARCH_ICON} /> */
   );
 }

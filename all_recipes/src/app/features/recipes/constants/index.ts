@@ -1,5 +1,8 @@
 import { ImageType } from "@/app/shared/types";
 
+/*-----------------------
+Images
+-----------------------*/
 export const NOODLES_IMG: ImageType = {
   src: "/images/noodles.jpeg",
   alt: "Noodles",
@@ -7,6 +10,16 @@ export const NOODLES_IMG: ImageType = {
   height: 500,
 };
 
+export const PANCAKE_IMG: ImageType = {
+  src: "/images/pancake.jpeg",
+  alt: "Pancake",
+  width: 500,
+  height: 500,
+};
+
+/*-----------------------
+Icons
+-----------------------*/
 export const HEART_ICON: ImageType = {
   src: "/icons/heart-icon.png",
   alt: "Heart",

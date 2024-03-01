@@ -1,3 +1,4 @@
+"use client";
 import { FC } from "react";
 import styles from "./styles.module.scss";
 import { NOODLES_IMG } from "../../../constants";
@@ -7,8 +8,9 @@ import { ImageType } from "@/app/shared/types";
 import RoundedButton, {
   RoundedButtonProps,
 } from "@/app/shared/components/atoms/RoundedButton";
+import { ebGaramond } from "@/app/(routes)/layout";
 
-interface CardXLProps extends RoundedButtonProps {
+export interface CardXLProps extends RoundedButtonProps {
   image: ImageType;
   title: string;
   description: string;
@@ -25,10 +27,10 @@ const CardXL: FC<CardXLProps> = ({
   return (
     <div className={styles.cardXL}>
       <div className={styles.cardXL__image}>
-        <Image {...NOODLES_IMG} />
+        <Image {...image} />
       </div>
       <div className={styles.cardXL__description}>
-        <h1>{title}</h1>
+        <h1 className={ebGaramond.className}>{title}</h1>
         <p>{description}</p>
         <div className={styles.cardXL__description__footer}>
           <p>{footerText}</p>

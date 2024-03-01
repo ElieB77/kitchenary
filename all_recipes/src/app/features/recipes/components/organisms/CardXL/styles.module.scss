@@ -1,8 +1,7 @@
 @use "../../../../../shared/styles/utils/colors" as *;
 
 .cardXL {
-  margin-top: 150px;
-
+  padding-top: 60px;
   &__image {
     height: 360px;
     position: relative;
@@ -22,11 +21,22 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
+    & h1 {
+      text-transform: capitalize;
+    }
+
     &__footer {
       display: flex;
       align-items: center;
       margin-top: 20px;
       justify-content: space-between;
+
+      & p {
+        text-transform: uppercase;
+        font-weight: 700;
+        font-size: 12px;
+        text-decoration: underline;
+      }
     }
   }
 }
