@@ -6,6 +6,10 @@ import Button from "../shared/components/atoms/Button";
 import RoundedCard from "../features/recipes/components/organisms/RoundedCard";
 import SearchBar from "../features/search/components/molecules/SearchBar";
 import CardXL from "../features/recipes/components/organisms/CardXL";
+import Tab from "../features/search/components/atoms/Tab";
+import Title from "../shared/components/atoms/Title";
+import SearchSuggestions from "../features/search/components/organisms/SearchSuggestions";
+import { TABS } from "../features/search/constants";
 
 export default function Home() {
   return (
@@ -19,6 +23,17 @@ export default function Home() {
         footerText={"quidem recusandae nihil"}
         icon={RIGHT_ARROW_ICON}
       />
+
+      <SearchSuggestions
+        placeholder={"Search"}
+        icon={SEARCH_ICON}
+        firstWord={"Popular"}
+        secondWord={"Searches"}
+        tabs={TABS.map((tab: any, index: number) => {
+          return <Tab text={tab.name} />;
+        })}
+      />
+
       <Card
         image={NOODLES_IMG}
         title={"main course"}

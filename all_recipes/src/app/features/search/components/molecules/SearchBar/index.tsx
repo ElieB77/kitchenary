@@ -4,7 +4,7 @@ import Image from "next/image";
 import { SEARCH_ICON } from "@/app/shared/constants";
 import { ImageType } from "@/app/shared/types";
 
-interface SearchBarProps {
+export interface SearchBarProps {
   placeholder: string;
   icon: ImageType;
 }

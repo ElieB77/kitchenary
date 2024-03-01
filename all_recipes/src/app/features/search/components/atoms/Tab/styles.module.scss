@@ -1,0 +1,13 @@
+@use "../../../../../shared/styles/utils/colors" as *;
+
+.tab {
+  border-radius: 50px;
+  border: solid 2px $border-color;
+  padding: 10px 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+  height: fit-content;
+  cursor: pointer;
+}
