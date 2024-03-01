@@ -1,0 +1,19 @@
+@use "../../../shared/styles/utils/colors" as *;
+
+.button {
+  padding: 20px 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50px;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: bolder;
+  border: solid 1px;
+  white-space: nowrap;
+  background-color: $secondary-color;
+  gap: 10px;
+
+  & img {
+  }
+}
