@@ -4,7 +4,7 @@ import NavLink from "../../atoms/NavLink";
 import styles from "./styles.module.scss";
 import "@/app/shared/styles/main.scss";
 import { FC, useEffect } from "react";
-import { animate, stagger, motion, useAnimate } from "framer-motion";
+import { animate, stagger } from "framer-motion";
 
 interface MenuProps {
   navLinks?: any;
@@ -12,7 +12,7 @@ interface MenuProps {
 }
 
 const Menu: FC<MenuProps> = ({ navLinks, isOpen }) => {
-  const staggerList = stagger(0.1, { startDelay: 0.25 });
+  const staggerList = stagger(0.1, { startDelay: 0.5 });
 
   useEffect(() => {
     animate(
@@ -22,8 +22,8 @@ const Menu: FC<MenuProps> = ({ navLinks, isOpen }) => {
     );
     animate(
       "nav",
-      { x: isOpen ? "0vw" : "-100vw" },
-      { type: "spring", duration: 1 }
+      { x: isOpen ? "0%" : "-100%" },
+      { type: "tween", duration: 0.5 }
     );
   }, [isOpen]);
 
