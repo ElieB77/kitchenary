@@ -11,7 +11,7 @@ import NavLink from "../../atoms/NavLink";
 import styles from "./styles.module.scss";
 import "@/app/shared/styles/main.scss";
 import { FC, useEffect, useState } from "react";
-import { animate, stagger } from "framer-motion";
+import { animate, stagger, motion } from "framer-motion";
 import NavLinkExtended from "../../organisms/NavLinkExtended";
 
 interface MenuProps {
@@ -68,7 +68,10 @@ const Menu: FC<MenuProps> = ({ navLinks, isOpen }) => {
 
   return (
     <>
-      <nav className={`${styles.menu} container`}>
+      <motion.nav
+        initial={{ x: "-100%" }}
+        className={`${styles.menu} container`}
+      >
         <ul>{renderNavLinks()}</ul>
         <NavLinkExtended
           isNavLinkExtended={extendNavLink}
@@ -76,7 +79,7 @@ const Menu: FC<MenuProps> = ({ navLinks, isOpen }) => {
           links={extendedLink}
           title={selectedNavLink}
         />
-      </nav>
+      </motion.nav>
     </>
   );
 };

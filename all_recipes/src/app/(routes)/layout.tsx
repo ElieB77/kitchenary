@@ -32,14 +32,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={ebGaramond.className}>
+      <body className={montserrat.className}>
         <Header
           logo="Kitchenary"
           userIcon={USER_ICON}
           hamburgerIcon={HAMBURGER_ICON}
           searchIcon={SEARCH_ICON}
         />
-        {children}
+        <div className="container">{children}</div>
       </body>
     </html>
   );
