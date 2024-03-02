@@ -1,0 +1,9 @@
+.featuredPage {
+  margin-top: 30px;
+  &__cards {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+  }
+}
