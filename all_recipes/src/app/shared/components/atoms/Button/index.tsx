@@ -4,7 +4,7 @@ import { ImageType } from "../../../types";
 import styles from "./styles.module.scss";
 import Image from "next/image";
 
-interface ButtonProps {
+export interface ButtonProps {
   text: string;
   icon: ImageType;
 }

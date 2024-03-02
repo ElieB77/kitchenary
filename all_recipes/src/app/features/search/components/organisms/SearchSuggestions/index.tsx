@@ -4,21 +4,23 @@ import styles from "./styles.module.scss";
 import Title, { TitleProps } from "@/app/shared/components/atoms/Title";
 import { ebGaramond } from "@/app/(routes)/layout";
 
-interface SearchSuggestionsProps extends SearchBarProps {
-  tabs: any;
-  title: string;
+export interface SearchSuggestionsProps extends SearchBarProps {
+  searchSuggestionsTabs: any;
+  searchSuggestionsTitle: string;
 }
 
 const SearchSuggestions: FC<SearchSuggestionsProps> = ({
   placeholder,
   icon,
-  tabs,
-  title,
+  searchSuggestionsTabs,
+  searchSuggestionsTitle,
 }) => {
   return (
     <div className={styles.searchSuggestions}>
-      <h1 className={ebGaramond.className}>{title}</h1>
-      <div className={styles.searchSuggestions__tabs}>{tabs}</div>
+      <h1 className={ebGaramond.className}>{searchSuggestionsTitle}</h1>
+      <div className={styles.searchSuggestions__tabs}>
+        {searchSuggestionsTabs}
+      </div>
       <SearchBar placeholder={placeholder} icon={icon} />
     </div>
   );
