@@ -2,6 +2,7 @@ import { NOODLES_IMG, PANCAKE_IMG } from "../features/recipes/constants";
 import { RIGHT_ARROW_ICON, SEARCH_ICON } from "../shared/constants";
 import RoundedCard from "../features/recipes/components/molecules/RoundedCard";
 import HomePage from "../shared/components/templates/HomePage";
+import Card from "../features/recipes/components/organisms/Card";
 
 export default function Home() {
   return (
@@ -14,7 +15,7 @@ export default function Home() {
         }
         footerText={"Discover More Pancakes Here"}
         icon={RIGHT_ARROW_ICON}
-        cards={
+        roundedCards={
           <>
             <RoundedCard image={NOODLES_IMG} title={"Noodles"} />
             <RoundedCard image={NOODLES_IMG} title={"Noodles"} />
@@ -25,8 +26,50 @@ export default function Home() {
         }
         categorySliderTitleFirstWord={"tasty"}
         categorySliderTitleSecondWord={"selection"}
-        trendingRecipesTitleFirstWord={"trending"}
-        trendingRecipesTitleSecondWord={"recipes"}
+        popularRecipesTitleFirstWord={"popular"}
+        popularRecipesTitleSecondWord={"recipes"}
+        cards={
+          <>
+            <Card
+              image={NOODLES_IMG}
+              title={"main course"}
+              subtitle={"pepper noodles"}
+              descriptionIcon={RIGHT_ARROW_ICON}
+            />
+            <Card
+              image={NOODLES_IMG}
+              title={"main course"}
+              subtitle={"pepper noodles"}
+              descriptionIcon={RIGHT_ARROW_ICON}
+            />
+            <Card
+              image={NOODLES_IMG}
+              title={"main course"}
+              subtitle={"pepper noodles"}
+              descriptionIcon={RIGHT_ARROW_ICON}
+            />
+            <Card
+              image={NOODLES_IMG}
+              title={"main course"}
+              subtitle={"pepper noodles"}
+              descriptionIcon={RIGHT_ARROW_ICON}
+            />
+            <Card
+              image={NOODLES_IMG}
+              title={"main course"}
+              subtitle={"pepper noodles"}
+              descriptionIcon={RIGHT_ARROW_ICON}
+            />
+            <Card
+              image={NOODLES_IMG}
+              title={"main course"}
+              subtitle={"pepper noodles"}
+              descriptionIcon={RIGHT_ARROW_ICON}
+            />
+          </>
+        }
+        cardsBtnText={"view all"}
+        cardsBtnIcon={RIGHT_ARROW_ICON}
       />
     </>
     /* <CardXL

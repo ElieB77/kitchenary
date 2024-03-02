@@ -9,17 +9,19 @@ import CategorySlider, {
 } from "@/app/features/recipes/components/organisms/CategorySlider";
 import { FC } from "react";
 import Title, { TitleProps } from "../../atoms/Title";
-import Cards from "@/app/features/recipes/components/organisms/Cards";
+import Cards, {
+  CardsProps,
+} from "@/app/features/recipes/components/organisms/Cards";
 import SearchSuggestions from "@/app/features/search/components/organisms/SearchSuggestions";
 import { SEARCH_ICON } from "@/app/shared/constants";
 import { TABS } from "@/app/features/search/constants";
 import Tab from "@/app/features/search/components/atoms/Tab";
 
-interface HomePageProps extends CardXLProps, CategorySliderProps {
+interface HomePageProps extends CardXLProps, CategorySliderProps, CardsProps {
   categorySliderTitleFirstWord: string;
   categorySliderTitleSecondWord: string;
-  trendingRecipesTitleFirstWord: string;
-  trendingRecipesTitleSecondWord: string;
+  popularRecipesTitleFirstWord: string;
+  popularRecipesTitleSecondWord: string;
 }
 
 const HomePage: FC<HomePageProps> = ({
@@ -28,11 +30,14 @@ const HomePage: FC<HomePageProps> = ({
   description,
   footerText,
   icon,
-  cards,
+  roundedCards,
   categorySliderTitleFirstWord,
   categorySliderTitleSecondWord,
-  trendingRecipesTitleFirstWord,
-  trendingRecipesTitleSecondWord,
+  popularRecipesTitleFirstWord,
+  popularRecipesTitleSecondWord,
+  cards,
+  cardsBtnText,
+  cardsBtnIcon,
 }) => {
   return (
     <div className={styles.homePage}>
@@ -49,7 +54,7 @@ const HomePage: FC<HomePageProps> = ({
           firstWord={categorySliderTitleFirstWord}
           secondWord={categorySliderTitleSecondWord}
         />
-        <CategorySlider cards={cards} />
+        <CategorySlider roundedCards={roundedCards} />
       </div>
 
       <SearchSuggestions
@@ -63,10 +68,14 @@ const HomePage: FC<HomePageProps> = ({
 
       <div>
         <Title
-          firstWord={trendingRecipesTitleFirstWord}
-          secondWord={trendingRecipesTitleSecondWord}
+          firstWord={popularRecipesTitleFirstWord}
+          secondWord={popularRecipesTitleSecondWord}
         />
-        <Cards />
+        <Cards
+          cards={cards}
+          cardsBtnText={cardsBtnText}
+          cardsBtnIcon={cardsBtnIcon}
+        />
       </div>
     </div>
   );

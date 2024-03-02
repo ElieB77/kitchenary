@@ -6,7 +6,7 @@ import { FC } from "react";
 
 interface NavLinkProps {
   text: string;
-  icon: ImageType;
+  icon?: ImageType;
   onClick: any;
 }
 

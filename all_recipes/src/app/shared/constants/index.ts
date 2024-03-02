@@ -48,6 +48,13 @@ export const LEFT_ARROW_ICON: ImageType = {
   height: 25,
 };
 
+export const UP_ARROW_ICON: ImageType = {
+  src: "/icons/up-arrow-icon.png",
+  alt: "Up arrow icon",
+  width: 25,
+  height: 25,
+};
+
 export const CLOSE_ICON: ImageType = {
   src: "/icons/close-icon.svg",
   alt: "Close arrow icon",

@@ -3,6 +3,7 @@ import { EB_Garamond, Montserrat, Ephesis } from "next/font/google";
 import "@/app/shared/styles/main.scss";
 import Header from "../shared/components/organisms/Header";
 import { HAMBURGER_ICON, SEARCH_ICON, USER_ICON } from "../shared/constants";
+import Footer from "../shared/components/organisms/Footer";
 
 export const ebGaramond = EB_Garamond({
   subsets: ["latin"],
@@ -28,12 +29,15 @@ export default function RootLayout({
     <html lang="en">
       <body className={montserrat.className}>
         <Header
-          logo="Kitchenary"
           userIcon={USER_ICON}
           hamburgerIcon={HAMBURGER_ICON}
           searchIcon={SEARCH_ICON}
+          text={"kitchenary"}
+          to={"/"}
+          larger={false}
         />
         <div className="container">{children}</div>
+        <Footer text={"kitchenary"} to={"/"} larger={true} />
       </body>
     </html>
   );

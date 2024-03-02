@@ -1,7 +1,8 @@
 @use "../../../styles/utils/colors" as *;
 
 .button {
-  padding: 20px 50px;
+  width: fit-content;
+  padding: 10px 30px;
   display: flex;
   align-items: center;
   justify-content: center;

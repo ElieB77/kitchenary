@@ -1,23 +1,23 @@
 import Image from "next/image";
 import styles from "./styles.module.scss";
 import { FC, useState } from "react";
-import { ephesis } from "@/app/(routes)/layout";
 import { ImageType } from "@/app/shared/types";
-import Link from "next/link";
 import Menu from "../../templates/Menu";
+import Logo, { LogoProps } from "../../atoms/Logo";
 
-interface HeaderProps {
+interface HeaderProps extends LogoProps {
   userIcon: ImageType;
   hamburgerIcon: ImageType;
   searchIcon: ImageType;
-  logo: string;
 }
 
 const Header: FC<HeaderProps> = ({
   userIcon,
   searchIcon,
   hamburgerIcon,
-  logo,
+  text,
+  to,
+  larger,
 }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
@@ -26,9 +26,7 @@ const Header: FC<HeaderProps> = ({
       <div className={styles.header}>
         <div className={styles.header__wrapper}>
           <div className={styles.header__wrapper__logo}>
-            <Link href={"/"}>
-              <h1 className={ephesis.className}>{logo}</h1>
-            </Link>
+            <Logo text={text} to={to} larger={larger} />
           </div>
           <div className={styles.header__wrapper__right}>
             <div className={styles.header__wrapper__right__grouped}>
