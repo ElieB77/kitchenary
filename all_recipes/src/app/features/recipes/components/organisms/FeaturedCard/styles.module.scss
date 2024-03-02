@@ -1,0 +1,33 @@
+@use "../../../../../shared/styles/utils/colors" as *;
+
+.featuredCard {
+  &__heading {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    margin-bottom: 16px;
+
+    &__count {
+      border-right: solid 1px rgba($text-color, $alpha: 0.2);
+      padding-right: 15px;
+      text-align: center;
+
+      & span {
+        font-size: 12px;
+        white-space: nowrap;
+      }
+    }
+  }
+
+  &__image {
+    width: 100%;
+    height: 230px;
+    position: relative;
+    margin-top: 25px;
+    & img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+}
