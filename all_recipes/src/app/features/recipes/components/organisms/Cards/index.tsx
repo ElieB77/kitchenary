@@ -9,13 +9,19 @@ export interface CardsProps {
   cards: any;
   cardsBtnText: string;
   cardsBtnIcon: any;
+  hasBtn: boolean;
 }
 
-const Cards: FC<CardsProps> = ({ cards, cardsBtnText, cardsBtnIcon }) => {
+const Cards: FC<CardsProps> = ({
+  cards,
+  cardsBtnText,
+  cardsBtnIcon,
+  hasBtn,
+}) => {
   return (
     <div className={styles.cards}>
       {cards}
-      <Button text={cardsBtnText} icon={cardsBtnIcon} />
+      {hasBtn && <Button text={cardsBtnText} icon={cardsBtnIcon} />}
     </div>
   );
 };

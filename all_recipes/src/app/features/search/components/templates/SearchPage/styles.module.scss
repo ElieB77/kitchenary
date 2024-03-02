@@ -1,0 +1,24 @@
+@use "../../../../../shared/styles/utils/colors" as *;
+
+.searchPage {
+  height: 100%;
+  &__header {
+    width: 100vw;
+    margin-left: calc((100% - 100vw) / 2);
+    padding: 30px 15px 0 15px;
+    background-color: $border-color;
+    text-align: center;
+
+    & span {
+      font-size: 20px;
+    }
+
+    & > div {
+      transform: translateY(50%);
+    }
+  }
+
+  &__cards {
+    margin-top: 90px;
+  }
+}

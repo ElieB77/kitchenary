@@ -5,7 +5,7 @@ import styles from "./styles.module.scss";
 import Image from "next/image";
 
 export interface ButtonProps {
-  text: string;
+  text: string | undefined;
   icon: ImageType;
 }
 

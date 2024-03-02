@@ -80,6 +80,7 @@ const HomePage: FC<HomePageProps> = ({
           cards={cards}
           cardsBtnText={cardsBtnText}
           cardsBtnIcon={cardsBtnIcon}
+          hasBtn={true}
         />
       </div>
     </div>
