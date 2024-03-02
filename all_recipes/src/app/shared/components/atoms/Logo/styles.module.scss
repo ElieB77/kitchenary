@@ -1,0 +1,9 @@
+.logo {
+  & h1 {
+    text-transform: capitalize;
+  }
+}
+
+.larger {
+  font-size: 50px;
+}
