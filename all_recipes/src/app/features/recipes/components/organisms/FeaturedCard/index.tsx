@@ -2,6 +2,7 @@ import { FC } from "react";
 import styles from "./styles.module.scss";
 import Image from "next/image";
 import Button, { ButtonProps } from "@/app/shared/components/atoms/Button";
+import LikeButton from "../../atoms/LikeButton";
 
 export interface FeaturedCardProps extends ButtonProps {
   title: string;
@@ -29,7 +30,8 @@ const FeaturedCard: FC<FeaturedCardProps> = ({
       </div>
       <Button text={text} icon={icon} />
       <div className={styles.featuredCard__image}>
-        <Image {...image} />
+        <Image className={styles.featuredCard__image__img} {...image} />
+        <LikeButton />
       </div>
     </div>
   );

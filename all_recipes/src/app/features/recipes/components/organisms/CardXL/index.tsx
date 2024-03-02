@@ -15,6 +15,7 @@ export interface CardXLProps extends RoundedButtonProps {
   title: string;
   description: string;
   footerText: string;
+  onClick: any;
 }
 
 const CardXL: FC<CardXLProps> = ({
@@ -23,6 +24,7 @@ const CardXL: FC<CardXLProps> = ({
   description,
   footerText,
   icon,
+  onClick,
 }) => {
   return (
     <div className={styles.cardXL}>
@@ -32,7 +34,7 @@ const CardXL: FC<CardXLProps> = ({
       <div className={styles.cardXL__description}>
         <h1 className={ebGaramond.className}>{title}</h1>
         <p>{description}</p>
-        <div className={styles.cardXL__description__footer}>
+        <div onClick={onClick} className={styles.cardXL__description__footer}>
           <p>{footerText}</p>
           <RoundedButton icon={icon} />
         </div>

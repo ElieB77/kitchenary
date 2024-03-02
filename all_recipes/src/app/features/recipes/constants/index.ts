@@ -17,6 +17,76 @@ export const PANCAKE_IMG: ImageType = {
   height: 500,
 };
 
+export const BURGER_IMG: ImageType = {
+  src: "/images/burger.jpeg",
+  alt: "Burger",
+  width: 500,
+  height: 500,
+};
+
+export const SMOOTHIE_IMG: ImageType = {
+  src: "/images/smoothie.jpeg",
+  alt: "Smoothie",
+  width: 500,
+  height: 500,
+};
+
+export const SUSHI_IMG: ImageType = {
+  src: "/images/sushi.jpeg",
+  alt: "Sushi",
+  width: 500,
+  height: 500,
+};
+
+export const PASTA_IMG: ImageType = {
+  src: "/images/pasta.jpeg",
+  alt: "Pasta",
+  width: 500,
+  height: 500,
+};
+
+export const COOKIE_IMG: ImageType = {
+  src: "/images/cookie.jpeg",
+  alt: "Cookie",
+  width: 500,
+  height: 500,
+};
+
+export const SALAD_IMG: ImageType = {
+  src: "/images/salad.jpeg",
+  alt: "Salad",
+  width: 500,
+  height: 500,
+};
+
+export const MAC_AND_CHEESE_IMG: ImageType = {
+  src: "/images/mac-and-cheese.jpeg",
+  alt: "Mac & Cheese",
+  width: 500,
+  height: 500,
+};
+
+export const HOT_WINGS_IMG: ImageType = {
+  src: "/images/hot-wings.jpeg",
+  alt: "Hot Wings",
+  width: 500,
+  height: 500,
+};
+
+export const BROWNIES_IMG: ImageType = {
+  src: "/images/brownie.jpeg",
+  alt: "Brownies",
+  width: 500,
+  height: 500,
+};
+
+export const SOUP_IMG: ImageType = {
+  src: "/images/soup.jpeg",
+  alt: "Soup",
+  width: 500,
+  height: 500,
+};
+
 /*-----------------------
 Icons
 -----------------------*/

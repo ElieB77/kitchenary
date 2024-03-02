@@ -1,5 +1,4 @@
 import { ImageType } from "@/app/shared/types";
-import { NOODLES_IMG } from "../../../constants";
 import styles from "./styles.module.scss";
 import Image from "next/image";
 import { FC } from "react";
@@ -7,11 +6,12 @@ import { FC } from "react";
 interface RoundedCardProps {
   image: ImageType;
   title: string;
+  onClick: any;
 }
 
-const RoundedCard: FC<RoundedCardProps> = ({ image, title }) => {
+const RoundedCard: FC<RoundedCardProps> = ({ image, title, onClick }) => {
   return (
-    <div className={styles.roundedCard}>
+    <div onClick={onClick} className={styles.roundedCard}>
       <div className={styles.roundedCard__image}>
         <Image {...image} />
       </div>

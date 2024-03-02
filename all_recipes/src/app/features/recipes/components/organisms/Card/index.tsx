@@ -10,14 +10,21 @@ interface CardProps {
   title: string;
   subtitle: string;
   descriptionIcon: any;
+  hasLikeButton: boolean;
 }
 
-const Card: FC<CardProps> = ({ image, title, subtitle, descriptionIcon }) => {
+const Card: FC<CardProps> = ({
+  image,
+  title,
+  subtitle,
+  descriptionIcon,
+  hasLikeButton,
+}) => {
   return (
     <div className={styles.card}>
       <div className={styles.card__image}>
         <Image className={styles.card__image__img} {...image} />
-        <LikeButton />
+        {hasLikeButton && <LikeButton />}
       </div>
       <div className={styles.card__description}>
         <div>

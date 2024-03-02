@@ -43,6 +43,7 @@ const HomePage: FC<HomePageProps> = ({
   searchSuggestionsTabs,
   searchSuggestionsTitle,
   placeholder,
+  onClick,
 }) => {
   return (
     <div className={styles.homePage}>
@@ -52,6 +53,7 @@ const HomePage: FC<HomePageProps> = ({
         description={description}
         footerText={footerText}
         icon={icon}
+        onClick={onClick}
       />
 
       <div>
