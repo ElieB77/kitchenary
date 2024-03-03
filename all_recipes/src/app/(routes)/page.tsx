@@ -126,6 +126,7 @@ export default function Home() {
         searchSuggestionsTitle={"popular searches"}
         placeholder={"search for"}
         onClick={() => router.push("/featured")}
+        hasBtn={false}
       />
     </>
   );

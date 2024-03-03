@@ -63,11 +63,6 @@ export const CLOSE_ICON: ImageType = {
 };
 
 /*--------------------------
-Navigaton Links
---------------------------*/
-export const NAV_LINKS = ["ingredients", "meals", "diets", "cuisines"];
-
-/*--------------------------
 Navigation Links Data
 --------------------------*/
 export const INGREDIENTS = [

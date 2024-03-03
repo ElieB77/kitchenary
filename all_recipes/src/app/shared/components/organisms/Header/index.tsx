@@ -1,11 +1,12 @@
 import Image from "next/image";
 import styles from "./styles.module.scss";
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { ImageType } from "@/app/shared/types";
-import Menu from "../../templates/Menu";
 import Logo, { LogoProps } from "../../atoms/Logo";
+import Menu, { MenuProps } from "../Menu";
+import { SearchBarProps } from "@/app/features/search/components/molecules/SearchBar";
 
-interface HeaderProps extends LogoProps {
+interface HeaderProps extends LogoProps, MenuProps, SearchBarProps {
   userIcon: ImageType;
   hamburgerIcon: ImageType;
   searchIcon: ImageType;
@@ -18,8 +19,30 @@ const Header: FC<HeaderProps> = ({
   text,
   to,
   larger,
+  firstTitle,
+  secondTitle,
+  thirdTitle,
+  fourthTitle,
+  meals,
+  cuisines,
+  ingredients,
+  diets,
+  placeholder,
+  icon,
 }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (isOpen) {
+      document.documentElement.style.overflow = "hidden";
+    } else {
+      document.documentElement.style.overflow = "visible";
+    }
+  }, [isOpen]);
+
+  const toggleMenu = () => {
+    return setIsOpen(!isOpen);
+  };
 
   return (
     <>
@@ -31,14 +54,26 @@ const Header: FC<HeaderProps> = ({
           <div className={styles.header__wrapper__right}>
             <div className={styles.header__wrapper__right__grouped}>
               <Image {...userIcon} />
-              <Image {...searchIcon} />
+              <Image onClick={toggleMenu} {...searchIcon} />
             </div>
             <div className={styles.header__wrapper__right__divider}></div>
-            <Image onClick={() => setIsOpen(!isOpen)} {...hamburgerIcon} />
+            <Image onClick={toggleMenu} {...hamburgerIcon} />
           </div>
         </div>
       </div>
-      <Menu isOpen={isOpen} />
+      <Menu
+        isOpen={isOpen}
+        firstTitle={firstTitle}
+        secondTitle={secondTitle}
+        thirdTitle={thirdTitle}
+        fourthTitle={fourthTitle}
+        meals={meals}
+        cuisines={cuisines}
+        ingredients={ingredients}
+        diets={diets}
+        placeholder={placeholder}
+        icon={icon}
+      />
     </>
   );
 };

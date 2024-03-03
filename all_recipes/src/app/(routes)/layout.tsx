@@ -2,8 +2,17 @@
 import { EB_Garamond, Montserrat, Ephesis } from "next/font/google";
 import "@/app/shared/styles/main.scss";
 import Header from "../shared/components/organisms/Header";
-import { HAMBURGER_ICON, SEARCH_ICON, USER_ICON } from "../shared/constants";
+import {
+  CUISINES,
+  DIETS,
+  HAMBURGER_ICON,
+  INGREDIENTS,
+  MEALS,
+  SEARCH_ICON,
+  USER_ICON,
+} from "../shared/constants";
 import Footer from "../shared/components/organisms/Footer";
+import Link from "next/link";
 
 export const ebGaramond = EB_Garamond({
   subsets: ["latin"],
@@ -35,6 +44,41 @@ export default function RootLayout({
           text={"kitchenary"}
           to={"/"}
           larger={false}
+          isOpen={false}
+          firstTitle={"meals"}
+          secondTitle={"cuisines"}
+          thirdTitle={"ingredients"}
+          fourthTitle={"diets"}
+          meals={MEALS.map((meal: any) => {
+            return (
+              <Link key={meal.id} href={""}>
+                {meal.name}
+              </Link>
+            );
+          })}
+          cuisines={CUISINES.map((meal: any) => {
+            return (
+              <Link key={meal.id} href={""}>
+                {meal.name}
+              </Link>
+            );
+          })}
+          ingredients={INGREDIENTS.map((meal: any) => {
+            return (
+              <Link key={meal.id} href={""}>
+                {meal.name}
+              </Link>
+            );
+          })}
+          diets={DIETS.map((meal: any) => {
+            return (
+              <Link key={meal.id} href={""}>
+                {meal.name}
+              </Link>
+            );
+          })}
+          placeholder={"Search for"}
+          icon={SEARCH_ICON}
         />
         <div className="container">{children}</div>
         <Footer text={"kitchenary"} to={"/"} larger={true} />
