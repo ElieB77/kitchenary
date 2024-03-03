@@ -1,0 +1,16 @@
+@use "../../../../../shared/styles/utils/colors" as *;
+
+.recipeStep {
+  position: relative;
+  margin-left: 50px;
+  &::before {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    background: url(/icons/check-icon.svg) $accent-color no-repeat center;
+    font-size: 10px;
+    left: -50px;
+  }
+}

@@ -16,7 +16,7 @@ import {
 import { RIGHT_ARROW_ICON, SEARCH_ICON } from "../shared/constants";
 import RoundedCard from "../features/recipes/components/molecules/RoundedCard";
 import HomePage from "../shared/components/templates/HomePage";
-import Card from "../features/recipes/components/organisms/Card";
+import Card from "../features/recipes/components/molecules/Card";
 import Tab from "../features/search/components/atoms/Tab";
 import { TABS } from "../features/search/constants";
 import { useRouter } from "next/navigation";

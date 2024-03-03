@@ -2,7 +2,7 @@
 import styles from "./styles.module.scss";
 import CardXL, {
   CardXLProps,
-} from "@/app/features/recipes/components/organisms/CardXL";
+} from "@/app/features/recipes/components/molecules/CardXL";
 import CategorySlider, {
   CategorySliderProps,
 } from "@/app/features/recipes/components/organisms/CategorySlider";

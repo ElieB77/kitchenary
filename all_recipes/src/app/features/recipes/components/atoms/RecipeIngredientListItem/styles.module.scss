@@ -1,0 +1,10 @@
+.recipeIngredientListItem {
+  display: flex;
+  gap: 10px;
+  width: fit-content;
+  font-weight: 300;
+
+  &__amount {
+    width: 50px;
+  }
+}

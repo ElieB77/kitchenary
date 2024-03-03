@@ -24,7 +24,7 @@ const Card: FC<CardProps> = ({
     <div className={styles.card}>
       <div className={styles.card__image}>
         <Image className={styles.card__image__img} {...image} />
-        {hasLikeButton && <LikeButton />}
+        {hasLikeButton && <LikeButton secondaryColor={false} />}
       </div>
       <div className={styles.card__description}>
         <div>

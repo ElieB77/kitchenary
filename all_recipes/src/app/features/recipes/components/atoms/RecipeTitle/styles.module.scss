@@ -1,0 +1,10 @@
+.recipeTitle {
+  text-align: center;
+  text-transform: uppercase;
+  padding-bottom: 25px;
+  font-weight: 400;
+
+  & span {
+    font-weight: 700;
+  }
+}

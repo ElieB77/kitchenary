@@ -103,3 +103,24 @@ export const HEART_FILLED_ICON: ImageType = {
   width: 20,
   height: 20,
 };
+
+export const SHARE_ICON: ImageType = {
+  src: "/icons/share-icon.png",
+  alt: "Share",
+  width: 20,
+  height: 20,
+};
+
+export const TIME_ICON: ImageType = {
+  src: "/icons/time-icon.png",
+  alt: "Time",
+  width: 25,
+  height: 25,
+};
+
+export const CUTLERY_ICON: ImageType = {
+  src: "/icons/cutlery-icon.png",
+  alt: "Cutlery",
+  width: 25,
+  height: 25,
+};

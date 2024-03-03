@@ -4,7 +4,7 @@ import styles from "./styles.module.scss";
 import SearchBar from "../../molecules/SearchBar";
 import { RIGHT_ARROW_ICON, SEARCH_ICON } from "@/app/shared/constants";
 import { ebGaramond, montserrat } from "@/app/(routes)/layout";
-import Card from "@/app/features/recipes/components/organisms/Card";
+import Card from "@/app/features/recipes/components/molecules/Card";
 import { BURGER_IMG } from "@/app/features/recipes/constants";
 import Cards from "@/app/features/recipes/components/organisms/Cards";
 

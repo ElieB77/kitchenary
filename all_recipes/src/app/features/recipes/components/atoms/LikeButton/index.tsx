@@ -1,11 +1,22 @@
 import Image from "next/image";
 import { HEART_ICON } from "../../../constants";
 import styles from "./styles.module.scss";
+import { FC } from "react";
+import { ImageType } from "@/app/shared/types";
 
-const LikeButton = () => {
+export interface LikeButtonProps {
+  secondaryColor: boolean;
+  likeIcon: ImageType;
+}
+
+const LikeButton: FC<LikeButtonProps> = ({ secondaryColor, likeIcon }) => {
   return (
-    <button className={styles.likeButton}>
-      <Image {...HEART_ICON} />
+    <button
+      className={`${styles.likeButton} ${
+        secondaryColor ? styles.secondaryColor : ""
+      }`}
+    >
+      <Image {...likeIcon} />
     </button>
   );
 };

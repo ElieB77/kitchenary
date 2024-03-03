@@ -31,7 +31,7 @@ const FeaturedCard: FC<FeaturedCardProps> = ({
       <Button text={text} icon={icon} />
       <div className={styles.featuredCard__image}>
         <Image className={styles.featuredCard__image__img} {...image} />
-        <LikeButton />
+        <LikeButton secondaryColor={false} />
       </div>
     </div>
   );

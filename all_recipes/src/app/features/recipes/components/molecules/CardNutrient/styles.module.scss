@@ -1,0 +1,30 @@
+@use "../../../../../shared/styles/utils/colors" as *;
+
+.cardNutrient {
+  display: flex;
+  flex-direction: column;
+  width: 95px;
+  min-height: 125px;
+  justify-content: center;
+  border-radius: 10px;
+  border: solid 1px $border-color;
+  padding: 15px 10px;
+
+  & span {
+    font-weight: 300;
+    &:first-child {
+      font-weight: 700;
+      font-size: 14px;
+      padding-bottom: 8px;
+    }
+  }
+
+  & hr {
+    background-color: $border-color;
+    border: none;
+    height: 1px;
+    width: 25px;
+    margin: 0 auto;
+    margin-top: 3px;
+  }
+}
