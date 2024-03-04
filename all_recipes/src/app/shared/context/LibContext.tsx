@@ -9,6 +9,8 @@ interface LibContextState {
   pastaRecipes: any;
   cookieRecipes: any;
   saladRecipes: any;
+  recipeInformations: any;
+  getRecipeInformations: any;
 }
 
 const LibContext = createContext<LibContextState>({
@@ -18,6 +20,8 @@ const LibContext = createContext<LibContextState>({
   pastaRecipes: undefined,
   cookieRecipes: undefined,
   saladRecipes: undefined,
+  recipeInformations: undefined,
+  getRecipeInformations: undefined,
 });
 
 function LibProvider({ children }: { children: React.ReactNode }) {
@@ -27,6 +31,18 @@ function LibProvider({ children }: { children: React.ReactNode }) {
   const [pastaRecipes, setPastaRecipes] = useState<any>();
   const [cookieRecipes, setCookieRecipes] = useState<any>();
   const [saladRecipes, setSaladRecipes] = useState<any>();
+  const [recipeInformations, setRecipeInformations] = useState<any>();
+
+  const getRecipeInformations = async (id: string) => {
+    try {
+      const response = await axios.get(
+        `${process.env.NEXT_PUBLIC_API_URI}/${id}/information?includeNutrition=true&apiKey=${process.env.NEXT_PUBLIC_API_KEY}`
+      );
+      setRecipeInformations(response.data);
+    } catch (error: any) {
+      console.error(`Error fetching recipe details: ${error.message}`);
+    }
+  };
 
   const getRecipe = async (endpoint: string, setter: (data: any) => void) => {
     try {
@@ -81,6 +97,8 @@ function LibProvider({ children }: { children: React.ReactNode }) {
         pastaRecipes,
         cookieRecipes,
         saladRecipes,
+        recipeInformations,
+        getRecipeInformations,
       }}
     >
       {children}

@@ -20,6 +20,7 @@ const FeaturedCard: FC<FeaturedCardProps> = ({
   btnText,
   btnIcon,
   likeIcon,
+  btnOnClick,
 }) => {
   console.log(imageSrc);
   return (
@@ -31,7 +32,7 @@ const FeaturedCard: FC<FeaturedCardProps> = ({
         </div>
         <h2>{title}</h2>
       </div>
-      <Button btnText={btnText} btnIcon={btnIcon} />
+      <Button btnText={btnText} btnIcon={btnIcon} btnOnClick={btnOnClick} />
       <div className={styles.featuredCard__image}>
         <Image
           src={imageSrc}

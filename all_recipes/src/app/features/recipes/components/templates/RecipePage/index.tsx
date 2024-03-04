@@ -12,7 +12,6 @@ import RecipeSteps, { RecipeStepsProps } from "../../organisms/RecipeSteps";
 import CardsNutrient, {
   CardsNutrientProps,
 } from "../../organisms/CardsNutrient";
-import { ImageType } from "@/app/shared/types";
 
 interface RecipePageProps
   extends ShareButtonProps,
@@ -23,7 +22,7 @@ interface RecipePageProps
     CardsNutrientProps {
   recipeType: string;
   recipeTitle: string;
-  recipeImage: ImageType;
+  recipeImage: string;
   summaryTitleFirstWord: string;
   summaryTitleSecondWord: string;
   summaryText: string;
@@ -77,7 +76,7 @@ const RecipePage: FC<RecipePageProps> = ({
         </div>
 
         <div className={styles.recipePage__top__image}>
-          <Image {...recipeImage} />
+          <Image src={recipeImage} alt={""} fill />
         </div>
 
         <div className={styles.recipePage__top__buttons}>
@@ -103,7 +102,7 @@ const RecipePage: FC<RecipePageProps> = ({
           firstWord={summaryTitleFirstWord}
           secondWord={summaryTitleSecondWord}
         />
-        <p>{summaryText}</p>
+        <p dangerouslySetInnerHTML={{ __html: summaryText }} />
       </div>
 
       <div className={styles.recipePage__ingredients}>

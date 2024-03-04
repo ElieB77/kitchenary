@@ -124,3 +124,17 @@ export const CUTLERY_ICON: ImageType = {
   width: 25,
   height: 25,
 };
+
+/*--------------------------
+Objects
+---------------------------*/
+export const NUTRIENT_NAMES = [
+  "Calories",
+  "Protein",
+  "Fat",
+  "Saturated Fat",
+  "Carbohydrates",
+  "Sugar",
+  "Sodium",
+  "Fiber",
+];

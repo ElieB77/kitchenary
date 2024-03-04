@@ -16,12 +16,13 @@ const FeaturedPage: FC<FeaturedPageProps> = ({
   featuredCards,
   btnText,
   btnIcon,
+  btnOnClick,
 }) => {
   return (
     <div className={styles.featuredPage}>
       <Title firstWord={titleFirstWord} secondWord={titleSecondWord} />
       <div className={styles.featuredPage__cards}>{featuredCards}</div>
-      <Button btnText={btnText} />
+      <Button btnText={btnText} btnOnClick={btnOnClick} />
     </div>
   );
 };

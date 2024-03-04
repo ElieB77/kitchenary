@@ -6,12 +6,14 @@ import FeaturedCard from "../../components/molecules/FeaturedCard";
 import { getProperImageUrl } from "@/app/shared/utils";
 import { FeaturedRecipeType } from "../../types";
 import { HEART_ICON } from "../../constants";
+import { useRouter } from "next/navigation";
 
 interface FeaturedContainerProps {
   slug: string;
 }
 
 const FeaturedContainer: FC<FeaturedContainerProps> = ({ slug }) => {
+  const router = useRouter();
   const [data, setData] = useState<FeaturedRecipeType[] | null>(null);
   const [title, setTitle] = useState<string>("");
   const {
@@ -65,9 +67,9 @@ const FeaturedContainer: FC<FeaturedContainerProps> = ({ slug }) => {
     saladRecipes,
   ]);
 
-  const renderFeaturedCards = () => {
-    if (!data) return null;
+  if (!data) return null;
 
+  const renderFeaturedCards = () => {
     return data?.map((recipe: FeaturedRecipeType, index: number) => {
       return (
         <FeaturedCard
@@ -79,6 +81,7 @@ const FeaturedContainer: FC<FeaturedContainerProps> = ({ slug }) => {
           btnText={"view recipe"}
           secondaryColor={false}
           likeIcon={HEART_ICON}
+          btnOnClick={() => router.push(`/recipe/${recipe.id}`)}
         />
       );
     });
@@ -90,6 +93,7 @@ const FeaturedContainer: FC<FeaturedContainerProps> = ({ slug }) => {
       titleSecondWord={"recipes"}
       featuredCards={renderFeaturedCards()}
       btnText={"see all"}
+      btnOnClick={undefined!}
     />
   );
 };

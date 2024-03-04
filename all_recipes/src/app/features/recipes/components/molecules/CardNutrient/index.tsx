@@ -4,7 +4,7 @@ import { ebGaramond } from "@/app/(routes)/layout";
 
 interface CardNutrientProps {
   nutrientName: string;
-  nutrientAmount: string;
+  nutrientAmount: number;
   nutrientUnit: string;
   nutrientPercent: string;
 }

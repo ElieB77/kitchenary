@@ -7,11 +7,12 @@ import Image from "next/image";
 export interface ButtonProps {
   btnText: string | undefined;
   btnIcon?: ImageType;
+  btnOnClick: () => void;
 }
 
-const Button: FC<ButtonProps> = ({ btnText, btnIcon }) => {
+const Button: FC<ButtonProps> = ({ btnText, btnIcon, btnOnClick }) => {
   return (
-    <button className={styles.button}>
+    <button onClick={btnOnClick} className={styles.button}>
       <p>{btnText}</p>
       {btnIcon && <Image {...btnIcon} />}
     </button>
