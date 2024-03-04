@@ -9,17 +9,18 @@ export interface FeaturedCardProps extends ButtonProps {
   title: string;
   count: number;
   totalCount: string | number;
-  image: ImageType;
+  imageSrc: string;
 }
 
 const FeaturedCard: FC<FeaturedCardProps> = ({
   title,
   count,
   totalCount,
-  image,
-  text,
-  icon,
+  imageSrc,
+  btnText,
+  btnIcon,
 }) => {
+  console.log(imageSrc);
   return (
     <div className={styles.featuredCard}>
       <div className={styles.featuredCard__heading}>
@@ -29,9 +30,14 @@ const FeaturedCard: FC<FeaturedCardProps> = ({
         </div>
         <h2>{title}</h2>
       </div>
-      <Button text={text} icon={icon} />
+      <Button btnText={btnText} btnIcon={btnIcon} />
       <div className={styles.featuredCard__image}>
-        <Image className={styles.featuredCard__image__img} {...image} />
+        <Image
+          src={imageSrc}
+          className={styles.featuredCard__image__img}
+          fill
+          alt={"Recipe Image"}
+        />
         <LikeButton
           secondaryColor={false}
           likeIcon={{

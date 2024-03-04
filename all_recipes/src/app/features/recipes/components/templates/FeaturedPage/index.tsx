@@ -3,7 +3,7 @@ import { FC } from "react";
 import styles from "./styles.module.scss";
 import Title from "@/app/shared/components/atoms/Title";
 
-interface FeaturedPageProps {
+export interface FeaturedPageProps {
   titleFirstWord: string;
   titleSecondWord: string;
   featuredCards: JSX.Element;

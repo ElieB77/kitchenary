@@ -5,15 +5,15 @@ import styles from "./styles.module.scss";
 import Image from "next/image";
 
 export interface ButtonProps {
-  text: string | undefined;
-  icon?: ImageType;
+  btnText: string | undefined;
+  btnIcon?: ImageType;
 }
 
-const Button: FC<ButtonProps> = ({ text, icon }) => {
+const Button: FC<ButtonProps> = ({ btnText, btnIcon }) => {
   return (
     <button className={styles.button}>
-      <p>{text}</p>
-      {icon && <Image {...icon} />}
+      <p>{btnText}</p>
+      {btnIcon && <Image {...btnIcon} />}
     </button>
   );
 };

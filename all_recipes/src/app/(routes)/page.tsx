@@ -28,7 +28,7 @@ export default function Home() {
     <>
       <HomePage
         image={PANCAKE_IMG}
-        title={"pancakes recipes"}
+        title={"our 15 pancakes recipes"}
         description={
           "Every stack of fluffy pancakes deserves a finishing touch of sweetness, but if that's not enough, we've got you covered. From classic buttermilk pancakes to indulgent chocolate chip stacks, these are the most syrup-drenched pancakes we've got!"
         }
