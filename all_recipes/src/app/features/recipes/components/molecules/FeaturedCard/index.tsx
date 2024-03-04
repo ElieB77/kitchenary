@@ -2,10 +2,10 @@ import { FC } from "react";
 import styles from "./styles.module.scss";
 import Image from "next/image";
 import Button, { ButtonProps } from "@/app/shared/components/atoms/Button";
-import LikeButton from "../../atoms/LikeButton";
+import LikeButton, { LikeButtonProps } from "../../atoms/LikeButton";
 import { ImageType } from "@/app/shared/types";
 
-export interface FeaturedCardProps extends ButtonProps {
+export interface FeaturedCardProps extends ButtonProps, LikeButtonProps {
   title: string;
   count: number;
   totalCount: string | number;
@@ -19,6 +19,7 @@ const FeaturedCard: FC<FeaturedCardProps> = ({
   imageSrc,
   btnText,
   btnIcon,
+  likeIcon,
 }) => {
   console.log(imageSrc);
   return (
@@ -38,15 +39,7 @@ const FeaturedCard: FC<FeaturedCardProps> = ({
           fill
           alt={"Recipe Image"}
         />
-        <LikeButton
-          secondaryColor={false}
-          likeIcon={{
-            src: "",
-            alt: "",
-            width: 0,
-            height: 0,
-          }}
-        />
+        <LikeButton secondaryColor={false} likeIcon={likeIcon} />
       </div>
     </div>
   );
