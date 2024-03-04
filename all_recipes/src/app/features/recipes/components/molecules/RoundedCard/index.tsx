@@ -6,7 +6,7 @@ import { FC } from "react";
 interface RoundedCardProps {
   image: ImageType;
   title: string;
-  onClick: any;
+  onClick: () => void;
 }
 
 const RoundedCard: FC<RoundedCardProps> = ({ image, title, onClick }) => {

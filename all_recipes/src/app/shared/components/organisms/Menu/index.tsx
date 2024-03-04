@@ -5,6 +5,7 @@ import Link from "next/link";
 import SearchBar, {
   SearchBarProps,
 } from "@/app/features/search/components/molecules/SearchBar";
+import { NavLinkType } from "@/app/shared/types";
 
 export interface MenuProps extends SearchBarProps {
   isOpen: boolean;
@@ -12,10 +13,10 @@ export interface MenuProps extends SearchBarProps {
   secondTitle: string;
   thirdTitle: string;
   fourthTitle: string;
-  meals: any;
-  cuisines: any;
-  ingredients: any;
-  diets: any;
+  meals: JSX.Element[];
+  cuisines: JSX.Element[];
+  ingredients: JSX.Element[];
+  diets: JSX.Element[];
 }
 
 const Menu: FC<MenuProps> = ({

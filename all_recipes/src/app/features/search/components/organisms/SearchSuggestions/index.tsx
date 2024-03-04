@@ -1,11 +1,10 @@
 import { FC } from "react";
 import SearchBar, { SearchBarProps } from "../../molecules/SearchBar";
 import styles from "./styles.module.scss";
-import Title, { TitleProps } from "@/app/shared/components/atoms/Title";
 import { ebGaramond } from "@/app/(routes)/layout";
 
 export interface SearchSuggestionsProps extends SearchBarProps {
-  searchSuggestionsTabs: any;
+  searchSuggestionsTabs: JSX.Element[];
   searchSuggestionsTitle: string;
 }
 

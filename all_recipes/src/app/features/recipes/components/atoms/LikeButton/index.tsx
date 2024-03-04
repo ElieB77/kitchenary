@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { HEART_ICON } from "../../../constants";
 import styles from "./styles.module.scss";
 import { FC } from "react";
 import { ImageType } from "@/app/shared/types";

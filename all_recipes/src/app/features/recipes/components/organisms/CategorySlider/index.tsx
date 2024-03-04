@@ -3,7 +3,7 @@ import styles from "./styles.module.scss";
 import Title from "@/app/shared/components/atoms/Title";
 
 export interface CategorySliderProps {
-  roundedCards: any;
+  roundedCards: JSX.Element;
 }
 
 const CategorySlider: FC<CategorySliderProps> = ({ roundedCards }) => {

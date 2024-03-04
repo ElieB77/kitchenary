@@ -3,7 +3,7 @@ import styles from "./styles.module.scss";
 import RecipeStep from "../../atoms/Step";
 
 export interface RecipeStepsProps {
-  steps: any;
+  steps: JSX.Element;
 }
 
 const RecipeSteps: FC<RecipeStepsProps> = ({ steps }) => {

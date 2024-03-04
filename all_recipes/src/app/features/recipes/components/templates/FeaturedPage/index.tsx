@@ -6,7 +6,7 @@ import Title from "@/app/shared/components/atoms/Title";
 interface FeaturedPageProps {
   titleFirstWord: string;
   titleSecondWord: string;
-  featuredCards: any;
+  featuredCards: JSX.Element;
 }
 
 const FeaturedPage: FC<FeaturedPageProps> = ({

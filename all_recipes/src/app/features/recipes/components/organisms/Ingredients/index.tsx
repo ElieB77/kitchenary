@@ -6,7 +6,7 @@ import { ImageType } from "@/app/shared/types";
 export interface IngredientsProps {
   servingsIcon: ImageType;
   servingsText: string;
-  ingredients: any;
+  ingredients: JSX.Element;
 }
 
 const Ingredients: FC<IngredientsProps> = ({

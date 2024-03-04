@@ -1,14 +1,12 @@
 import { FC } from "react";
 import styles from "./styles.module.scss";
-import Card from "../../molecules/Card";
-import { PANCAKE_IMG } from "../../../constants";
-import { RIGHT_ARROW_ICON } from "@/app/shared/constants";
 import Button from "@/app/shared/components/atoms/Button";
+import { ImageType } from "@/app/shared/types";
 
 export interface CardsProps {
-  cards: any;
+  cards: JSX.Element;
   cardsBtnText: string;
-  cardsBtnIcon: any;
+  cardsBtnIcon: ImageType;
   hasBtn: boolean;
 }
 

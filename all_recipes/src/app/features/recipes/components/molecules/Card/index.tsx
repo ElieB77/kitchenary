@@ -4,12 +4,13 @@ import LikeButton from "../../atoms/LikeButton";
 import styles from "./styles.module.scss";
 import Image from "next/image";
 import { FC } from "react";
+import { ImageType } from "@/app/shared/types";
 
 interface CardProps {
-  image: any;
+  image: ImageType;
   title: string;
   subtitle: string;
-  descriptionIcon: any;
+  descriptionIcon: ImageType;
   hasLikeButton: boolean;
 }
 
@@ -24,7 +25,17 @@ const Card: FC<CardProps> = ({
     <div className={styles.card}>
       <div className={styles.card__image}>
         <Image className={styles.card__image__img} {...image} />
-        {hasLikeButton && <LikeButton secondaryColor={false} />}
+        {hasLikeButton && (
+          <LikeButton
+            secondaryColor={false}
+            likeIcon={{
+              src: "",
+              alt: "",
+              width: 0,
+              height: 0,
+            }}
+          />
+        )}
       </div>
       <div className={styles.card__description}>
         <div>

@@ -13,6 +13,7 @@ import {
 } from "../shared/constants";
 import Footer from "../shared/components/organisms/Footer";
 import Link from "next/link";
+import { NavLinkType } from "../shared/types";
 
 export const ebGaramond = EB_Garamond({
   subsets: ["latin"],
@@ -49,28 +50,28 @@ export default function RootLayout({
           secondTitle={"cuisines"}
           thirdTitle={"ingredients"}
           fourthTitle={"diets"}
-          meals={MEALS.map((meal: any) => {
+          meals={MEALS.map((meal: NavLinkType) => {
             return (
               <Link key={meal.id} href={""}>
                 {meal.name}
               </Link>
             );
           })}
-          cuisines={CUISINES.map((meal: any) => {
+          cuisines={CUISINES.map((meal: NavLinkType) => {
             return (
               <Link key={meal.id} href={""}>
                 {meal.name}
               </Link>
             );
           })}
-          ingredients={INGREDIENTS.map((meal: any) => {
+          ingredients={INGREDIENTS.map((meal: NavLinkType) => {
             return (
               <Link key={meal.id} href={""}>
                 {meal.name}
               </Link>
             );
           })}
-          diets={DIETS.map((meal: any) => {
+          diets={DIETS.map((meal: NavLinkType) => {
             return (
               <Link key={meal.id} href={""}>
                 {meal.name}

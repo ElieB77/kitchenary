@@ -3,12 +3,13 @@ import styles from "./styles.module.scss";
 import Image from "next/image";
 import Button, { ButtonProps } from "@/app/shared/components/atoms/Button";
 import LikeButton from "../../atoms/LikeButton";
+import { ImageType } from "@/app/shared/types";
 
 export interface FeaturedCardProps extends ButtonProps {
   title: string;
   count: number;
   totalCount: string | number;
-  image: any;
+  image: ImageType;
 }
 
 const FeaturedCard: FC<FeaturedCardProps> = ({
@@ -31,7 +32,15 @@ const FeaturedCard: FC<FeaturedCardProps> = ({
       <Button text={text} icon={icon} />
       <div className={styles.featuredCard__image}>
         <Image className={styles.featuredCard__image__img} {...image} />
-        <LikeButton secondaryColor={false} />
+        <LikeButton
+          secondaryColor={false}
+          likeIcon={{
+            src: "",
+            alt: "",
+            width: 0,
+            height: 0,
+          }}
+        />
       </div>
     </div>
   );

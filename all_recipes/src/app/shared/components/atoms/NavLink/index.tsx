@@ -7,14 +7,14 @@ import { FC } from "react";
 interface NavLinkProps {
   text: string;
   icon?: ImageType;
-  onClick: any;
+  onClick: () => void;
 }
 
 const NavLink: FC<NavLinkProps> = ({ text, icon, onClick }) => {
   return (
     <li onClick={onClick} className={styles.navLinks}>
       <p>{text}</p>
-      <Image {...icon} />
+      <Image {...icon!} />
     </li>
   );
 };

@@ -1,4 +1,4 @@
-import { ImageType } from "../types";
+import { ImageType, NavLinkType } from "../types";
 
 /*------------------
 Images
@@ -65,7 +65,7 @@ export const CLOSE_ICON: ImageType = {
 /*--------------------------
 Navigation Links Data
 --------------------------*/
-export const INGREDIENTS = [
+export const INGREDIENTS: NavLinkType[] = [
   { id: "chicken", name: "Chicken" },
   { id: "beef", name: "Beef" },
   { id: "pork", name: "Pork" },
@@ -75,7 +75,7 @@ export const INGREDIENTS = [
   { id: "vegetables", name: "Vegetables" },
 ];
 
-export const MEALS = [
+export const MEALS: NavLinkType[] = [
   { id: "main-course", name: "Main Course" },
   { id: "side-dish", name: "Side Dish" },
   { id: "dessert", name: "Dessert" },
@@ -92,7 +92,7 @@ export const MEALS = [
   { id: "drink", name: "Drink" },
 ];
 
-export const CUISINES = [
+export const CUISINES: NavLinkType[] = [
   { id: "african", name: "African" },
   { id: "asian", name: "Asian" },
   { id: "american", name: "American" },
@@ -122,7 +122,7 @@ export const CUISINES = [
   { id: "vietnamese", name: "Vietnamese" },
 ];
 
-export const DIETS = [
+export const DIETS: NavLinkType[] = [
   { id: "gluten-free", name: "Gluten-Free" },
   { id: "ketogenic", name: "Ketogenic" },
   { id: "vegetarian", name: "Vegetarian" },
