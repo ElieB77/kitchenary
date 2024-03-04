@@ -5,11 +5,12 @@ import { FC } from "react";
 
 export interface RoundedButtonProps {
   icon: ImageType;
+  onClick: any;
 }
 
-const RoundedButton: FC<RoundedButtonProps> = ({ icon }) => {
+const RoundedButton: FC<RoundedButtonProps> = ({ icon, onClick }) => {
   return (
-    <button className={styles.roundedButton}>
+    <button onClick={onClick} className={styles.roundedButton}>
       <Image {...icon} />
     </button>
   );

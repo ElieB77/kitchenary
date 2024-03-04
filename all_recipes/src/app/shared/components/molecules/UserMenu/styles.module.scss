@@ -1,0 +1,30 @@
+@use "../../../../shared/styles/utils/colors" as *;
+
+.userMenu {
+  position: fixed;
+  top: 60px;
+  left: 50%;
+  transform: translate(-50%);
+  z-index: 999;
+  width: 320px;
+  background-color: $accent-color;
+  padding: 28px 40px 28px 44px;
+  font-size: 18px;
+
+  &__text::first-letter {
+    text-transform: uppercase;
+  }
+
+  &__divider {
+    border: none;
+    height: 1px;
+    background-color: $border-color;
+    margin: 14px 0 10px 0;
+    width: 80px;
+  }
+
+  &__link {
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+}

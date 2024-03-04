@@ -79,6 +79,12 @@ export default function RootLayout({
           })}
           placeholder={"Search for"}
           icon={SEARCH_ICON}
+          loginText={"have an account?"}
+          registerText={"don't have an account?"}
+          loginLinkText={"login"}
+          loginLinkHref={"/auth/login"}
+          registerLinkText={"register"}
+          registerLinkHref={"/auth/register"}
         />
         <div className="container">{children}</div>
         <Footer text={"kitchenary"} to={"/"} larger={true} />

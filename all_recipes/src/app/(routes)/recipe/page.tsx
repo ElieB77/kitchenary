@@ -1,6 +1,6 @@
 "use client";
-import RecipeIngredientListItem from "@/app/features/recipes/components/atoms/RecipeIngredientListItem";
-import RecipeStep from "@/app/features/recipes/components/atoms/RecipeStep";
+import RecipeIngredientListItem from "@/app/features/recipes/components/atoms/IngredientListItem";
+import RecipeStep from "@/app/features/recipes/components/atoms/Step";
 import CardNutrient from "@/app/features/recipes/components/molecules/CardNutrient";
 import RecipePage from "@/app/features/recipes/components/templates/RecipePage";
 import {
@@ -42,9 +42,18 @@ export default function Recipe() {
         servingsText={"4 persons"}
         ingredients={
           <>
-            <RecipeIngredientListItem amount={"300g"} ingredientName={"Beef"} />
-            <RecipeIngredientListItem amount={"300g"} ingredientName={"Beef"} />
-            <RecipeIngredientListItem amount={"300g"} ingredientName={"Beef"} />
+            <RecipeIngredientListItem
+              ingredientAmount={"300g"}
+              ingredientName={"Beef"}
+            />
+            <RecipeIngredientListItem
+              ingredientAmount={"300g"}
+              ingredientName={"Beef"}
+            />
+            <RecipeIngredientListItem
+              ingredientAmount={"300g"}
+              ingredientName={"Beef"}
+            />
           </>
         }
         steps={

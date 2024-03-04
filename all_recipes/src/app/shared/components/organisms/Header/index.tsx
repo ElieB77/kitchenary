@@ -5,8 +5,13 @@ import { ImageType } from "@/app/shared/types";
 import Logo, { LogoProps } from "../../atoms/Logo";
 import Menu, { MenuProps } from "../Menu";
 import { SearchBarProps } from "@/app/features/search/components/molecules/SearchBar";
+import UserMenu, { UserMenuProps } from "../../molecules/UserMenu";
 
-interface HeaderProps extends LogoProps, MenuProps, SearchBarProps {
+interface HeaderProps
+  extends LogoProps,
+    MenuProps,
+    SearchBarProps,
+    UserMenuProps {
   userIcon: ImageType;
   hamburgerIcon: ImageType;
   searchIcon: ImageType;
@@ -29,12 +34,20 @@ const Header: FC<HeaderProps> = ({
   diets,
   placeholder,
   icon,
+  loginText,
+  registerText,
+  loginLinkText,
+  loginLinkHref,
+  registerLinkText,
+  registerLinkHref,
 }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [isUserMenuOpen, setIsUserMenuOpen] = useState<boolean>(false);
 
   useEffect(() => {
     if (isOpen) {
       document.documentElement.style.overflow = "hidden";
+      setIsUserMenuOpen(false);
     } else {
       document.documentElement.style.overflow = "visible";
     }
@@ -42,6 +55,11 @@ const Header: FC<HeaderProps> = ({
 
   const toggleMenu = () => {
     return setIsOpen(!isOpen);
+  };
+
+  const toggleUserMenu = () => {
+    if (isOpen) setIsOpen(false);
+    return setIsUserMenuOpen(!isUserMenuOpen);
   };
 
   return (
@@ -53,7 +71,7 @@ const Header: FC<HeaderProps> = ({
           </div>
           <div className={styles.header__wrapper__right}>
             <div className={styles.header__wrapper__right__grouped}>
-              <Image {...userIcon} />
+              <Image onClick={toggleUserMenu} {...userIcon} />
               <Image onClick={toggleMenu} {...searchIcon} />
             </div>
             <div className={styles.header__wrapper__right__divider}></div>
@@ -73,6 +91,15 @@ const Header: FC<HeaderProps> = ({
         diets={diets}
         placeholder={placeholder}
         icon={icon}
+      />
+      <UserMenu
+        loginText={loginText}
+        registerText={registerText}
+        loginLinkText={loginLinkText}
+        loginLinkHref={loginLinkHref}
+        registerLinkText={registerLinkText}
+        registerLinkHref={registerLinkHref}
+        isUserMenuOpen={isUserMenuOpen}
       />
     </>
   );

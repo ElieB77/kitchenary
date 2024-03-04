@@ -1,6 +1,6 @@
 import { FC } from "react";
 import styles from "./styles.module.scss";
-import RecipeStep from "../../atoms/RecipeStep";
+import RecipeStep from "../../atoms/Step";
 
 export interface RecipeStepsProps {
   steps: any;

@@ -6,14 +6,14 @@ import Image from "next/image";
 
 export interface ButtonProps {
   text: string | undefined;
-  icon: ImageType;
+  icon?: ImageType;
 }
 
 const Button: FC<ButtonProps> = ({ text, icon }) => {
   return (
     <button className={styles.button}>
       <p>{text}</p>
-      <Image {...icon} />
+      {icon && <Image {...icon} />}
     </button>
   );
 };

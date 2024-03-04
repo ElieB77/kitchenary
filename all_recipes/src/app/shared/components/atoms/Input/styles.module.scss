@@ -1,0 +1,29 @@
+@use "../../../../shared/styles/utils/colors" as *;
+
+.input {
+  display: flex;
+  flex-direction: column;
+
+  & label {
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+
+  & input {
+    border: none;
+    background: none;
+    border-bottom: solid 3px $text-color;
+    outline: none;
+    padding: 0 8px 8px 0px;
+    font-size: 16px;
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus,
+    &:-webkit-autofill:active {
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: inherit;
+      transition: background-color 5000s ease-in-out 0s;
+      box-shadow: none;
+    }
+  }
+}

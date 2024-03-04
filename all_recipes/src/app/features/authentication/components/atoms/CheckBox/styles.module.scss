@@ -1,0 +1,49 @@
+@use "../../../../../shared/styles/utils/colors" as *;
+
+.checkBox {
+  display: inline-block;
+  position: relative;
+  padding-left: 55px;
+  cursor: pointer;
+  user-select: none;
+
+  &::first-letter {
+    text-transform: uppercase;
+  }
+
+  input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+
+  .checkBox__checkmark {
+    position: absolute;
+    left: 0;
+    height: 40px;
+    top: -50%;
+    width: 40px;
+    background-color: $secondary-color;
+    border-radius: 50%;
+  }
+
+  .checkBox__checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+
+  input:checked ~ .checkBox__checkmark:after {
+    display: block;
+  }
+
+  .checkBox__checkmark:after {
+    left: 15px;
+    top: 13px;
+    width: 10px;
+    height: 10px;
+    border: solid $text-color;
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+  }
+}

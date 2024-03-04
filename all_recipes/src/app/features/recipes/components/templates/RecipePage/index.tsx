@@ -7,9 +7,7 @@ import LikeButton, { LikeButtonProps } from "../../atoms/LikeButton";
 import ShareButton, { ShareButtonProps } from "../../atoms/ShareButton";
 import RecipeTitle from "../../atoms/RecipeTitle";
 import RecipeTime, { RecipeTimeProps } from "../../molecules/RecipeTime";
-import RecipeIngredients, {
-  RecipeIngredientsProps,
-} from "../../organisms/RecipeIngredients";
+import Ingredients, { IngredientsProps } from "../../organisms/Ingredients";
 import RecipeSteps, { RecipeStepsProps } from "../../organisms/RecipeSteps";
 import CardsNutrient, {
   CardsNutrientProps,
@@ -20,7 +18,7 @@ interface RecipePageProps
   extends ShareButtonProps,
     LikeButtonProps,
     RecipeTimeProps,
-    RecipeIngredientsProps,
+    IngredientsProps,
     RecipeStepsProps,
     CardsNutrientProps {
   recipeType: string;
@@ -113,7 +111,7 @@ const RecipePage: FC<RecipePageProps> = ({
           firstWord={ingredientsTitleFirstWord}
           secondWord={ingredientsTitleSecondWord}
         />
-        <RecipeIngredients
+        <Ingredients
           servingsIcon={servingsIcon}
           servingsText={servingsText}
           ingredients={ingredients}
