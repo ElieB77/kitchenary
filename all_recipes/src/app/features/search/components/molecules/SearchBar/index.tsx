@@ -9,6 +9,7 @@ export interface SearchBarProps {
   icon: ImageType;
   onChange: any;
   onSubmit: any;
+  value: string;
 }
 
 const SearchBar: FC<SearchBarProps> = ({
@@ -16,10 +17,16 @@ const SearchBar: FC<SearchBarProps> = ({
   icon,
   onChange,
   onSubmit,
+  value,
 }) => {
   return (
     <form onSubmit={onSubmit} className={styles.searchBar}>
-      <input type="text" placeholder={placeholder} onChange={onChange} />
+      <input
+        type="text"
+        placeholder={placeholder}
+        onChange={onChange}
+        value={value}
+      />
       <Image {...icon} />
     </form>
   );

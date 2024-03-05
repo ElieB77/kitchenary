@@ -7,6 +7,7 @@ import { getProperImageUrl } from "@/app/shared/utils";
 import { FeaturedRecipeType } from "../../types";
 import { HEART_ICON } from "../../constants";
 import { useRouter } from "next/navigation";
+import ErrorPage from "@/app/shared/components/templates/ErrorPage";
 
 interface FeaturedContainerProps {
   slug: string;
@@ -67,7 +68,17 @@ const FeaturedContainer: FC<FeaturedContainerProps> = ({ slug }) => {
     saladRecipes,
   ]);
 
-  if (!data) return null;
+  if (!data)
+    return (
+      <ErrorPage
+        status={"500"}
+        message={
+          "Oops! It looks like something went wrong on our end. Please try again later. We apologize for any inconvenience."
+        }
+        btnText={"Back to home page"}
+        btnOnClick={() => router.push("/")}
+      />
+    );
 
   const renderFeaturedCards = () => {
     return data?.map((recipe: FeaturedRecipeType, index: number) => {

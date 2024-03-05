@@ -12,6 +12,7 @@ interface CardProps extends LikeButtonProps {
   subtitle: string;
   descriptionIcon: ImageType;
   hasLikeButton: boolean;
+  onClick: () => void;
 }
 
 const Card: FC<CardProps> = ({
@@ -22,9 +23,10 @@ const Card: FC<CardProps> = ({
   hasLikeButton,
   likeIcon,
   secondaryColor,
+  onClick,
 }) => {
   return (
-    <div className={styles.card}>
+    <div className={styles.card} onClick={onClick}>
       <div className={styles.card__image}>
         <Image
           className={styles.card__image__img}

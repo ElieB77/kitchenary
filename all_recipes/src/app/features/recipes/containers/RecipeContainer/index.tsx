@@ -19,6 +19,8 @@ import {
   FeaturedStepsType,
   NutrientsType,
 } from "../../types";
+import ErrorPage from "@/app/shared/components/templates/ErrorPage";
+import { useRouter } from "next/navigation";
 
 interface RecipeContainerProps {
   recipeId: number;
@@ -26,13 +28,23 @@ interface RecipeContainerProps {
 
 const RecipeContainer: FC<RecipeContainerProps> = ({ recipeId }) => {
   const { getRecipeInformations, recipeInformations } = useContext(LibContext);
+  const router = useRouter();
 
   useEffect(() => {
     getRecipeInformations(recipeId);
   }, [recipeId]);
 
   if (!recipeInformations) {
-    return null;
+    return (
+      <ErrorPage
+        status={"500"}
+        message={
+          "Oops! It looks like something went wrong on our end. Please try again later. We apologize for any inconvenience."
+        }
+        btnText={"Back to home page"}
+        btnOnClick={() => router.push("/")}
+      />
+    );
   }
 
   const {
@@ -54,19 +66,21 @@ const RecipeContainer: FC<RecipeContainerProps> = ({ recipeId }) => {
     ALLOWED_TAGS: ["p", "i", "em", "a"],
   });
 
-  const renderIngredientsList = extendedIngredients.map(
-    (ingredient: FeaturedIngredientsType, index: number) => {
-      return (
-        <IngredientListItem key={index} ingredient={ingredient.original} />
-      );
-    }
-  );
+  const renderIngredientsList =
+    extendedIngredients.map(
+      (ingredient: FeaturedIngredientsType, index: number) => {
+        return (
+          <IngredientListItem key={index} ingredient={ingredient.original} />
+        );
+      }
+    ) || "Not available";
 
-  const renderSteps = analyzedInstructions[0].steps.map(
-    (step: FeaturedStepsType, index: number) => {
-      return <Step key={index} stepText={step.step} />;
-    }
-  );
+  const renderSteps =
+    analyzedInstructions[0]?.steps.map(
+      (step: FeaturedStepsType, index: number) => {
+        return <Step key={index} stepText={step.step} />;
+      }
+    ) || "Not available";
 
   const renderNutrientCards = nutrition.nutrients
     .filter((nutrient: NutrientsType) => NUTRIENT_NAMES.includes(nutrient.name))

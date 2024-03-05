@@ -38,7 +38,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const { handleSubmit, handleChange } = useSearchBar();
+  const { handleSubmit, handleChange, searchValue } = useSearchBar();
   const queryClient = new QueryClient();
 
   return (
@@ -86,7 +86,7 @@ export default function RootLayout({
                   </Link>
                 );
               })}
-              placeholder={"Search for"}
+              placeholder={"Search"}
               icon={SEARCH_ICON}
               loginText={"have an account?"}
               registerText={"don't have an account?"}
@@ -96,6 +96,7 @@ export default function RootLayout({
               registerLinkHref={"/auth/register"}
               onChange={handleChange}
               onSubmit={handleSubmit}
+              value={searchValue}
             />
             <div className="container">{children}</div>
             <Footer text={"kitchenary"} to={"/"} larger={true} />

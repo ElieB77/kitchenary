@@ -19,7 +19,9 @@ const Cards: FC<CardsProps> = ({
   return (
     <div className={styles.cards}>
       {cards}
-      {hasBtn && <Button text={cardsBtnText} icon={cardsBtnIcon} />}
+      {hasBtn && (
+        <Button cardsBtnIcon={cardsBtnIcon} cardsBtnText={cardsBtnText} />
+      )}
     </div>
   );
 };

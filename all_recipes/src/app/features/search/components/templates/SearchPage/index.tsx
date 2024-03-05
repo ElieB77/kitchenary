@@ -6,8 +6,14 @@ import { ebGaramond, montserrat } from "@/app/(routes)/layout";
 import Cards, {
   CardsProps,
 } from "@/app/features/recipes/components/organisms/Cards";
+import PaginationButtons, {
+  PaginationButtonsProps,
+} from "../../molecules/PaginationButtons";
 
-interface SearchPageProps extends SearchBarProps, CardsProps {
+interface SearchPageProps
+  extends SearchBarProps,
+    CardsProps,
+    PaginationButtonsProps {
   searchLabel: string;
   query: string | null;
 }
@@ -23,6 +29,11 @@ const SearchPage: FC<SearchPageProps> = ({
   cardsBtnText,
   cardsBtnIcon,
   hasBtn,
+  totalPages,
+  currentPage,
+  content,
+  onClick,
+  value,
 }) => {
   return (
     <div className={styles.searchPage}>
@@ -36,6 +47,7 @@ const SearchPage: FC<SearchPageProps> = ({
           icon={icon}
           onChange={onChange}
           onSubmit={onSubmit}
+          value={value}
         />
       </div>
 
@@ -47,6 +59,17 @@ const SearchPage: FC<SearchPageProps> = ({
           hasBtn={hasBtn}
         />
       </div>
+
+      {totalPages > 1 && (
+        <div className={styles.searchPage__pagination}>
+          <PaginationButtons
+            totalPages={totalPages}
+            currentPage={currentPage}
+            content={content}
+            onClick={onClick}
+          />
+        </div>
+      )}
     </div>
   );
 };

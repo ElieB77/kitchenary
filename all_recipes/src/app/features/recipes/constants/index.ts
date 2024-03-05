@@ -87,6 +87,13 @@ export const SOUP_IMG: ImageType = {
   height: 500,
 };
 
+export const COUSCOUS_IMG: ImageType = {
+  src: "/images/couscous.jpeg",
+  alt: "Couscous",
+  width: 500,
+  height: 500,
+};
+
 /*-----------------------
 Icons
 -----------------------*/

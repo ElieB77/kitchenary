@@ -13,7 +13,8 @@ const useSearchBar = () => {
     event.preventDefault();
     if (!searchValue) return;
 
-    return router.push(`/search?query=${searchValue}`);
+    router.push(`/search?query=${searchValue}`);
+    setSearchValue("");
   };
 
   return {

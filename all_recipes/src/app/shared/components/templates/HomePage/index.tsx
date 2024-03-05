@@ -46,6 +46,7 @@ const HomePage: FC<HomePageProps> = ({
   onClick,
   onChange,
   onSubmit,
+  value,
 }) => {
   return (
     <div className={styles.homePage}>
@@ -73,6 +74,7 @@ const HomePage: FC<HomePageProps> = ({
         searchSuggestionsTitle={searchSuggestionsTitle}
         onChange={onChange}
         onSubmit={onSubmit}
+        value={value}
       />
 
       <div>

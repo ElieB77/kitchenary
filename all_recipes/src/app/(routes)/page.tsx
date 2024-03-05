@@ -3,6 +3,7 @@ import {
   BROWNIES_IMG,
   BURGER_IMG,
   COOKIE_IMG,
+  COUSCOUS_IMG,
   HOT_WINGS_IMG,
   MAC_AND_CHEESE_IMG,
   NOODLES_IMG,
@@ -12,7 +13,7 @@ import {
   SMOOTHIE_IMG,
   SOUP_IMG,
 } from "../features/recipes/constants";
-import { RIGHT_ARROW_ICON } from "../shared/constants";
+import { RIGHT_ARROW_ICON, SEARCH_ICON } from "../shared/constants";
 import RoundedCard from "../features/recipes/components/molecules/RoundedCard";
 import HomePage from "../shared/components/templates/HomePage";
 import Card from "../features/recipes/components/molecules/Card";
@@ -23,7 +24,7 @@ import useSearchBar from "../features/search/hooks/useSearchBar";
 
 export default function Home() {
   const router = useRouter();
-  const { handleSubmit, handleChange } = useSearchBar();
+  const { handleSubmit, handleChange, searchValue } = useSearchBar();
 
   return (
     <>
@@ -34,7 +35,7 @@ export default function Home() {
           "Every stack of fluffy pancakes deserves a finishing touch of sweetness, but if that's not enough, we've got you covered. From classic buttermilk pancakes to indulgent chocolate chip stacks, these are the most syrup-drenched pancakes we've got!"
         }
         footerText={"Discover More Pancakes Here"}
-        icon={RIGHT_ARROW_ICON}
+        icon={SEARCH_ICON}
         roundedCards={
           <>
             <RoundedCard
@@ -78,6 +79,7 @@ export default function Home() {
               hasLikeButton={false}
               secondaryColor={false}
               likeIcon={undefined!}
+              onClick={() => router.push("/search?query=mac-and-cheese")}
             />
             <Card
               imageSrc={HOT_WINGS_IMG.src}
@@ -87,6 +89,7 @@ export default function Home() {
               hasLikeButton={false}
               secondaryColor={false}
               likeIcon={undefined!}
+              onClick={() => router.push("/search?query=hot-wings")}
             />
             <Card
               imageSrc={NOODLES_IMG.src}
@@ -96,6 +99,7 @@ export default function Home() {
               hasLikeButton={false}
               secondaryColor={false}
               likeIcon={undefined!}
+              onClick={() => router.push("/search?query=chicken-noodles")}
             />
             <Card
               imageSrc={BROWNIES_IMG.src}
@@ -105,6 +109,9 @@ export default function Home() {
               hasLikeButton={false}
               secondaryColor={false}
               likeIcon={undefined!}
+              onClick={() =>
+                router.push("/search?query=peanut-butter-brownies")
+              }
             />
             <Card
               imageSrc={SOUP_IMG.src}
@@ -114,29 +121,38 @@ export default function Home() {
               hasLikeButton={false}
               secondaryColor={false}
               likeIcon={undefined!}
+              onClick={() => router.push("/search?query=mushroom-soup")}
             />
             <Card
-              imageSrc={NOODLES_IMG.src}
+              imageSrc={COUSCOUS_IMG.src}
               title={"main course"}
-              subtitle={"pepper noodles"}
+              subtitle={"couscous"}
               descriptionIcon={RIGHT_ARROW_ICON}
               hasLikeButton={false}
               secondaryColor={false}
               likeIcon={undefined!}
+              onClick={() => router.push("/search?query=couscous")}
             />
           </>
         }
         cardsBtnText={"view all"}
         cardsBtnIcon={RIGHT_ARROW_ICON}
-        searchSuggestionsTabs={TABS.map((el: any, index: number) => {
-          return <Tab key={index} text={el.name} />;
+        searchSuggestionsTabs={TABS.map((tab: any, index: number) => {
+          return (
+            <Tab
+              key={index}
+              text={tab.name}
+              onClick={() => router.push(`/search?query=${tab.id}`)}
+            />
+          );
         })}
         searchSuggestionsTitle={"popular searches"}
-        placeholder={"search for"}
+        placeholder={"Search"}
         onClick={() => router.push("/featured/pancake")}
         hasBtn={false}
         onChange={handleChange}
         onSubmit={handleSubmit}
+        value={searchValue}
       />
     </>
   );
