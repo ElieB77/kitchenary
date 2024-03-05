@@ -1,0 +1,18 @@
+.errorPage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  &__status {
+    font-size: 100px;
+    margin-bottom: 30px;
+  }
+
+  &__message {
+    width: 90%;
+    max-width: 550px;
+    margin-bottom: 20px;
+  }
+}
