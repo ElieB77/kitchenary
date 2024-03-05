@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useEffect, useRef } from "react";
 import styles from "./styles.module.scss";
 import Link from "next/link";
 import { ebGaramond } from "@/app/(routes)/layout";

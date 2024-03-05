@@ -19,9 +19,11 @@ import Card from "../features/recipes/components/molecules/Card";
 import Tab from "../features/search/components/atoms/Tab";
 import { TABS } from "../features/search/constants";
 import { useRouter } from "next/navigation";
+import useSearchBar from "../features/search/hooks/useSearchBar";
 
 export default function Home() {
   const router = useRouter();
+  const { handleSubmit, handleChange } = useSearchBar();
 
   return (
     <>
@@ -69,46 +71,58 @@ export default function Home() {
         cards={
           <>
             <Card
-              image={MAC_AND_CHEESE_IMG}
+              imageSrc={MAC_AND_CHEESE_IMG.src}
               title={"main course"}
               subtitle={"mac & cheese"}
               descriptionIcon={RIGHT_ARROW_ICON}
               hasLikeButton={false}
+              secondaryColor={false}
+              likeIcon={undefined!}
             />
             <Card
-              image={HOT_WINGS_IMG}
+              imageSrc={HOT_WINGS_IMG.src}
               title={"fingerfood"}
               subtitle={"hot wings"}
               descriptionIcon={RIGHT_ARROW_ICON}
               hasLikeButton={false}
+              secondaryColor={false}
+              likeIcon={undefined!}
             />
             <Card
-              image={NOODLES_IMG}
+              imageSrc={NOODLES_IMG.src}
               title={"main course"}
               subtitle={"chicken noodles"}
               descriptionIcon={RIGHT_ARROW_ICON}
               hasLikeButton={false}
+              secondaryColor={false}
+              likeIcon={undefined!}
             />
             <Card
-              image={BROWNIES_IMG}
+              imageSrc={BROWNIES_IMG.src}
               title={"dessert"}
               subtitle={"peanut butter brownies"}
               descriptionIcon={RIGHT_ARROW_ICON}
               hasLikeButton={false}
+              secondaryColor={false}
+              likeIcon={undefined!}
             />
             <Card
-              image={SOUP_IMG}
+              imageSrc={SOUP_IMG.src}
               title={"soup"}
               subtitle={"mushroom soup"}
               descriptionIcon={RIGHT_ARROW_ICON}
               hasLikeButton={false}
+              secondaryColor={false}
+              likeIcon={undefined!}
             />
             <Card
-              image={NOODLES_IMG}
+              imageSrc={NOODLES_IMG.src}
               title={"main course"}
               subtitle={"pepper noodles"}
               descriptionIcon={RIGHT_ARROW_ICON}
               hasLikeButton={false}
+              secondaryColor={false}
+              likeIcon={undefined!}
             />
           </>
         }
@@ -121,6 +135,8 @@ export default function Home() {
         placeholder={"search for"}
         onClick={() => router.push("/featured/pancake")}
         hasBtn={false}
+        onChange={handleChange}
+        onSubmit={handleSubmit}
       />
     </>
   );

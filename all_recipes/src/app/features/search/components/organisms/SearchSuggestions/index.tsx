@@ -13,6 +13,8 @@ const SearchSuggestions: FC<SearchSuggestionsProps> = ({
   icon,
   searchSuggestionsTabs,
   searchSuggestionsTitle,
+  onChange,
+  onSubmit,
 }) => {
   return (
     <div className={styles.searchSuggestions}>
@@ -20,7 +22,12 @@ const SearchSuggestions: FC<SearchSuggestionsProps> = ({
       <div className={styles.searchSuggestions__tabs}>
         {searchSuggestionsTabs}
       </div>
-      <SearchBar placeholder={placeholder} icon={icon} />
+      <SearchBar
+        placeholder={placeholder}
+        icon={icon}
+        onChange={onChange}
+        onSubmit={onSubmit}
+      />
     </div>
   );
 };

@@ -1,6 +1,7 @@
 "use client";
 import axios from "axios";
 import { createContext, useEffect, useState } from "react";
+import { useQuery } from "react-query";
 
 interface LibContextState {
   pancakeRecipes: any;
@@ -11,6 +12,8 @@ interface LibContextState {
   saladRecipes: any;
   recipeInformations: any;
   getRecipeInformations: any;
+  getRecipesBySearch: any;
+  searchResults: any;
 }
 
 const LibContext = createContext<LibContextState>({
@@ -22,6 +25,8 @@ const LibContext = createContext<LibContextState>({
   saladRecipes: undefined,
   recipeInformations: undefined,
   getRecipeInformations: undefined,
+  getRecipesBySearch: undefined,
+  searchResults: undefined,
 });
 
 function LibProvider({ children }: { children: React.ReactNode }) {
@@ -32,6 +37,18 @@ function LibProvider({ children }: { children: React.ReactNode }) {
   const [cookieRecipes, setCookieRecipes] = useState<any>();
   const [saladRecipes, setSaladRecipes] = useState<any>();
   const [recipeInformations, setRecipeInformations] = useState<any>();
+  const [searchResults, setSearchResults] = useState<any>();
+
+  const getRecipesBySearch = async (query: string) => {
+    try {
+      const response = await axios.get(
+        `${process.env.NEXT_PUBLIC_API_URI}/complexSearch?query=${query}&number=50&apiKey=${process.env.NEXT_PUBLIC_API_KEY}`
+      );
+      setSearchResults(response.data.results);
+    } catch (error: any) {
+      console.error(`Error fetching recipe details: ${error.message}`);
+    }
+  };
 
   const getRecipeInformations = async (id: string) => {
     try {
@@ -99,6 +116,8 @@ function LibProvider({ children }: { children: React.ReactNode }) {
         saladRecipes,
         recipeInformations,
         getRecipeInformations,
+        getRecipesBySearch,
+        searchResults,
       }}
     >
       {children}

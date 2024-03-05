@@ -31,11 +31,18 @@ const Menu: FC<MenuProps> = ({
   diets,
   placeholder,
   icon,
+  onChange,
+  onSubmit,
 }) => {
   return (
     isOpen && (
       <div className={styles.menu}>
-        <SearchBar placeholder={placeholder} icon={icon} />
+        <SearchBar
+          placeholder={placeholder}
+          icon={icon}
+          onChange={onChange}
+          onSubmit={onSubmit}
+        />
 
         <div className={styles.menu__list}>
           <h3>{firstTitle}</h3>

@@ -1,13 +1,13 @@
 import { RIGHT_ARROW_ICON } from "@/app/shared/constants";
 import { HEART_ICON, NOODLES_IMG } from "../../../constants";
-import LikeButton from "../../atoms/LikeButton";
+import LikeButton, { LikeButtonProps } from "../../atoms/LikeButton";
 import styles from "./styles.module.scss";
 import Image from "next/image";
 import { FC } from "react";
 import { ImageType } from "@/app/shared/types";
 
-interface CardProps {
-  image: ImageType;
+interface CardProps extends LikeButtonProps {
+  imageSrc: string;
   title: string;
   subtitle: string;
   descriptionIcon: ImageType;
@@ -15,26 +15,25 @@ interface CardProps {
 }
 
 const Card: FC<CardProps> = ({
-  image,
+  imageSrc,
   title,
   subtitle,
   descriptionIcon,
   hasLikeButton,
+  likeIcon,
+  secondaryColor,
 }) => {
   return (
     <div className={styles.card}>
       <div className={styles.card__image}>
-        <Image className={styles.card__image__img} {...image} />
+        <Image
+          className={styles.card__image__img}
+          src={imageSrc}
+          alt={""}
+          fill
+        />
         {hasLikeButton && (
-          <LikeButton
-            secondaryColor={false}
-            likeIcon={{
-              src: "",
-              alt: "",
-              width: 0,
-              height: 0,
-            }}
-          />
+          <LikeButton secondaryColor={secondaryColor} likeIcon={likeIcon} />
         )}
       </div>
       <div className={styles.card__description}>

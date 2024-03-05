@@ -9,11 +9,15 @@
     background-color: $border-color;
     text-align: center;
 
+    & h2 {
+      text-transform: capitalize;
+    }
+
     & span {
       font-size: 20px;
     }
 
-    & > div {
+    & > form {
       transform: translateY(50%);
     }
   }

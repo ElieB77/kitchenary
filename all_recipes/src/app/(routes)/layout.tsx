@@ -15,6 +15,8 @@ import Footer from "../shared/components/organisms/Footer";
 import Link from "next/link";
 import { NavLinkType } from "../shared/types";
 import { LibProvider } from "../shared/context/LibContext";
+import useSearchBar from "../features/search/hooks/useSearchBar";
+import { QueryClient, QueryClientProvider } from "react-query";
 
 export const ebGaramond = EB_Garamond({
   subsets: ["latin"],
@@ -36,63 +38,70 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const { handleSubmit, handleChange } = useSearchBar();
+  const queryClient = new QueryClient();
+
   return (
     <html lang="en">
-      <LibProvider>
-        <body className={montserrat.className}>
-          <Header
-            userIcon={USER_ICON}
-            hamburgerIcon={HAMBURGER_ICON}
-            searchIcon={SEARCH_ICON}
-            text={"kitchenary"}
-            to={"/"}
-            larger={false}
-            isOpen={false}
-            firstTitle={"meals"}
-            secondTitle={"cuisines"}
-            thirdTitle={"ingredients"}
-            fourthTitle={"diets"}
-            meals={MEALS.map((meal: NavLinkType) => {
-              return (
-                <Link key={meal.id} href={""}>
-                  {meal.name}
-                </Link>
-              );
-            })}
-            cuisines={CUISINES.map((meal: NavLinkType) => {
-              return (
-                <Link key={meal.id} href={""}>
-                  {meal.name}
-                </Link>
-              );
-            })}
-            ingredients={INGREDIENTS.map((meal: NavLinkType) => {
-              return (
-                <Link key={meal.id} href={""}>
-                  {meal.name}
-                </Link>
-              );
-            })}
-            diets={DIETS.map((meal: NavLinkType) => {
-              return (
-                <Link key={meal.id} href={""}>
-                  {meal.name}
-                </Link>
-              );
-            })}
-            placeholder={"Search for"}
-            icon={SEARCH_ICON}
-            loginText={"have an account?"}
-            registerText={"don't have an account?"}
-            loginLinkText={"login"}
-            loginLinkHref={"/auth/login"}
-            registerLinkText={"register"}
-            registerLinkHref={"/auth/register"}
-          />
-          <div className="container">{children}</div>
-          <Footer text={"kitchenary"} to={"/"} larger={true} />
-        </body>
-      </LibProvider>
+      <QueryClientProvider client={queryClient}>
+        <LibProvider>
+          <body className={montserrat.className}>
+            <Header
+              userIcon={USER_ICON}
+              hamburgerIcon={HAMBURGER_ICON}
+              searchIcon={SEARCH_ICON}
+              text={"kitchenary"}
+              to={"/"}
+              larger={false}
+              isOpen={false}
+              firstTitle={"meals"}
+              secondTitle={"cuisines"}
+              thirdTitle={"ingredients"}
+              fourthTitle={"diets"}
+              meals={MEALS.map((meal: NavLinkType) => {
+                return (
+                  <Link key={meal.id} href={""}>
+                    {meal.name}
+                  </Link>
+                );
+              })}
+              cuisines={CUISINES.map((meal: NavLinkType) => {
+                return (
+                  <Link key={meal.id} href={""}>
+                    {meal.name}
+                  </Link>
+                );
+              })}
+              ingredients={INGREDIENTS.map((meal: NavLinkType) => {
+                return (
+                  <Link key={meal.id} href={""}>
+                    {meal.name}
+                  </Link>
+                );
+              })}
+              diets={DIETS.map((meal: NavLinkType) => {
+                return (
+                  <Link key={meal.id} href={""}>
+                    {meal.name}
+                  </Link>
+                );
+              })}
+              placeholder={"Search for"}
+              icon={SEARCH_ICON}
+              loginText={"have an account?"}
+              registerText={"don't have an account?"}
+              loginLinkText={"login"}
+              loginLinkHref={"/auth/login"}
+              registerLinkText={"register"}
+              registerLinkHref={"/auth/register"}
+              onChange={handleChange}
+              onSubmit={handleSubmit}
+            />
+            <div className="container">{children}</div>
+            <Footer text={"kitchenary"} to={"/"} larger={true} />
+          </body>
+        </LibProvider>
+      </QueryClientProvider>
     </html>
   );
 }

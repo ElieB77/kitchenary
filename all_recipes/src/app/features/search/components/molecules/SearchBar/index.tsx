@@ -7,14 +7,21 @@ import { ImageType } from "@/app/shared/types";
 export interface SearchBarProps {
   placeholder: string;
   icon: ImageType;
+  onChange: any;
+  onSubmit: any;
 }
 
-const SearchBar: FC<SearchBarProps> = ({ placeholder, icon }) => {
+const SearchBar: FC<SearchBarProps> = ({
+  placeholder,
+  icon,
+  onChange,
+  onSubmit,
+}) => {
   return (
-    <div className={styles.searchBar}>
-      <input type="text" placeholder={placeholder} />
+    <form onSubmit={onSubmit} className={styles.searchBar}>
+      <input type="text" placeholder={placeholder} onChange={onChange} />
       <Image {...icon} />
-    </div>
+    </form>
   );
 };
 

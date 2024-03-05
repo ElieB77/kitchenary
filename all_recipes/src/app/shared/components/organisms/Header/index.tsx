@@ -40,6 +40,8 @@ const Header: FC<HeaderProps> = ({
   loginLinkHref,
   registerLinkText,
   registerLinkHref,
+  onChange,
+  onSubmit,
 }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [isUserMenuOpen, setIsUserMenuOpen] = useState<boolean>(false);
@@ -91,6 +93,8 @@ const Header: FC<HeaderProps> = ({
         diets={diets}
         placeholder={placeholder}
         icon={icon}
+        onChange={onChange}
+        onSubmit={onSubmit}
       />
       <UserMenu
         loginText={loginText}

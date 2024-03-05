@@ -44,6 +44,8 @@ const HomePage: FC<HomePageProps> = ({
   searchSuggestionsTitle,
   placeholder,
   onClick,
+  onChange,
+  onSubmit,
 }) => {
   return (
     <div className={styles.homePage}>
@@ -69,6 +71,8 @@ const HomePage: FC<HomePageProps> = ({
         placeholder={placeholder}
         icon={icon}
         searchSuggestionsTitle={searchSuggestionsTitle}
+        onChange={onChange}
+        onSubmit={onSubmit}
       />
 
       <div>
