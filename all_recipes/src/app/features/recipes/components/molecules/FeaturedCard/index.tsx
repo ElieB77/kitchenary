@@ -22,7 +22,6 @@ const FeaturedCard: FC<FeaturedCardProps> = ({
   likeIcon,
   btnOnClick,
 }) => {
-  console.log(imageSrc);
   return (
     <div className={styles.featuredCard}>
       <div className={styles.featuredCard__heading}>
@@ -38,7 +37,7 @@ const FeaturedCard: FC<FeaturedCardProps> = ({
           src={imageSrc}
           className={styles.featuredCard__image__img}
           fill
-          alt={"Recipe Image"}
+          alt={title}
         />
         <LikeButton secondaryColor={false} likeIcon={likeIcon} />
       </div>

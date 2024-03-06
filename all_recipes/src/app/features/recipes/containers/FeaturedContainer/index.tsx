@@ -26,8 +26,6 @@ const FeaturedContainer: FC<FeaturedContainerProps> = ({ slug }) => {
     saladRecipes,
   } = useContext(LibContext);
 
-  console.log(pancakeRecipes);
-
   useEffect(() => {
     if (slug) {
       switch (slug) {

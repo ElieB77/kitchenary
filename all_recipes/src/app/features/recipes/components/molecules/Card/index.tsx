@@ -31,7 +31,7 @@ const Card: FC<CardProps> = ({
         <Image
           className={styles.card__image__img}
           src={imageSrc}
-          alt={""}
+          alt={title}
           fill
         />
         {hasLikeButton && (
