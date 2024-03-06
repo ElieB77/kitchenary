@@ -14,16 +14,6 @@ connect();
 export async function POST(request: NextRequest) {
   try {
     const { email, password } = await request.json();
-    const user = await User.findOne({ email });
-    const hash = await bcryptjs.hash(password, 10);
-    const token = jwt.sign(
-      { userId: user?._id, email },
-      process.env.JWT_SECRET!,
-      {
-        expiresIn: "30m",
-      }
-    );
-    const resetLink = `http://localhost:3000/signup/verify?token=${token}`;
 
     if (!email || !password) {
       return NextResponse.json(
@@ -44,8 +34,9 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    const user = await User.findOne({ email });
+
     if (user) {
-      console.log("User already exists");
       return NextResponse.json(
         {
           error: "Email already in use. Please choose another.",
@@ -54,17 +45,34 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    transporter.sendMail(handleMailOptions(email, resetLink), (error, info) => {
-      if (error) {
-        console.error("Error sending email:", error);
-      } else {
-        console.log("Email sent:", info.response);
+    const token = jwt.sign(
+      { userId: user?._id, email },
+      process.env.JWT_SECRET!,
+      {
+        expiresIn: "30m",
       }
-    });
+    );
+    const resetLink = `http://localhost:3000/signup/verify?token=${token}`;
+
+    const emailSubject = "Activate my account";
+
+    transporter.sendMail(
+      handleMailOptions(email, resetLink, emailSubject),
+      (error, info) => {
+        if (error) {
+          throw { message: "Error sending email", error };
+        } else {
+          throw { message: "Email sent:", info };
+        }
+      }
+    );
+
+    const hash = await bcryptjs.hash(password, 10);
 
     await User.create({
       email,
       password: hash,
+      verificationToken: token,
     });
 
     return NextResponse.json(

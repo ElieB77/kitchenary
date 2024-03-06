@@ -17,6 +17,10 @@ const userSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
+  verificationToken: {
+    type: String,
+    unique: true,
+  },
 });
 
 export const User = mongoose.models.User || mongoose.model("User", userSchema);
