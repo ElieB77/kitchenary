@@ -7,7 +7,7 @@ import Button, { ButtonProps } from "@/app/shared/components/atoms/Button";
 export interface FeaturedPageProps extends ButtonProps {
   titleFirstWord: string;
   titleSecondWord: string;
-  featuredCards: JSX.Element[] | null;
+  featuredCards: JSX.Element[] | undefined;
 }
 
 const FeaturedPage: FC<FeaturedPageProps> = ({
@@ -22,7 +22,7 @@ const FeaturedPage: FC<FeaturedPageProps> = ({
     <div className={styles.featuredPage}>
       <Title firstWord={titleFirstWord} secondWord={titleSecondWord} />
       <div className={styles.featuredPage__cards}>{featuredCards}</div>
-      <Button btnText={btnText} btnOnClick={btnOnClick} />
+      <Button btnText={btnText} btnIcon={btnIcon} btnOnClick={btnOnClick} />
     </div>
   );
 };

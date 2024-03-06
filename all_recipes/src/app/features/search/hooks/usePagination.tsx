@@ -1,27 +1,28 @@
-import { LibContext } from "@/app/shared/context/LibContext";
 import { useSearchParams } from "next/navigation";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import { RecipeType } from "../../recipes/types";
 
 const usePagination = () => {
   const searchParams = useSearchParams();
   const query = searchParams.get("query");
-  const { getRecipesBySearch, searchResults } = useContext(LibContext);
   const [currentPageNumber, setCurrentPageNumber] = useState<number>(0);
   const itemsPerPage = 10;
-  const totalPages = Math.ceil(
-    searchResults && searchResults.length / itemsPerPage
-  );
   const startIndex = currentPageNumber * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
-  const currentPageResults =
-    searchResults && searchResults.slice(startIndex, endIndex);
 
-  const handlePagination = (event: any) => {
-    return setCurrentPageNumber(event.target.innerHTML - 1);
+  const getTotalPages = (recipesData: RecipeType[]) => {
+    return Math.ceil(recipesData && recipesData.length / itemsPerPage);
+  };
+
+  const getCurrentPageData = (recipesData: RecipeType[]) => {
+    return recipesData && recipesData.slice(startIndex, endIndex);
+  };
+
+  const handlePagination = (event: React.MouseEvent<HTMLButtonElement>) => {
+    return setCurrentPageNumber(Number(event.currentTarget.innerHTML) - 1);
   };
 
   useEffect(() => {
-    getRecipesBySearch(query);
     setCurrentPageNumber(0);
   }, [query]);
 
@@ -33,12 +34,10 @@ const usePagination = () => {
   }, [currentPageNumber]);
 
   return {
-    searchResults,
-    currentPageResults,
-    query,
-    totalPages,
     handlePagination,
     currentPageNumber,
+    getTotalPages,
+    getCurrentPageData,
   };
 };
 

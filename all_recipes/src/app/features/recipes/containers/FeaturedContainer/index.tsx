@@ -4,10 +4,10 @@ import FeaturedPage from "../../components/templates/FeaturedPage";
 import { LibContext } from "@/app/shared/context/LibContext";
 import FeaturedCard from "../../components/molecules/FeaturedCard";
 import { getProperImageUrl } from "@/app/shared/utils";
-import { FeaturedRecipeType } from "../../types";
+import { RecipeType } from "../../types";
 import { HEART_ICON } from "../../constants";
 import { useRouter } from "next/navigation";
-import ErrorPage from "@/app/shared/components/templates/ErrorPage";
+import { RIGHT_ARROW_ICON } from "@/app/shared/constants";
 
 interface FeaturedContainerProps {
   slug: string;
@@ -15,7 +15,7 @@ interface FeaturedContainerProps {
 
 const FeaturedContainer: FC<FeaturedContainerProps> = ({ slug }) => {
   const router = useRouter();
-  const [data, setData] = useState<FeaturedRecipeType[] | null>(null);
+  const [data, setData] = useState<RecipeType[] | null>(null);
   const [title, setTitle] = useState<string>("");
   const {
     pancakeRecipes,
@@ -25,6 +25,8 @@ const FeaturedContainer: FC<FeaturedContainerProps> = ({ slug }) => {
     cookieRecipes,
     saladRecipes,
   } = useContext(LibContext);
+
+  console.log(pancakeRecipes);
 
   useEffect(() => {
     if (slug) {
@@ -68,20 +70,8 @@ const FeaturedContainer: FC<FeaturedContainerProps> = ({ slug }) => {
     saladRecipes,
   ]);
 
-  if (!data)
-    return (
-      <ErrorPage
-        status={"500"}
-        message={
-          "Oops! It looks like something went wrong on our end. Please try again later. We apologize for any inconvenience."
-        }
-        btnText={"Back to home page"}
-        btnOnClick={() => router.push("/")}
-      />
-    );
-
   const renderFeaturedCards = () => {
-    return data?.map((recipe: FeaturedRecipeType, index: number) => {
+    return data?.map((recipe: RecipeType, index: number) => {
       return (
         <FeaturedCard
           key={index}
@@ -103,8 +93,9 @@ const FeaturedContainer: FC<FeaturedContainerProps> = ({ slug }) => {
       titleFirstWord={title}
       titleSecondWord={"recipes"}
       featuredCards={renderFeaturedCards()}
-      btnText={"see all"}
-      btnOnClick={undefined!}
+      btnText={"see more"}
+      btnOnClick={() => router.push(`/recipes?query=${slug}`)}
+      btnIcon={RIGHT_ARROW_ICON}
     />
   );
 };

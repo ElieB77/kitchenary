@@ -16,7 +16,7 @@ const PaginationButtons: FC<PaginationButtonsProps> = ({
 }) => {
   return (
     <div className={styles.paginationButtons}>
-      {Array.from({ length: totalPages }).map((el: any, index: number) => {
+      {Array.from({ length: totalPages }).map((_, index: number) => {
         return (
           <PaginationButton
             onClick={onClick}

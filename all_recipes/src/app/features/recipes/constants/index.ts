@@ -135,7 +135,7 @@ export const CUTLERY_ICON: ImageType = {
 /*--------------------------
 Objects
 ---------------------------*/
-export const NUTRIENT_NAMES = [
+export const NUTRIENT_NAMES: string[] = [
   "Calories",
   "Protein",
   "Fat",

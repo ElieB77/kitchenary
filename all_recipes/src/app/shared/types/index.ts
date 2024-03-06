@@ -5,7 +5,7 @@ export type ImageType = {
   height: number;
 };
 
-export type NavLinkType = {
+export type QueryItemType = {
   id: string;
   name: string;
 };

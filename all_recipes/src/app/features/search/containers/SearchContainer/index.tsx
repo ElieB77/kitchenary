@@ -1,38 +1,35 @@
 "use client";
 import SearchPage from "../../components/templates/SearchPage";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { RIGHT_ARROW_ICON, SEARCH_ICON } from "@/app/shared/constants";
 import Card from "@/app/features/recipes/components/molecules/Card";
 import { HEART_ICON } from "@/app/features/recipes/constants";
 import { getProperImageUrl } from "@/app/shared/utils";
 import useSearchBar from "../../hooks/useSearchBar";
 import usePagination from "../../hooks/usePagination";
-import ErrorPage from "@/app/shared/components/templates/ErrorPage";
 import SearchError from "../../components/molecules/SearchError";
+import { useContext, useEffect } from "react";
+import { LibContext } from "@/app/shared/context/LibContext";
+import { RecipeType } from "@/app/features/recipes/types";
 
 const SearchPageContainer = () => {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const query = searchParams.get("query");
+  const { getRecipesBySearch, searchResults } = useContext(LibContext);
   const { handleChange, handleSubmit, searchValue } = useSearchBar();
   const {
-    searchResults,
-    query,
-    currentPageResults,
-    totalPages,
     handlePagination,
     currentPageNumber,
+    getTotalPages,
+    getCurrentPageData,
   } = usePagination();
 
-  if (!searchResults)
-    return (
-      <ErrorPage
-        status={"500"}
-        message={
-          "Oops! It looks like something went wrong on our end. Please try again later. We apologize for any inconvenience."
-        }
-        btnText={"Back to home page"}
-        btnOnClick={() => router.push("/")}
-      />
-    );
+  useEffect(() => {
+    getRecipesBySearch(query);
+  }, [query]);
+
+  if (!searchResults) return null;
 
   const renderResults = () => {
     if (searchResults.length === 0) {
@@ -45,22 +42,24 @@ const SearchPageContainer = () => {
       );
     }
 
-    return currentPageResults.map((result: any, index: number) => {
-      const { id, imageType, title } = result;
-      return (
-        <Card
-          key={index}
-          imageSrc={getProperImageUrl(id, imageType)}
-          title={undefined!}
-          subtitle={title}
-          descriptionIcon={undefined!}
-          hasLikeButton={true}
-          secondaryColor={false}
-          likeIcon={HEART_ICON}
-          onClick={() => router.push(`/recipe/${id}`)}
-        />
-      );
-    });
+    return getCurrentPageData(searchResults).map(
+      (result: RecipeType, index: number) => {
+        const { id, imageType, title } = result;
+        return (
+          <Card
+            key={index}
+            imageSrc={getProperImageUrl(id, imageType)}
+            title={undefined!}
+            subtitle={title}
+            descriptionIcon={RIGHT_ARROW_ICON}
+            hasLikeButton={true}
+            secondaryColor={false}
+            likeIcon={HEART_ICON}
+            onClick={() => router.push(`/recipe/${id}`)}
+          />
+        );
+      }
+    );
   };
 
   return (
@@ -73,14 +72,16 @@ const SearchPageContainer = () => {
         onChange={handleChange}
         onSubmit={handleSubmit}
         cards={renderResults()}
-        cardsBtnText={""}
-        cardsBtnIcon={RIGHT_ARROW_ICON}
+        btnText={undefined!}
+        btnIcon={RIGHT_ARROW_ICON}
+        btnOnClick={undefined!}
         hasBtn={false}
-        totalPages={totalPages}
+        totalPages={getTotalPages(searchResults)}
         currentPage={currentPageNumber}
         content={undefined!}
         onClick={handlePagination}
         value={searchValue}
+        type={"text"}
       />
     </>
   );

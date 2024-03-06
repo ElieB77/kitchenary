@@ -1,4 +1,4 @@
-import { ImageType, NavLinkType } from "../types";
+import { ImageType, QueryItemType } from "../types";
 
 /*------------------
 Images
@@ -65,7 +65,7 @@ export const CLOSE_ICON: ImageType = {
 /*--------------------------
 Navigation Links Data
 --------------------------*/
-export const INGREDIENTS: NavLinkType[] = [
+export const INGREDIENTS: QueryItemType[] = [
   { id: "chicken", name: "Chicken" },
   { id: "beef", name: "Beef" },
   { id: "pork", name: "Pork" },
@@ -75,7 +75,7 @@ export const INGREDIENTS: NavLinkType[] = [
   { id: "vegetables", name: "Vegetables" },
 ];
 
-export const MEALS: NavLinkType[] = [
+export const MEALS: QueryItemType[] = [
   { id: "main-course", name: "Main Course" },
   { id: "side-dish", name: "Side Dish" },
   { id: "dessert", name: "Dessert" },
@@ -92,7 +92,7 @@ export const MEALS: NavLinkType[] = [
   { id: "drink", name: "Drink" },
 ];
 
-export const CUISINES: NavLinkType[] = [
+export const CUISINES: QueryItemType[] = [
   { id: "african", name: "African" },
   { id: "asian", name: "Asian" },
   { id: "american", name: "American" },
@@ -114,7 +114,6 @@ export const CUISINES: NavLinkType[] = [
   { id: "latin-american", name: "Latin American" },
   { id: "mediterranean", name: "Mediterranean" },
   { id: "mexican", name: "Mexican" },
-  { id: "middle-eastern", name: "Middle Eastern" },
   { id: "nordic", name: "Nordic" },
   { id: "southern", name: "Southern" },
   { id: "spanish", name: "Spanish" },
@@ -122,7 +121,7 @@ export const CUISINES: NavLinkType[] = [
   { id: "vietnamese", name: "Vietnamese" },
 ];
 
-export const DIETS: NavLinkType[] = [
+export const DIETS: QueryItemType[] = [
   { id: "gluten-free", name: "Gluten-Free" },
   { id: "ketogenic", name: "Ketogenic" },
   { id: "vegetarian", name: "Vegetarian" },

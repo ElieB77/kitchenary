@@ -1,15 +1,19 @@
-export type FeaturedRecipeType = {
+export type RecipeType = {
   title: string;
   number: number;
   id: number;
   imageType: string;
 };
 
-export type FeaturedIngredientsType = {
+export type RecipeResponseType = {
+  results: RecipeType[];
+};
+
+export type IngredientsType = {
   original: string;
 };
 
-export type FeaturedStepsType = {
+export type StepsType = {
   step: string;
 };
 

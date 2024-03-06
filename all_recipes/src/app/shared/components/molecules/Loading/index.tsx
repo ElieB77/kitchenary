@@ -4,7 +4,7 @@ import { LinearProgress } from "@mui/material";
 const Loading = () => {
   return (
     <div className={styles.loading}>
-      <LinearProgress color="info" />
+      <LinearProgress color="primary" />
     </div>
   );
 };

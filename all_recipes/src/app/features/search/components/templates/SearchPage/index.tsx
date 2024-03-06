@@ -26,8 +26,9 @@ const SearchPage: FC<SearchPageProps> = ({
   onChange,
   onSubmit,
   cards,
-  cardsBtnText,
-  cardsBtnIcon,
+  btnText,
+  btnIcon,
+  btnOnClick,
   hasBtn,
   totalPages,
   currentPage,
@@ -54,9 +55,10 @@ const SearchPage: FC<SearchPageProps> = ({
       <div className={styles.searchPage__cards}>
         <Cards
           cards={cards}
-          cardsBtnText={cardsBtnText}
-          cardsBtnIcon={cardsBtnIcon}
+          btnText={btnText}
+          btnIcon={btnIcon}
           hasBtn={hasBtn}
+          btnOnClick={btnOnClick}
         />
       </div>
 

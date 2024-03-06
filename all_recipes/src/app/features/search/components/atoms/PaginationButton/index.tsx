@@ -4,7 +4,7 @@ import { ebGaramond } from "@/app/(routes)/layout";
 
 export interface PaginationButtonProps {
   content: number;
-  onClick: (event: any) => void;
+  onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
   active?: boolean;
 }
 

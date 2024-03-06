@@ -6,28 +6,30 @@ import { ImageType } from "@/app/shared/types";
 
 export interface SearchBarProps {
   placeholder: string;
-  icon: ImageType;
-  onChange: any;
-  onSubmit: any;
+  searchBarIcon: ImageType;
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
   value: string;
+  type: string;
 }
 
 const SearchBar: FC<SearchBarProps> = ({
   placeholder,
-  icon,
+  searchBarIcon,
   onChange,
   onSubmit,
   value,
+  type,
 }) => {
   return (
     <form onSubmit={onSubmit} className={styles.searchBar}>
       <input
-        type="text"
+        type={type}
         placeholder={placeholder}
         onChange={onChange}
         value={value}
       />
-      <Image {...icon} />
+      <Image {...searchBarIcon} />
     </form>
   );
 };

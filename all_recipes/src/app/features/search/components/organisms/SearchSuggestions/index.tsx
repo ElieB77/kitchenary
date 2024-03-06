@@ -10,12 +10,13 @@ export interface SearchSuggestionsProps extends SearchBarProps {
 
 const SearchSuggestions: FC<SearchSuggestionsProps> = ({
   placeholder,
-  icon,
+  searchBarIcon,
   searchSuggestionsTabs,
   searchSuggestionsTitle,
   onChange,
   onSubmit,
   value,
+  type,
 }) => {
   return (
     <div className={styles.searchSuggestions}>
@@ -25,10 +26,11 @@ const SearchSuggestions: FC<SearchSuggestionsProps> = ({
       </div>
       <SearchBar
         placeholder={placeholder}
-        icon={icon}
+        searchBarIcon={searchBarIcon}
         onChange={onChange}
         onSubmit={onSubmit}
         value={value}
+        type={type}
       />
     </div>
   );

@@ -38,8 +38,10 @@ const HomePage: FC<HomePageProps> = ({
   popularRecipesTitleFirstWord,
   popularRecipesTitleSecondWord,
   cards,
-  cardsBtnText,
-  cardsBtnIcon,
+  btnText,
+  btnIcon,
+  hasBtn,
+  btnOnClick,
   searchSuggestionsTabs,
   searchSuggestionsTitle,
   placeholder,
@@ -47,6 +49,8 @@ const HomePage: FC<HomePageProps> = ({
   onChange,
   onSubmit,
   value,
+  type,
+  searchBarIcon,
 }) => {
   return (
     <div className={styles.homePage}>
@@ -70,11 +74,12 @@ const HomePage: FC<HomePageProps> = ({
       <SearchSuggestions
         searchSuggestionsTabs={searchSuggestionsTabs}
         placeholder={placeholder}
-        icon={icon}
+        searchBarIcon={searchBarIcon}
         searchSuggestionsTitle={searchSuggestionsTitle}
         onChange={onChange}
         onSubmit={onSubmit}
         value={value}
+        type={type}
       />
 
       <div>
@@ -84,9 +89,10 @@ const HomePage: FC<HomePageProps> = ({
         />
         <Cards
           cards={cards}
-          cardsBtnText={cardsBtnText}
-          cardsBtnIcon={cardsBtnIcon}
-          hasBtn={true}
+          btnText={btnText}
+          btnIcon={btnIcon}
+          hasBtn={hasBtn}
+          btnOnClick={btnOnClick}
         />
       </div>
     </div>

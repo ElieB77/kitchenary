@@ -5,7 +5,7 @@ import Link from "next/link";
 import SearchBar, {
   SearchBarProps,
 } from "@/app/features/search/components/molecules/SearchBar";
-import { NavLinkType } from "@/app/shared/types";
+import { QueryItemType } from "@/app/shared/types";
 
 export interface MenuProps extends SearchBarProps {
   isOpen: boolean;
@@ -30,7 +30,9 @@ const Menu: FC<MenuProps> = ({
   ingredients,
   diets,
   placeholder,
-  icon,
+  searchBarIcon,
+  value,
+  type,
   onChange,
   onSubmit,
 }) => {
@@ -39,9 +41,11 @@ const Menu: FC<MenuProps> = ({
       <div className={styles.menu}>
         <SearchBar
           placeholder={placeholder}
-          icon={icon}
+          searchBarIcon={searchBarIcon}
           onChange={onChange}
           onSubmit={onSubmit}
+          value={value}
+          type={type}
         />
 
         <div className={styles.menu__list}>

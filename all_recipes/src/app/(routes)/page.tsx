@@ -21,6 +21,7 @@ import Tab from "../features/search/components/atoms/Tab";
 import { TABS } from "../features/search/constants";
 import { useRouter } from "next/navigation";
 import useSearchBar from "../features/search/hooks/useSearchBar";
+import { QueryItemType } from "../shared/types";
 
 export default function Home() {
   const router = useRouter();
@@ -35,7 +36,7 @@ export default function Home() {
           "Every stack of fluffy pancakes deserves a finishing touch of sweetness, but if that's not enough, we've got you covered. From classic buttermilk pancakes to indulgent chocolate chip stacks, these are the most syrup-drenched pancakes we've got!"
         }
         footerText={"Discover More Pancakes Here"}
-        icon={SEARCH_ICON}
+        icon={RIGHT_ARROW_ICON}
         roundedCards={
           <>
             <RoundedCard
@@ -79,7 +80,7 @@ export default function Home() {
               hasLikeButton={false}
               secondaryColor={false}
               likeIcon={undefined!}
-              onClick={() => router.push("/search?query=mac-and-cheese")}
+              onClick={() => router.push("/recipes?query=mac-and-cheese")}
             />
             <Card
               imageSrc={HOT_WINGS_IMG.src}
@@ -89,7 +90,7 @@ export default function Home() {
               hasLikeButton={false}
               secondaryColor={false}
               likeIcon={undefined!}
-              onClick={() => router.push("/search?query=hot-wings")}
+              onClick={() => router.push("/recipes?query=hot-wings")}
             />
             <Card
               imageSrc={NOODLES_IMG.src}
@@ -99,7 +100,7 @@ export default function Home() {
               hasLikeButton={false}
               secondaryColor={false}
               likeIcon={undefined!}
-              onClick={() => router.push("/search?query=chicken-noodles")}
+              onClick={() => router.push("/recipes?query=chicken-noodles")}
             />
             <Card
               imageSrc={BROWNIES_IMG.src}
@@ -110,7 +111,7 @@ export default function Home() {
               secondaryColor={false}
               likeIcon={undefined!}
               onClick={() =>
-                router.push("/search?query=peanut-butter-brownies")
+                router.push("/recipes?query=peanut-butter-brownies")
               }
             />
             <Card
@@ -121,7 +122,7 @@ export default function Home() {
               hasLikeButton={false}
               secondaryColor={false}
               likeIcon={undefined!}
-              onClick={() => router.push("/search?query=mushroom-soup")}
+              onClick={() => router.push("/recipes?query=mushroom-soup")}
             />
             <Card
               imageSrc={COUSCOUS_IMG.src}
@@ -131,13 +132,13 @@ export default function Home() {
               hasLikeButton={false}
               secondaryColor={false}
               likeIcon={undefined!}
-              onClick={() => router.push("/search?query=couscous")}
+              onClick={() => router.push("/recipes?query=couscous")}
             />
           </>
         }
-        cardsBtnText={"view all"}
-        cardsBtnIcon={RIGHT_ARROW_ICON}
-        searchSuggestionsTabs={TABS.map((tab: any, index: number) => {
+        btnText={"view all"}
+        btnIcon={RIGHT_ARROW_ICON}
+        searchSuggestionsTabs={TABS.map((tab: QueryItemType, index: number) => {
           return (
             <Tab
               key={index}
@@ -149,10 +150,13 @@ export default function Home() {
         searchSuggestionsTitle={"popular searches"}
         placeholder={"Search"}
         onClick={() => router.push("/featured/pancake")}
-        hasBtn={false}
+        hasBtn={true}
         onChange={handleChange}
         onSubmit={handleSubmit}
         value={searchValue}
+        btnOnClick={() => router.push(`/recipes?sort=popularity`)}
+        type={"text"}
+        searchBarIcon={SEARCH_ICON}
       />
     </>
   );

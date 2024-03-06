@@ -14,11 +14,7 @@ import IngredientListItem from "../../components/atoms/IngredientListItem";
 import Step from "../../components/atoms/Step";
 import CardNutrient from "../../components/molecules/CardNutrient";
 import * as DOMPurify from "dompurify";
-import {
-  FeaturedIngredientsType,
-  FeaturedStepsType,
-  NutrientsType,
-} from "../../types";
+import { IngredientsType, StepsType, NutrientsType } from "../../types";
 import ErrorPage from "@/app/shared/components/templates/ErrorPage";
 import { useRouter } from "next/navigation";
 
@@ -34,18 +30,20 @@ const RecipeContainer: FC<RecipeContainerProps> = ({ recipeId }) => {
     getRecipeInformations(recipeId);
   }, [recipeId]);
 
-  if (!recipeInformations) {
-    return (
-      <ErrorPage
-        status={"500"}
-        message={
-          "Oops! It looks like something went wrong on our end. Please try again later. We apologize for any inconvenience."
-        }
-        btnText={"Back to home page"}
-        btnOnClick={() => router.push("/")}
-      />
-    );
-  }
+  if (!recipeInformations) return null;
+
+  // if (!recipeInformations) {
+  //   return (
+  //     <ErrorPage
+  //       status={"500"}
+  //       message={
+  //         "Oops! It looks like something went wrong on our end. Please try again later. We apologize for any inconvenience."
+  //       }
+  //       btnText={"Back to home page"}
+  //       btnOnClick={() => router.push("/")}
+  //     />
+  //   );
+  // }
 
   const {
     title,
@@ -67,20 +65,16 @@ const RecipeContainer: FC<RecipeContainerProps> = ({ recipeId }) => {
   });
 
   const renderIngredientsList =
-    extendedIngredients.map(
-      (ingredient: FeaturedIngredientsType, index: number) => {
-        return (
-          <IngredientListItem key={index} ingredient={ingredient.original} />
-        );
-      }
-    ) || "Not available";
+    extendedIngredients.map((ingredient: IngredientsType, index: number) => {
+      return (
+        <IngredientListItem key={index} ingredient={ingredient.original} />
+      );
+    }) || "Not available";
 
   const renderSteps =
-    analyzedInstructions[0]?.steps.map(
-      (step: FeaturedStepsType, index: number) => {
-        return <Step key={index} stepText={step.step} />;
-      }
-    ) || "Not available";
+    analyzedInstructions[0]?.steps.map((step: StepsType, index: number) => {
+      return <Step key={index} stepText={step.step} />;
+    }) || "Not available";
 
   const renderNutrientCards = nutrition.nutrients
     .filter((nutrient: NutrientsType) => NUTRIENT_NAMES.includes(nutrient.name))

@@ -9,8 +9,11 @@
   cursor: pointer;
   text-transform: uppercase;
   font-weight: bolder;
-  border: solid 1px;
+  border: solid $border-color 2px;
   white-space: nowrap;
   background-color: $secondary-color;
   gap: 10px;
+  width: fit-content;
+  letter-spacing: 2px;
+  color: $text-color;
 }

@@ -6,6 +6,7 @@ import Logo, { LogoProps } from "../../atoms/Logo";
 import Menu, { MenuProps } from "../Menu";
 import { SearchBarProps } from "@/app/features/search/components/molecules/SearchBar";
 import UserMenu, { UserMenuProps } from "../../molecules/UserMenu";
+import { usePathname, useSearchParams } from "next/navigation";
 
 interface HeaderProps
   extends LogoProps,
@@ -33,7 +34,7 @@ const Header: FC<HeaderProps> = ({
   ingredients,
   diets,
   placeholder,
-  icon,
+  searchBarIcon,
   loginText,
   registerText,
   loginLinkText,
@@ -42,7 +43,11 @@ const Header: FC<HeaderProps> = ({
   registerLinkHref,
   onChange,
   onSubmit,
+  value,
+  type,
 }) => {
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [isUserMenuOpen, setIsUserMenuOpen] = useState<boolean>(false);
 
@@ -63,6 +68,11 @@ const Header: FC<HeaderProps> = ({
     if (isOpen) setIsOpen(false);
     return setIsUserMenuOpen(!isUserMenuOpen);
   };
+
+  useEffect(() => {
+    setIsOpen(false);
+    setIsUserMenuOpen(false);
+  }, [pathname, searchParams]);
 
   return (
     <>
@@ -92,9 +102,11 @@ const Header: FC<HeaderProps> = ({
         ingredients={ingredients}
         diets={diets}
         placeholder={placeholder}
-        icon={icon}
+        searchBarIcon={searchBarIcon}
         onChange={onChange}
         onSubmit={onSubmit}
+        value={value}
+        type={type}
       />
       <UserMenu
         loginText={loginText}
