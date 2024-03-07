@@ -55,9 +55,11 @@ export async function POST(request: NextRequest) {
 
     const resetLink = `http://localhost:3000/signup/verify?token=${token}`;
     const emailSubject = "Activate my account";
+    const emailBody =
+      "Someone has created a Kitchenary account with this email address. If this was you, click the link below to verify your email address.";
 
     transporter.sendMail(
-      handleMailOptions(email, resetLink, emailSubject),
+      handleMailOptions(email, resetLink, emailSubject, emailBody),
       (error, info) => {
         if (error) {
           throw { message: "Error sending email", error };
