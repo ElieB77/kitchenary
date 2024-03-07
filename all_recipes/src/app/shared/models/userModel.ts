@@ -20,6 +20,7 @@ const userSchema = new mongoose.Schema({
   verificationToken: {
     type: String,
     unique: true,
+    allowNull: true,
   },
 });
 

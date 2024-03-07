@@ -28,7 +28,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json(
         {
           error:
-            "Password must contain at least 8 characters, including one uppercase letter, one lowercase letter, and one number, and must be distinct from your email address.",
+            "Password must contain at least 8 characters, including one uppercase letter, one lowercase letter, and one number.",
         },
         { status: 400 }
       );
@@ -52,8 +52,8 @@ export async function POST(request: NextRequest) {
         expiresIn: "30m",
       }
     );
-    const resetLink = `http://localhost:3000/signup/verify?token=${token}`;
 
+    const resetLink = `http://localhost:3000/signup/verify?token=${token}`;
     const emailSubject = "Activate my account";
 
     transporter.sendMail(
