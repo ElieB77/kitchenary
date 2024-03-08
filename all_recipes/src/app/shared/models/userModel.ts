@@ -6,7 +6,7 @@ const userSchema = new mongoose.Schema({
     required: true,
     unique: true,
     isEmail: true,
-    allowNull: false,
+    trim: true,
   },
   password: {
     type: String,
@@ -22,6 +22,12 @@ const userSchema = new mongoose.Schema({
     unique: true,
     allowNull: true,
   },
+  recipes: [
+    {
+      recipeId: Number,
+      title: String,
+    },
+  ],
 });
 
 export const User = mongoose.models.User || mongoose.model("User", userSchema);
