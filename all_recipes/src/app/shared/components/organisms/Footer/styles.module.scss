@@ -4,8 +4,7 @@
   background-color: $text-color;
   color: $secondary-color;
   margin-top: 100px;
-  padding-top: 50px;
-  padding-bottom: 10px;
+  padding: 50px 20px 10px 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -17,6 +16,7 @@
 
   &__line {
     text-transform: capitalize;
+    text-align: center;
   }
 
   &__copyright {

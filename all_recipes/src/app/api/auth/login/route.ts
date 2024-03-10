@@ -18,9 +18,7 @@ export async function POST(request: NextRequest) {
 
     if (!user) {
       return NextResponse.json(
-        {
-          message: "Invalid email or password",
-        },
+        { message: "Invalid email or password" },
         { status: 401 }
       );
     }
@@ -35,10 +33,10 @@ export async function POST(request: NextRequest) {
     const passwordMatch = await bcryptjs.compare(password, user.password);
 
     if (!passwordMatch) {
-      return NextResponse.json({
-        message: "Invalid email or password",
-        status: "401",
-      });
+      return NextResponse.json(
+        { message: "Invalid email or password" },
+        { status: 401 }
+      );
     }
 
     const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET!, {

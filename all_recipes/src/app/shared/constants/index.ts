@@ -62,6 +62,20 @@ export const CLOSE_ICON: ImageType = {
   height: 20,
 };
 
+export const ERROR_ICON: ImageType = {
+  src: "/icons/error-icon.png",
+  alt: "Error icon",
+  width: 25,
+  height: 25,
+};
+
+export const INFO_ICON: ImageType = {
+  src: "/icons/info-icon.png",
+  alt: "Info icon",
+  width: 25,
+  height: 25,
+};
+
 /*--------------------------
 Navigation Links Data
 --------------------------*/

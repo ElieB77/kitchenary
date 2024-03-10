@@ -9,8 +9,18 @@ export async function POST(request: NextRequest) {
     const { email } = await request.json();
     const user = await User.findOne({ email });
 
+    if (!email) {
+      return NextResponse.json(
+        { message: "Email is required" },
+        { status: 400 }
+      );
+    }
+
     if (!user) {
-      return NextResponse.json({ message: "User not found" }, { status: 404 });
+      return NextResponse.json(
+        { message: "Oops! We couldn't find your email." },
+        { status: 404 }
+      );
     }
 
     const token = jwt.sign(
@@ -20,7 +30,8 @@ export async function POST(request: NextRequest) {
         expiresIn: "30m",
       }
     );
-    const resetLink = `http://localhost:3000/signup/verify?token=${token}`;
+
+    const resetLink = `http://localhost:3000/auth/reset-password?token=${token}`;
     const emailSubject = "Reset password";
     const emailBody =
       "Someone just requested to change your Kitchenary password. If this was you, click on the link below to reset.";

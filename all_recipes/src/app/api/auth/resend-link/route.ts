@@ -20,15 +20,9 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const token = jwt.sign(
-      { userId: user?._id, email },
-      process.env.JWT_SECRET!,
-      {
-        expiresIn: "30m",
-      }
-    );
+    const token = user.verificationToken;
 
-    const resetLink = `http://localhost:3000/signup/verify?token=${token}`;
+    const resetLink = `http://localhost:3000/auth/verify-email?token=${token}&email=${email}`;
     const emailSubject = "Activate my account";
     const emailBody =
       "Someone has created a Kitchenary account with this email address. If this was you, click the link below to verify your email address.";

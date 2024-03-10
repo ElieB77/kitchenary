@@ -42,7 +42,7 @@ export async function PATCH(request: NextRequest) {
     if (!checkPasswordRequirements(newPassword)) {
       return NextResponse.json(
         {
-          error:
+          message:
             "Password must contain at least 8 characters, including one uppercase letter, one lowercase letter, and one number.",
         },
         { status: 400 }

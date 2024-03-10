@@ -1,3 +1,5 @@
+import axios from "axios";
+
 export const checkPasswordRequirements = (password: string) => {
   const hasEightCharacters = password.length >= 8;
   const hasNumber = /\d/.test(password);

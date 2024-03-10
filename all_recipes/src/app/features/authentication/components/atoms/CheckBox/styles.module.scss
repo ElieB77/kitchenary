@@ -20,9 +20,9 @@
   .checkBox__checkmark {
     position: absolute;
     left: 0;
-    height: 40px;
+    height: 25px;
     top: -50%;
-    width: 40px;
+    width: 25px;
     background-color: $secondary-color;
     border-radius: 50%;
   }
@@ -38,8 +38,8 @@
   }
 
   .checkBox__checkmark:after {
-    left: 15px;
-    top: 13px;
+    left: 10px;
+    top: 10px;
     width: 10px;
     height: 10px;
     border: solid $text-color;

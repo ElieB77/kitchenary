@@ -27,10 +27,10 @@ export async function POST(request: NextRequest) {
     if (!checkPasswordRequirements(password)) {
       return NextResponse.json(
         {
-          error:
+          message:
             "Password must contain at least 8 characters, including one uppercase letter, one lowercase letter, and one number.",
         },
-        { status: 400 }
+        { status: 455 }
       );
     }
 
@@ -39,7 +39,7 @@ export async function POST(request: NextRequest) {
     if (user) {
       return NextResponse.json(
         {
-          error: "Email already in use. Please choose another.",
+          message: "Email already in use. Please choose another.",
         },
         { status: 409 }
       );
@@ -53,13 +53,14 @@ export async function POST(request: NextRequest) {
       }
     );
 
-    const resetLink = `http://localhost:3000/signup/verify?token=${token}`;
+    const emailLink = `http://localhost:3000/auth/verify-email?token=${token}&email=${email}
+    `;
     const emailSubject = "Activate my account";
     const emailBody =
       "Someone has created a Kitchenary account with this email address. If this was you, click the link below to verify your email address.";
 
     transporter.sendMail(
-      handleMailOptions(email, resetLink, emailSubject, emailBody),
+      handleMailOptions(email, emailLink, emailSubject, emailBody),
       (error, info) => {
         if (error) {
           throw { message: "Error sending email", error };
@@ -78,10 +79,7 @@ export async function POST(request: NextRequest) {
     });
 
     return NextResponse.json(
-      {
-        message: "User successfully created",
-        user,
-      },
+      { message: "User successfully created" },
       { status: 200 }
     );
   } catch (error: any) {
