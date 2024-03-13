@@ -81,6 +81,8 @@ export default function Home() {
               secondaryColor={false}
               likeIcon={undefined!}
               onClick={() => router.push("/recipes?query=mac-and-cheese")}
+              handleLikeBtnClick={undefined}
+              isSaved={false}
             />
             <Card
               imageSrc={HOT_WINGS_IMG.src}
@@ -91,6 +93,8 @@ export default function Home() {
               secondaryColor={false}
               likeIcon={undefined!}
               onClick={() => router.push("/recipes?query=hot-wings")}
+              handleLikeBtnClick={undefined}
+              isSaved={false}
             />
             <Card
               imageSrc={NOODLES_IMG.src}
@@ -101,6 +105,8 @@ export default function Home() {
               secondaryColor={false}
               likeIcon={undefined!}
               onClick={() => router.push("/recipes?query=chicken-noodles")}
+              handleLikeBtnClick={undefined}
+              isSaved={false}
             />
             <Card
               imageSrc={BROWNIES_IMG.src}
@@ -113,6 +119,8 @@ export default function Home() {
               onClick={() =>
                 router.push("/recipes?query=peanut-butter-brownies")
               }
+              handleLikeBtnClick={undefined}
+              isSaved={false}
             />
             <Card
               imageSrc={SOUP_IMG.src}
@@ -123,6 +131,8 @@ export default function Home() {
               secondaryColor={false}
               likeIcon={undefined!}
               onClick={() => router.push("/recipes?query=mushroom-soup")}
+              handleLikeBtnClick={undefined}
+              isSaved={false}
             />
             <Card
               imageSrc={COUSCOUS_IMG.src}
@@ -133,6 +143,8 @@ export default function Home() {
               secondaryColor={false}
               likeIcon={undefined!}
               onClick={() => router.push("/recipes?query=couscous")}
+              handleLikeBtnClick={undefined}
+              isSaved={false}
             />
           </>
         }
@@ -150,7 +162,6 @@ export default function Home() {
         searchSuggestionsTitle={"popular searches"}
         placeholder={"Search"}
         onClick={() => router.push("/featured/pancake")}
-        hasBtn={true}
         onChange={handleChange}
         onSubmit={handleSubmit}
         value={searchValue}
