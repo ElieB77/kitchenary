@@ -1,6 +1,7 @@
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { RecipeType } from "../../recipes/types";
+import { scrollToTop } from "@/app/shared/utils";
 
 const usePagination = () => {
   const searchParams = useSearchParams();
@@ -27,10 +28,7 @@ const usePagination = () => {
   }, [query]);
 
   useEffect(() => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
+    scrollToTop();
   }, [currentPageNumber]);
 
   return {

@@ -76,6 +76,13 @@ export const INFO_ICON: ImageType = {
   height: 25,
 };
 
+export const TRASH_ICON: ImageType = {
+  src: "/icons/trash-icon.png",
+  alt: "Trash icon",
+  width: 20,
+  height: 20,
+};
+
 /*--------------------------
 Navigation Links Data
 --------------------------*/
@@ -147,4 +154,23 @@ export const DIETS: QueryItemType[] = [
   { id: "primal", name: "Primal" },
   { id: "low-fodmap", name: "Low FODMAP" },
   { id: "whole30", name: "Whole30" },
+];
+
+export const NAV_DROPDOWN_BTN = [
+  {
+    name: "meals",
+    id: 0,
+  },
+  {
+    name: "cuisines",
+    id: 1,
+  },
+  {
+    name: "ingredients",
+    id: 2,
+  },
+  {
+    name: "diets",
+    id: 3,
+  },
 ];

@@ -1,8 +1,22 @@
 @use "../../../../../shared/styles/utils/colors" as *;
+@use "../../../../../shared/styles/utils/variables" as *;
 
 .card {
   width: 100%;
+  height: 315px;
   background-color: $secondary-color;
+  max-width: 420px;
+  cursor: pointer;
+  box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px,
+    rgba(17, 17, 26, 0.1) 0px 0px 8px;
+
+  &:hover {
+    outline: solid 2px $accent-color;
+  }
+
+  &:hover .card__description__subtitle {
+    text-decoration: underline;
+  }
 
   &__image {
     width: 100%;
@@ -36,6 +50,19 @@
 
     &__subtitle {
       text-transform: capitalize;
+      padding-right: 30px;
+    }
+  }
+
+  @media only screen and (min-width: $breakpoint-xlg) {
+    max-width: 270px;
+    height: 340px;
+    overflow: hidden;
+
+    &__description {
+      &__subtitle {
+        font-size: 18px;
+      }
     }
   }
 }

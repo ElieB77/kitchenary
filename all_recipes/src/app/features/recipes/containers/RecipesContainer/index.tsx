@@ -9,6 +9,7 @@ import { HEART_ICON } from "../../constants";
 import usePagination from "@/app/features/search/hooks/usePagination";
 import { RIGHT_ARROW_ICON } from "@/app/shared/constants";
 import { RecipeType } from "../../types";
+import { AccountContext } from "@/app/features/account/contexts/AccountContext";
 
 const RecipesPageContainer = () => {
   const router = useRouter();
@@ -23,6 +24,8 @@ const RecipesPageContainer = () => {
     (searchParams.get("sort") && searchParams.get("sort"));
   const queryString = searchParams.toString();
   const { getRecipes, recipes } = useContext(LibContext);
+  const { addAndRemoveFavoriteRecipe, favoriteRecipeAlreadyExists } =
+    useContext(AccountContext);
   const {
     handlePagination,
     currentPageNumber,
@@ -45,12 +48,18 @@ const RecipesPageContainer = () => {
             key={index}
             imageSrc={getProperImageUrl(id, imageType)}
             title={undefined!}
-            subtitle={title}
+            subtitle={
+              title.length > 25 ? title.substring(0, 25) + "..." : title
+            }
             descriptionIcon={RIGHT_ARROW_ICON}
             hasLikeButton={true}
             secondaryColor={false}
             likeIcon={HEART_ICON}
             onClick={() => router.push(`/recipe/${id}`)}
+            handleLikeBtnClick={(event: any) =>
+              addAndRemoveFavoriteRecipe(event, title, id, imageType)
+            }
+            isSaved={favoriteRecipeAlreadyExists(id) ? true : false}
           />
         );
       }
@@ -65,10 +74,6 @@ const RecipesPageContainer = () => {
           query === "popularity" ? "popular" : query?.replaceAll("-", " ")!
         }
         cards={renderResults()}
-        btnText={undefined!}
-        btnIcon={RIGHT_ARROW_ICON}
-        btnOnClick={undefined!}
-        hasBtn={false}
         totalPages={getTotalPages(recipes)}
         currentPage={currentPageNumber}
         content={undefined!}

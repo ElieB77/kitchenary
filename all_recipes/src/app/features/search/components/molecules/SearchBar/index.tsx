@@ -11,6 +11,7 @@ export interface SearchBarProps {
   onSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
   value: string;
   type: string;
+  autoFocus?: boolean;
 }
 
 const SearchBar: FC<SearchBarProps> = ({
@@ -20,16 +21,24 @@ const SearchBar: FC<SearchBarProps> = ({
   onSubmit,
   value,
   type,
+  autoFocus,
 }) => {
   return (
-    <form onSubmit={onSubmit} className={styles.searchBar}>
+    <form
+      onSubmit={onSubmit}
+      className={`${styles.searchBar} ${autoFocus ? styles.autoFocus : ""}`}
+    >
       <input
         type={type}
         placeholder={placeholder}
         onChange={onChange}
         value={value}
+        required
+        autoFocus={autoFocus}
       />
-      <Image {...searchBarIcon} />
+      <button type="submit">
+        <Image {...searchBarIcon} />
+      </button>
     </form>
   );
 };

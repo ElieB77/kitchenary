@@ -60,6 +60,8 @@ const RecipePage: FC<RecipePageProps> = ({
   steps,
   nutritionTitle,
   nutrientCards,
+  handleLikeBtnClick,
+  isSaved,
 }) => {
   return (
     <div className={styles.recipePage}>
@@ -80,7 +82,12 @@ const RecipePage: FC<RecipePageProps> = ({
         </div>
 
         <div className={styles.recipePage__top__buttons}>
-          <LikeButton secondaryColor={secondaryColor} likeIcon={likeIcon} />
+          <LikeButton
+            secondaryColor={secondaryColor}
+            likeIcon={likeIcon}
+            handleLikeBtnClick={handleLikeBtnClick}
+            isSaved={isSaved}
+          />
           <ShareButton shareIcon={shareIcon} />
         </div>
 
@@ -106,15 +113,23 @@ const RecipePage: FC<RecipePageProps> = ({
       </div>
 
       <div className={styles.recipePage__ingredients}>
-        <RecipeTitle
-          firstWord={ingredientsTitleFirstWord}
-          secondWord={ingredientsTitleSecondWord}
-        />
-        <Ingredients
-          servingsIcon={servingsIcon}
-          servingsText={servingsText}
-          ingredients={ingredients}
-        />
+        <div>
+          <RecipeTitle
+            firstWord={ingredientsTitleFirstWord}
+            secondWord={ingredientsTitleSecondWord}
+          />
+          <Ingredients
+            servingsIcon={servingsIcon}
+            servingsText={servingsText}
+            ingredients={ingredients}
+          />
+        </div>
+        <div className={styles.recipePage__nutritionFacts__desktop}>
+          <h3 className={styles.recipePage__nutritionFacts__desktop__title}>
+            {nutritionTitle}
+          </h3>
+          <CardsNutrient nutrientCards={nutrientCards} />
+        </div>
       </div>
 
       <div className={styles.recipePage__steps}>

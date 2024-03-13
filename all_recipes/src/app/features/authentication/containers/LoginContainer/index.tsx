@@ -11,6 +11,7 @@ const LoginContainer = () => {
     passwordValue,
     handleSubmit,
     errorMessage,
+    loading,
   } = useAuthForm();
 
   return (
@@ -18,7 +19,7 @@ const LoginContainer = () => {
       title={"log in"}
       infoTitle={"already a member?"}
       isLogin={true}
-      btnText={"login"}
+      btnText={loading ? "loading.." : "login"}
       forgotPasswordLinkText={"forgot password?"}
       forgotPasswordLinkHref={"/auth/forgot-password"}
       bottomLinkText={"don't have an account? Join now"}

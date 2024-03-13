@@ -1,3 +1,5 @@
+@use "../../../../../shared/styles/utils/variables" as *;
+
 .roundedCard {
   width: fit-content;
   text-align: center;
@@ -9,6 +11,17 @@
     overflow: hidden;
     border-radius: 50%;
 
+    &:hover {
+      filter: brightness(110%);
+      transition: all 0.3s ease;
+    }
+
+    &:hover ~ .roundedCard__title {
+      text-decoration: underline;
+      transform: translateY(-5px);
+      transition: transform 0.5s cubic-bezier(0.5, 0, 0.5, 1);
+    }
+
     & img {
       width: 100%;
       height: 100%;
@@ -19,5 +32,12 @@
   &__title {
     text-transform: uppercase;
     padding-top: 30px;
+  }
+
+  @media only screen and (min-width: $breakpoint-xlg) {
+    &__image {
+      width: 160px;
+      height: 160px;
+    }
   }
 }

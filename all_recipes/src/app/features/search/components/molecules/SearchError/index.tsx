@@ -1,5 +1,7 @@
 import { FC } from "react";
 import styles from "./styles.module.scss";
+import Image from "next/image";
+import { ERROR_ICON } from "@/app/shared/constants";
 
 interface SearchErrorProps {
   query: string | null;
@@ -10,6 +12,7 @@ interface SearchErrorProps {
 const SearchError: FC<SearchErrorProps> = ({ query, title, message }) => {
   return (
     <div className={styles.searchError}>
+      <Image {...ERROR_ICON} />
       <h2>
         {title} <span>{query}</span>
       </h2>

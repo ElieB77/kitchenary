@@ -6,7 +6,8 @@
     width: 100vw;
     margin-left: calc((100% - 100vw) / 2);
     padding: 30px 15px 0 15px;
-    background-color: $border-color;
+    background-color: $primary-color;
+    border-bottom: solid 3px $border-color;
     text-align: center;
 
     & h2 {
@@ -19,6 +20,7 @@
 
     & > form {
       transform: translateY(50%);
+      margin: 0 auto;
     }
   }
 

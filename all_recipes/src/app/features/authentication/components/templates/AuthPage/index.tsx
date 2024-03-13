@@ -21,13 +21,13 @@ interface AuthPageProps
   emailId: string;
   emailLabel: string;
   emailType: string;
-  emailOnChange: React.ChangeEvent<HTMLInputElement>;
+  emailOnChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   emailValue: string;
   passwordId: string;
   passwordLabel: string;
   passwordType: string;
   passwordValue: string;
-  passwordOnChange: React.ChangeEvent<HTMLInputElement>;
+  passwordOnChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   isLogin: boolean;
   forgotPasswordLinkText?: string;
   forgotPasswordLinkHref?: string;
@@ -76,13 +76,17 @@ const AuthPage: FC<AuthPageProps> = ({
             {infoTitle}
           </h3>
           <h1 className={styles.authPage__container__head__title}>{title}</h1>
+
           {errorMessage && (
-            <FormErrorMessage
-              errorIcon={errorIcon}
-              errorMessage={errorMessage}
-            />
+            <div className={styles.authPage__container__head__error}>
+              <FormErrorMessage
+                errorIcon={errorIcon}
+                errorMessage={errorMessage}
+              />
+            </div>
           )}
         </div>
+
         <Input
           id={emailId}
           label={emailLabel}
@@ -97,11 +101,12 @@ const AuthPage: FC<AuthPageProps> = ({
           onChange={passwordOnChange}
           value={passwordValue}
         />
+
         {!isLogin && (
           <div className={styles.authPage__container__passwordInfo}>
             <Image
               src={"/icons/info-icon.png"}
-              alt={""}
+              alt={"info"}
               width={25}
               height={25}
             />
@@ -111,6 +116,7 @@ const AuthPage: FC<AuthPageProps> = ({
             </p>
           </div>
         )}
+
         {isLogin && (
           <div className={styles.authPage__container__rememberMe}>
             {/* <CheckBox label={label} /> */}
@@ -122,6 +128,7 @@ const AuthPage: FC<AuthPageProps> = ({
             </Link>
           </div>
         )}
+
         <Button btnText={btnText} btnOnClick={btnOnClick} />
         <Link className={ebGaramond.className} href={bottomLinkHref}>
           {bottomLinkText}

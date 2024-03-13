@@ -1,8 +1,10 @@
 @use "../../../styles/utils/colors" as *;
+@use "../../../styles/utils/variables" as *;
 
 .header {
   display: flex;
   align-items: center;
+  flex-direction: column;
   padding-inline: 15px;
   height: 60px;
   border-bottom: solid 1px $border-color;
@@ -19,6 +21,10 @@
     width: 100%;
     height: fit-content;
 
+    &__searchBar__desktop {
+      display: none;
+    }
+
     &__right {
       display: flex;
       align-items: center;
@@ -31,6 +37,17 @@
       &__grouped {
         display: flex;
         gap: 20px;
+
+        &__user {
+          display: flex;
+          gap: 5px;
+          cursor: pointer;
+          position: relative;
+
+          &:hover span {
+            text-decoration: underline;
+          }
+        }
       }
 
       &__divider {
@@ -38,6 +55,79 @@
         height: 60px;
         background-color: $border-color;
       }
+    }
+  }
+
+  &__navLinks__desktop {
+    display: none;
+  }
+
+  @media only screen and (min-width: $breakpoint-md) {
+    &__wrapper {
+      width: 720px;
+      margin: 0 auto;
+    }
+  }
+
+  @media only screen and (min-width: $breakpoint-lg) {
+    height: auto;
+    &__wrapper {
+      width: 1000px;
+      padding-top: 30px;
+
+      &__logo {
+        font-size: 100px !important;
+      }
+
+      &__searchBar__desktop {
+        display: block;
+
+        > form {
+          width: 500px;
+        }
+      }
+
+      &__right {
+        &__grouped {
+          &__searchIcon {
+            display: none;
+          }
+        }
+
+        &__divider {
+          display: none;
+        }
+
+        &__hamburger {
+          display: none;
+        }
+      }
+    }
+
+    &__navLinks__desktop {
+      display: flex;
+      align-self: flex-start;
+      gap: 30px;
+      width: 1000px;
+      margin: 0 auto;
+      padding: 20px 0 10px 0;
+
+      & p {
+        text-transform: uppercase;
+        cursor: pointer;
+        font-weight: bold;
+        font-size: 13px;
+      }
+    }
+  }
+
+  @media only screen and (min-width: $breakpoint-xlg) {
+    &__wrapper {
+      width: 1128px;
+    }
+
+    &__navLinks__desktop {
+      width: 1128px;
     }
   }
 }

@@ -4,8 +4,13 @@ import { ERROR_ICON } from "@/app/shared/constants";
 import ForgotResetPasswordPage from "../../components/templates/ForgotResetPasswordPage";
 
 const ResetPasswordContainer = () => {
-  const { handlePasswordChange, handleSubmit, passwordValue, errorMessage } =
-    useAuthFormForm();
+  const {
+    handlePasswordChange,
+    handleSubmit,
+    passwordValue,
+    errorMessage,
+    loading,
+  } = useAuthFormForm();
   const searchParams = useSearchParams();
   const token = searchParams.get("token");
 
@@ -21,7 +26,7 @@ const ResetPasswordContainer = () => {
       type={"password"}
       onChange={handlePasswordChange}
       value={passwordValue}
-      btnText={"reset password"}
+      btnText={loading ? "loading.." : "reset password"}
       btnOnClick={undefined!}
       errorIcon={ERROR_ICON}
       errorMessage={errorMessage}

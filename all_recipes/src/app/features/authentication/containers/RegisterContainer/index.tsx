@@ -11,6 +11,7 @@ const RegisterContainer = () => {
     passwordValue,
     handleSubmit,
     errorMessage,
+    loading,
   } = useAuthForm();
 
   return (
@@ -18,7 +19,7 @@ const RegisterContainer = () => {
       title={"register"}
       infoTitle={"new to our website?"}
       isLogin={false}
-      btnText={"register"}
+      btnText={loading ? "loading.." : "register"}
       bottomLinkText={"already have an account? Log in"}
       bottomLinkHref={"/auth/login"}
       emailId={"email"}

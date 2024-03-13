@@ -15,9 +15,6 @@ const RecipesPage: FC<RecipesPageProps> = ({
   firstWord,
   secondWord,
   cards,
-  cardsBtnText,
-  cardsBtnIcon,
-  hasBtn,
   totalPages,
   currentPage,
   content,
@@ -28,12 +25,7 @@ const RecipesPage: FC<RecipesPageProps> = ({
       <Title firstWord={firstWord} secondWord={secondWord} />
 
       <div className={styles.recipesPage__cards}>
-        <Cards
-          cards={cards}
-          cardsBtnText={cardsBtnText}
-          cardsBtnIcon={cardsBtnIcon}
-          hasBtn={hasBtn}
-        />
+        <Cards cards={cards} />
       </div>
 
       {totalPages > 1 && (

@@ -2,6 +2,9 @@ import { User } from "@/app/shared/models/userModel";
 import { NextRequest, NextResponse } from "next/server";
 import bcryptjs from "bcryptjs";
 import jwt from "jsonwebtoken";
+import { connect } from "@/app/shared/config/dbConfig";
+
+connect();
 
 export async function POST(request: NextRequest) {
   try {
@@ -39,7 +42,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET!, {
+    const token = jwt.sign({ email: user.email }, process.env.JWT_SECRET!, {
       expiresIn: "1h",
     });
 
@@ -49,7 +52,7 @@ export async function POST(request: NextRequest) {
     );
   } catch (error) {
     return NextResponse.json(
-      { message: "Something went wrong" },
+      { message: "Something went wrong. Please try again later." },
       { status: 500 }
     );
   }

@@ -3,6 +3,9 @@ import { NextRequest, NextResponse } from "next/server";
 import jwt from "jsonwebtoken";
 import { transporter } from "@/app/shared/config/mailConfig";
 import { handleMailOptions } from "@/app/features/authentication/utils";
+import { connect } from "@/app/shared/config/dbConfig";
+
+connect();
 
 export async function POST(request: NextRequest) {
   try {

@@ -25,7 +25,8 @@ const userSchema = new mongoose.Schema({
   recipes: [
     {
       recipeId: Number,
-      title: String,
+      recipeTitle: String,
+      recipeImageType: String,
     },
   ],
 });

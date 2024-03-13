@@ -1,0 +1,27 @@
+@use "../../../../../shared/styles/utils/variables" as *;
+
+.savedItemsPage {
+  padding-top: 30px;
+
+  &__head {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  @media only screen and (min-width: $breakpoint-lg) {
+    &__head {
+      width: 600px;
+      margin-inline: auto;
+    }
+
+    &__container {
+      align-items: center;
+    }
+  }
+}

@@ -24,6 +24,8 @@ const Card: FC<CardProps> = ({
   likeIcon,
   secondaryColor,
   onClick,
+  handleLikeBtnClick,
+  isSaved,
 }) => {
   return (
     <div className={styles.card} onClick={onClick}>
@@ -35,7 +37,12 @@ const Card: FC<CardProps> = ({
           fill
         />
         {hasLikeButton && (
-          <LikeButton secondaryColor={secondaryColor} likeIcon={likeIcon} />
+          <LikeButton
+            secondaryColor={secondaryColor}
+            likeIcon={likeIcon}
+            handleLikeBtnClick={handleLikeBtnClick}
+            isSaved={isSaved}
+          />
         )}
       </div>
       <div className={styles.card__description}>

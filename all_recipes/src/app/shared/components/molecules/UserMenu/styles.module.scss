@@ -1,15 +1,26 @@
 @use "../../../../shared/styles/utils/colors" as *;
+@use "../../../../shared/styles/utils/variables" as *;
 
 .userMenu {
-  position: fixed;
-  top: 60px;
-  left: 50%;
-  transform: translate(-50%);
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  position: absolute;
+  top: 40px;
+  right: -20px;
   z-index: 999;
   width: 320px;
-  background-color: $secondary-color;
+  background-color: $accent-color;
   padding: 28px 40px 28px 44px;
   font-size: 18px;
+
+  &__loggedIn {
+    display: flex;
+    flex-direction: column;
+
+    &__link {
+      font-weight: bolder;
+      text-transform: capitalize;
+    }
+  }
 
   &__text::first-letter {
     text-transform: uppercase;
@@ -26,5 +37,13 @@
   &__link {
     text-transform: uppercase;
     font-weight: 700;
+    white-space: nowrap;
+  }
+
+  @media only screen and (min-width: $breakpoint-lg) {
+    left: unset;
+    right: unset;
+    top: 88px;
+    transform: translateX(-93%);
   }
 }

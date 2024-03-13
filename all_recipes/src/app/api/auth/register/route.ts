@@ -3,6 +3,7 @@ import bcryptjs from "bcryptjs";
 import { User } from "@/app/shared/models/userModel";
 import { connect } from "@/app/shared/config/dbConfig";
 import {
+  checkEmailFormat,
   checkPasswordRequirements,
   handleMailOptions,
 } from "@/app/features/authentication/utils";
@@ -21,6 +22,15 @@ export async function POST(request: NextRequest) {
           message: "Email and password are required.",
         },
         { status: 400 }
+      );
+    }
+
+    if (!checkEmailFormat(email)) {
+      return NextResponse.json(
+        {
+          message: "Invalid email format. Please enter a valid email address.",
+        },
+        { status: 477 }
       );
     }
 
@@ -85,7 +95,7 @@ export async function POST(request: NextRequest) {
   } catch (error: any) {
     return NextResponse.json(
       {
-        message: "There was an error during registration",
+        message: "Something went wrong. Please try again later.",
         error: error.message,
       },
       { status: 500 }

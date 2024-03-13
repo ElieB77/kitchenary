@@ -16,4 +16,10 @@
   width: fit-content;
   letter-spacing: 2px;
   color: $text-color;
+
+  &:hover {
+    border: solid $text-color 2px;
+    text-decoration: underline;
+    transition: 0.3s ease;
+  }
 }

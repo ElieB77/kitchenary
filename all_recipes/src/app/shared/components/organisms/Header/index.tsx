@@ -1,12 +1,26 @@
 import Image from "next/image";
 import styles from "./styles.module.scss";
-import { FC, useEffect, useState } from "react";
-import { ImageType } from "@/app/shared/types";
+import {
+  ChangeEvent,
+  FC,
+  FormEvent,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
+import { ImageType, QueryItemType } from "@/app/shared/types";
 import Logo, { LogoProps } from "../../atoms/Logo";
 import Menu, { MenuProps } from "../Menu";
-import { SearchBarProps } from "@/app/features/search/components/molecules/SearchBar";
+import SearchBar, {
+  SearchBarProps,
+} from "@/app/features/search/components/molecules/SearchBar";
 import UserMenu, { UserMenuProps } from "../../molecules/UserMenu";
 import { usePathname, useSearchParams } from "next/navigation";
+import { CUISINES, MEALS, SEARCH_ICON } from "@/app/shared/constants";
+import Link from "next/link";
+import NavLinksDropdown from "../../molecules/NavLinksDropdown";
+import { AuthContext } from "@/app/features/authentication/contexts/AuthContext";
+import useSearchBar from "@/app/features/search/hooks/useSearchBar";
 
 interface HeaderProps
   extends LogoProps,
@@ -50,6 +64,8 @@ const Header: FC<HeaderProps> = ({
   const searchParams = useSearchParams();
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [isUserMenuOpen, setIsUserMenuOpen] = useState<boolean>(false);
+  const { isLoggedIn } = useContext(AuthContext);
+  const { handleChange, handleSubmit, searchValue } = useSearchBar();
 
   useEffect(() => {
     if (isOpen) {
@@ -81,14 +97,50 @@ const Header: FC<HeaderProps> = ({
           <div className={styles.header__wrapper__logo}>
             <Logo text={text} to={to} larger={larger} />
           </div>
+          <div className={styles.header__wrapper__searchBar__desktop}>
+            <SearchBar
+              placeholder={"Search"}
+              searchBarIcon={SEARCH_ICON}
+              onChange={handleChange}
+              onSubmit={handleSubmit}
+              value={searchValue}
+              type={"text"}
+            />
+          </div>
           <div className={styles.header__wrapper__right}>
             <div className={styles.header__wrapper__right__grouped}>
-              <Image onClick={toggleUserMenu} {...userIcon} />
-              <Image onClick={toggleMenu} {...searchIcon} />
+              <Image
+                className={styles.header__wrapper__right__grouped__searchIcon}
+                onClick={toggleMenu}
+                {...searchIcon}
+              />
+              <div
+                onClick={toggleUserMenu}
+                className={styles.header__wrapper__right__grouped__user}
+              >
+                <Image {...userIcon} />
+                <UserMenu
+                  loginText={loginText}
+                  registerText={registerText}
+                  loginLinkText={loginLinkText}
+                  loginLinkHref={loginLinkHref}
+                  registerLinkText={registerLinkText}
+                  registerLinkHref={registerLinkHref}
+                  isUserMenuOpen={isUserMenuOpen}
+                  setIsUserMenuOpen={setIsUserMenuOpen}
+                />
+              </div>
             </div>
             <div className={styles.header__wrapper__right__divider}></div>
-            <Image onClick={toggleMenu} {...hamburgerIcon} />
+            <Image
+              className={styles.header__wrapper__right__hamburger}
+              onClick={toggleMenu}
+              {...hamburgerIcon}
+            />
           </div>
+        </div>
+        <div className={styles.header__navLinks__desktop}>
+          <NavLinksDropdown />
         </div>
       </div>
       <Menu
@@ -107,15 +159,6 @@ const Header: FC<HeaderProps> = ({
         onSubmit={onSubmit}
         value={value}
         type={type}
-      />
-      <UserMenu
-        loginText={loginText}
-        registerText={registerText}
-        loginLinkText={loginLinkText}
-        loginLinkHref={loginLinkHref}
-        registerLinkText={registerLinkText}
-        registerLinkHref={registerLinkHref}
-        isUserMenuOpen={isUserMenuOpen}
       />
     </>
   );

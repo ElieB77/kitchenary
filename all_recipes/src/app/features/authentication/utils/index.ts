@@ -1,4 +1,5 @@
 import axios from "axios";
+import { CORRECT_FORMAT_EMAIL } from "../constants";
 
 export const checkPasswordRequirements = (password: string) => {
   const hasEightCharacters = password.length >= 8;
@@ -7,6 +8,10 @@ export const checkPasswordRequirements = (password: string) => {
   const hasLowercase = /[a-z]/.test(password);
 
   return hasEightCharacters && hasNumber && hasUppercase && hasLowercase;
+};
+
+export const checkEmailFormat = (email: string) => {
+  return CORRECT_FORMAT_EMAIL.test(email);
 };
 
 export const handleMailOptions = (

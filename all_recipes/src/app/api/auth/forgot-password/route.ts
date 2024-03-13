@@ -3,6 +3,9 @@ import { transporter } from "@/app/shared/config/mailConfig";
 import { User } from "@/app/shared/models/userModel";
 import { NextRequest, NextResponse } from "next/server";
 import jwt from "jsonwebtoken";
+import { connect } from "@/app/shared/config/dbConfig";
+
+connect();
 
 export async function POST(request: NextRequest) {
   try {
@@ -52,6 +55,8 @@ export async function POST(request: NextRequest) {
       { status: 200 }
     );
   } catch (error) {
-    return NextResponse.json({ message: "Error during (forgot password)" });
+    return NextResponse.json({
+      message: "Something went wrong. Please try again later.",
+    });
   }
 }

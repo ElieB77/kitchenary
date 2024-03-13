@@ -4,7 +4,7 @@ import useAuthFormForm from "../../hooks/useAuthForm";
 import ForgotResetPasswordPage from "../../components/templates/ForgotResetPasswordPage";
 
 const ForgotPasswordContainer = () => {
-  const { handleEmailChange, emailValue, handleSubmit, errorMessage } =
+  const { handleEmailChange, emailValue, handleSubmit, errorMessage, loading } =
     useAuthFormForm();
 
   return (
@@ -16,7 +16,7 @@ const ForgotPasswordContainer = () => {
       id={"email"}
       label={"email"}
       type={"text"}
-      btnText={"reset password"}
+      btnText={loading ? "loading.." : "reset password"}
       onChange={handleEmailChange}
       value={emailValue}
       btnOnClick={undefined!}

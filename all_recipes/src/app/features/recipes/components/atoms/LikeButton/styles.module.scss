@@ -10,8 +10,22 @@
   justify-content: center;
   cursor: pointer;
   border: none;
+
+  &:hover img {
+    filter: invert(98%) sepia(24%) saturate(2%) hue-rotate(339deg)
+      brightness(117%) contrast(101%);
+    transform: scale(1.05);
+    transition: all 0.3s ease;
+  }
 }
 
 .secondaryColor {
   background-color: $third-color;
+}
+
+.isSaved {
+  & img {
+    filter: invert(98%) sepia(24%) saturate(2%) hue-rotate(339deg)
+      brightness(117%) contrast(101%);
+  }
 }

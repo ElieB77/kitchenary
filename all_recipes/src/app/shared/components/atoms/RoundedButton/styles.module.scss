@@ -10,4 +10,9 @@
   border: none;
   background-color: $accent-color;
   cursor: pointer;
+
+  &:hover {
+    transform: scale(1.1);
+    transition: 0.3s ease-in-out;
+  }
 }

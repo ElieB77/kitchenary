@@ -6,4 +6,8 @@
   justify-content: center;
   gap: 20px;
   text-align: center;
+
+  & p {
+    max-width: 800px;
+  }
 }

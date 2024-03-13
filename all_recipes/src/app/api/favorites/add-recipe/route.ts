@@ -1,3 +1,4 @@
+import RecipeTitle from "@/app/features/recipes/components/atoms/RecipeTitle";
 import { connect } from "@/app/shared/config/dbConfig";
 import { User } from "@/app/shared/models/userModel";
 import { NextRequest, NextResponse } from "next/server";
@@ -6,7 +7,15 @@ connect();
 
 export async function POST(request: NextRequest) {
   try {
-    const { email, recipeId, title } = await request.json();
+    const { email, recipeId, recipeTitle, recipeImageType } =
+      await request.json();
+
+    if (!email || !recipeId || !recipeTitle || !recipeImageType) {
+      return NextResponse.json(
+        { message: "email, id, title and image type are required." },
+        { status: 400 }
+      );
+    }
 
     const user = await User.findOne({ email });
 
@@ -25,7 +34,11 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    user.recipes.push({ recipeId: recipeId, title: title });
+    user.recipes.push({
+      recipeId: recipeId,
+      recipeTitle: recipeTitle,
+      recipeImageType: recipeImageType,
+    });
     await user.save();
 
     return NextResponse.json(

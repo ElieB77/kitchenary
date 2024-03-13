@@ -14,12 +14,14 @@ import Cards, {
 import SearchSuggestions, {
   SearchSuggestionsProps,
 } from "@/app/features/search/components/organisms/SearchSuggestions";
+import Button, { ButtonProps } from "../../atoms/Button";
 
 interface HomePageProps
   extends CardXLProps,
     CategorySliderProps,
     CardsProps,
-    SearchSuggestionsProps {
+    SearchSuggestionsProps,
+    ButtonProps {
   categorySliderTitleFirstWord: string;
   categorySliderTitleSecondWord: string;
   popularRecipesTitleFirstWord: string;
@@ -38,10 +40,6 @@ const HomePage: FC<HomePageProps> = ({
   popularRecipesTitleFirstWord,
   popularRecipesTitleSecondWord,
   cards,
-  btnText,
-  btnIcon,
-  hasBtn,
-  btnOnClick,
   searchSuggestionsTabs,
   searchSuggestionsTitle,
   placeholder,
@@ -51,6 +49,8 @@ const HomePage: FC<HomePageProps> = ({
   value,
   type,
   searchBarIcon,
+  btnText,
+  btnOnClick,
 }) => {
   return (
     <div className={styles.homePage}>
@@ -87,13 +87,8 @@ const HomePage: FC<HomePageProps> = ({
           firstWord={popularRecipesTitleFirstWord}
           secondWord={popularRecipesTitleSecondWord}
         />
-        <Cards
-          cards={cards}
-          btnText={btnText}
-          btnIcon={btnIcon}
-          hasBtn={hasBtn}
-          btnOnClick={btnOnClick}
-        />
+        <Cards cards={cards} />
+        <Button btnText={btnText} btnOnClick={btnOnClick} />
       </div>
     </div>
   );

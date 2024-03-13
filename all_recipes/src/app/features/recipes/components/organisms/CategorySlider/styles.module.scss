@@ -1,3 +1,5 @@
+@use "../../../../../shared/styles/utils/variables" as *;
+
 .categorySlider {
   overflow: hidden;
   width: 100vw;
@@ -10,6 +12,23 @@
     gap: 50px;
     &::-webkit-scrollbar {
       display: none;
+    }
+  }
+  @media only screen and (min-width: $breakpoint-md) {
+    width: unset;
+    margin-left: unset;
+
+    &__slider {
+      overflow-x: unset;
+      padding-left: unset;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  }
+
+  @media only screen and (min-width: $breakpoint-lg) {
+    &__slider {
+      padding-inline: 50px;
     }
   }
 }

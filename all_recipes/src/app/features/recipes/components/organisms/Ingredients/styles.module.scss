@@ -1,4 +1,5 @@
 @use "../../../../../shared/styles/utils/colors" as *;
+@use "../../../../../shared/styles/utils/variables" as *;
 
 .ingredients {
   &__servings {
@@ -24,5 +25,15 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
+  }
+
+  @media only screen and (min-width: $breakpoint-lg) {
+    &__servings {
+      justify-content: unset;
+    }
+
+    &__list {
+      margin-top: 30px;
+    }
   }
 }

@@ -11,12 +11,15 @@ import SearchError from "../../components/molecules/SearchError";
 import { useContext, useEffect } from "react";
 import { LibContext } from "@/app/shared/context/LibContext";
 import { RecipeType } from "@/app/features/recipes/types";
+import { AccountContext } from "@/app/features/account/contexts/AccountContext";
 
 const SearchPageContainer = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const query = searchParams.get("query");
   const { getRecipesBySearch, searchResults } = useContext(LibContext);
+  const { addAndRemoveFavoriteRecipe, favoriteRecipeAlreadyExists } =
+    useContext(AccountContext);
   const { handleChange, handleSubmit, searchValue } = useSearchBar();
   const {
     handlePagination,
@@ -26,7 +29,7 @@ const SearchPageContainer = () => {
   } = usePagination();
 
   useEffect(() => {
-    getRecipesBySearch(query);
+    getRecipesBySearch(query!);
   }, [query]);
 
   if (!searchResults) return null;
@@ -45,17 +48,24 @@ const SearchPageContainer = () => {
     return getCurrentPageData(searchResults).map(
       (result: RecipeType, index: number) => {
         const { id, imageType, title } = result;
+        console.log("$$$", favoriteRecipeAlreadyExists(id));
         return (
           <Card
             key={index}
             imageSrc={getProperImageUrl(id, imageType)}
             title={undefined!}
-            subtitle={title}
+            subtitle={
+              title.length > 50 ? title.substring(0, 50) + "..." : title
+            }
             descriptionIcon={RIGHT_ARROW_ICON}
             hasLikeButton={true}
             secondaryColor={false}
             likeIcon={HEART_ICON}
             onClick={() => router.push(`/recipe/${id}`)}
+            handleLikeBtnClick={(event: any) =>
+              addAndRemoveFavoriteRecipe(event, title, id, imageType)
+            }
+            isSaved={favoriteRecipeAlreadyExists(id) ? true : false}
           />
         );
       }
@@ -68,20 +78,17 @@ const SearchPageContainer = () => {
         searchLabel={"search results for"}
         query={`"${query?.replaceAll("-", " ")}"`}
         placeholder={"Search"}
-        icon={SEARCH_ICON}
+        searchBarIcon={SEARCH_ICON}
         onChange={handleChange}
         onSubmit={handleSubmit}
         cards={renderResults()}
-        btnText={undefined!}
-        btnIcon={RIGHT_ARROW_ICON}
-        btnOnClick={undefined!}
-        hasBtn={false}
         totalPages={getTotalPages(searchResults)}
         currentPage={currentPageNumber}
         content={undefined!}
         onClick={handlePagination}
         value={searchValue}
         type={"text"}
+        autoFocus={true}
       />
     </>
   );

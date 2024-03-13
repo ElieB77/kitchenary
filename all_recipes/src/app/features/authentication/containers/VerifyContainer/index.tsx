@@ -2,7 +2,7 @@
 import { useContext, useEffect, useState } from "react";
 import VerifyPage from "../../components/templates/VerifyPage";
 import { useSearchParams } from "next/navigation";
-import { AuthContext } from "@/app/shared/context/AuthContext";
+import { AuthContext } from "@/app/features/authentication/contexts/AuthContext";
 
 const VerifyContainer = () => {
   const searchParams = useSearchParams();

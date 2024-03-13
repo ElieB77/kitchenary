@@ -107,8 +107,8 @@ export const HEART_ICON: ImageType = {
 export const HEART_FILLED_ICON: ImageType = {
   src: "/icons/heart-filled-icon.png",
   alt: "Heart filled",
-  width: 20,
-  height: 20,
+  width: 25,
+  height: 25,
 };
 
 export const SHARE_ICON: ImageType = {

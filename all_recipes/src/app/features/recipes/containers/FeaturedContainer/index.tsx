@@ -8,6 +8,7 @@ import { RecipeType } from "../../types";
 import { HEART_ICON } from "../../constants";
 import { useRouter } from "next/navigation";
 import { RIGHT_ARROW_ICON } from "@/app/shared/constants";
+import { AccountContext } from "@/app/features/account/contexts/AccountContext";
 
 interface FeaturedContainerProps {
   slug: string;
@@ -25,6 +26,8 @@ const FeaturedContainer: FC<FeaturedContainerProps> = ({ slug }) => {
     cookieRecipes,
     saladRecipes,
   } = useContext(LibContext);
+  const { addAndRemoveFavoriteRecipe, favoriteRecipeAlreadyExists } =
+    useContext(AccountContext);
 
   useEffect(() => {
     if (slug) {
@@ -81,6 +84,15 @@ const FeaturedContainer: FC<FeaturedContainerProps> = ({ slug }) => {
           secondaryColor={false}
           likeIcon={HEART_ICON}
           btnOnClick={() => router.push(`/recipe/${recipe.id}`)}
+          handleLikeBtnClick={(event: any) =>
+            addAndRemoveFavoriteRecipe(
+              event,
+              recipe.title,
+              recipe.id,
+              recipe.imageType
+            )
+          }
+          isSaved={favoriteRecipeAlreadyExists(recipe.id) ? true : false}
         />
       );
     });

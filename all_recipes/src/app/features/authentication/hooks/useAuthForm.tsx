@@ -1,16 +1,17 @@
 import { useContext, useState } from "react";
 import axios from "axios";
-import { AuthContext } from "@/app/shared/context/AuthContext";
+import { AuthContext } from "@/app/features/authentication/contexts/AuthContext";
 
 const useAuthForm = () => {
   const [emailValue, setEmailValue] = useState<string>("");
   const [passwordValue, setPasswordValue] = useState<string>("");
   const [errorMessage, setErrorMessage] = useState<string>("");
+  const [loading, setLoading] = useState<boolean>(false);
   const { handleSuccesfulResponse, handleErrorResponse } =
     useContext(AuthContext);
 
   const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    return setEmailValue(event.target.value);
+    return setEmailValue(event.target.value.toLowerCase());
   };
 
   const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -23,6 +24,7 @@ const useAuthForm = () => {
     token?: string | null
   ) => {
     event.preventDefault();
+    setLoading(true);
 
     let data;
 
@@ -39,7 +41,7 @@ const useAuthForm = () => {
         endpoint === "reset-password" ? "patch" : "post"
       ](`/api/auth/${endpoint}`, data);
 
-      handleSuccesfulResponse(endpoint, response.status);
+      handleSuccesfulResponse(endpoint, response.status, response.data.token);
     } catch (error: any) {
       handleErrorResponse(
         endpoint,
@@ -48,6 +50,8 @@ const useAuthForm = () => {
         error.response.data.message,
         setErrorMessage
       );
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -58,6 +62,7 @@ const useAuthForm = () => {
     handlePasswordChange,
     handleSubmit,
     errorMessage,
+    loading,
   };
 };
 

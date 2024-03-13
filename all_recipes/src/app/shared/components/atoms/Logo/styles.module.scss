@@ -1,6 +1,14 @@
+@use "../../../../shared/styles/utils/variables" as *;
+
 .logo {
   & h1 {
     text-transform: capitalize;
+  }
+
+  @media only screen and (min-width: $breakpoint-lg) {
+    & h1 {
+      font-size: 50px !important;
+    }
   }
 }
 

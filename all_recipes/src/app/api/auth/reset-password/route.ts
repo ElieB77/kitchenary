@@ -3,6 +3,9 @@ import jwt, { JwtPayload } from "jsonwebtoken";
 import { User } from "@/app/shared/models/userModel";
 import bcryptjs from "bcryptjs";
 import { checkPasswordRequirements } from "@/app/features/authentication/utils";
+import { connect } from "@/app/shared/config/dbConfig";
+
+connect();
 
 export async function PATCH(request: NextRequest) {
   try {
@@ -60,7 +63,7 @@ export async function PATCH(request: NextRequest) {
     );
   } catch (error) {
     return NextResponse.json(
-      { message: "Error during (reset-password)" },
+      { message: "Something went wrong. Please try again later." },
       { status: 500 }
     );
   }

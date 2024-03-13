@@ -1,4 +1,5 @@
 @use "../../../../../shared/styles/utils/colors" as *;
+@use "../../../../../shared/styles/utils/variables" as *;
 
 .recipeSteps {
   position: relative;
@@ -15,14 +16,17 @@
     z-index: -1;
   }
 
-  &::after {
-    content: "";
-    position: absolute;
-    width: 5px;
-    height: 5px;
-    border-radius: 50%;
-    background-color: $border-color;
-    left: 13px;
-    bottom: 0;
+  // &::after {
+  //   content: "";
+  //   position: absolute;
+  //   width: 5px;
+  //   height: 5px;
+  //   border-radius: 50%;
+  //   background-color: $border-color;
+  //   left: 13px;
+  //   bottom: 0;
+  // }
+  @media only screen and (min-width: $breakpoint-lg) {
+    margin-left: 150px;
   }
 }

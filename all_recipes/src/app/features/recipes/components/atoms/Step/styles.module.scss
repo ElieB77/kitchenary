@@ -1,4 +1,5 @@
 @use "../../../../../shared/styles/utils/colors" as *;
+@use "../../../../../shared/styles/utils/variables" as *;
 
 .step {
   position: relative;
@@ -12,5 +13,9 @@
     background: url(/icons/check-icon.svg) $accent-color no-repeat center;
     font-size: 10px;
     left: -50px;
+  }
+
+  @media only screen and (min-width: $breakpoint-xlg) {
+    width: 800px;
   }
 }

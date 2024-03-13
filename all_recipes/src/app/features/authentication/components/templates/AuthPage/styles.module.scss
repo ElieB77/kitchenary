@@ -15,11 +15,11 @@
   &__container {
     display: flex;
     flex-direction: column;
-    // gap: 30px;
     padding: 35px 25px;
     background-color: $primary-color;
     width: 95%;
     margin: 50px auto 0 auto;
+    max-width: 500px;
 
     &__head {
       text-align: center;
@@ -33,6 +33,10 @@
 
       &__title {
         text-transform: uppercase;
+      }
+
+      &__error {
+        margin-top: 20px;
       }
     }
 

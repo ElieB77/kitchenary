@@ -22,19 +22,17 @@ const SearchPage: FC<SearchPageProps> = ({
   searchLabel,
   query,
   placeholder,
-  icon,
   onChange,
   onSubmit,
   cards,
-  btnText,
-  btnIcon,
-  btnOnClick,
-  hasBtn,
   totalPages,
   currentPage,
   content,
   onClick,
   value,
+  searchBarIcon,
+  type,
+  autoFocus,
 }) => {
   return (
     <div className={styles.searchPage}>
@@ -45,21 +43,17 @@ const SearchPage: FC<SearchPageProps> = ({
         </h2>
         <SearchBar
           placeholder={placeholder}
-          icon={icon}
+          searchBarIcon={searchBarIcon}
           onChange={onChange}
           onSubmit={onSubmit}
           value={value}
+          type={type}
+          autoFocus={autoFocus}
         />
       </div>
 
       <div className={styles.searchPage__cards}>
-        <Cards
-          cards={cards}
-          btnText={btnText}
-          btnIcon={btnIcon}
-          hasBtn={hasBtn}
-          btnOnClick={btnOnClick}
-        />
+        <Cards cards={cards} />
       </div>
 
       {totalPages > 1 && (

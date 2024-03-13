@@ -8,6 +8,13 @@
   justify-content: space-between;
   align-items: center;
   padding-inline: 30px;
+  max-width: 720px;
+  outline: solid 2px transparent;
+
+  &:hover {
+    outline: solid 2px $border-color;
+    transition: 0.3s ease-in;
+  }
 
   & input {
     outline: none;
@@ -19,5 +26,15 @@
 
   & img {
     width: 15px;
+    cursor: pointer;
   }
+
+  & button {
+    background: none;
+    border: none;
+  }
+}
+
+.autoFocus {
+  outline: solid 2px $border-color;
 }

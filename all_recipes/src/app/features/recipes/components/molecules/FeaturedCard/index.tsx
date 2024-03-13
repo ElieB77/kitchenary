@@ -21,6 +21,8 @@ const FeaturedCard: FC<FeaturedCardProps> = ({
   btnIcon,
   likeIcon,
   btnOnClick,
+  handleLikeBtnClick,
+  isSaved,
 }) => {
   return (
     <div className={styles.featuredCard}>
@@ -39,7 +41,12 @@ const FeaturedCard: FC<FeaturedCardProps> = ({
           fill
           alt={title}
         />
-        <LikeButton secondaryColor={false} likeIcon={likeIcon} />
+        <LikeButton
+          secondaryColor={false}
+          likeIcon={likeIcon}
+          handleLikeBtnClick={handleLikeBtnClick}
+          isSaved={isSaved}
+        />
       </div>
     </div>
   );

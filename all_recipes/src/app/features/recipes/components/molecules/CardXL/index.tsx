@@ -1,9 +1,7 @@
 "use client";
 import { FC } from "react";
 import styles from "./styles.module.scss";
-import { NOODLES_IMG } from "../../../constants";
 import Image from "next/image";
-import { RIGHT_ARROW_ICON } from "@/app/shared/constants";
 import { ImageType } from "@/app/shared/types";
 import RoundedButton, {
   RoundedButtonProps,
@@ -36,7 +34,7 @@ const CardXL: FC<CardXLProps> = ({
         <p>{description}</p>
         <div onClick={onClick} className={styles.cardXL__description__footer}>
           <p>{footerText}</p>
-          <RoundedButton icon={icon} onClick={undefined} />
+          <RoundedButton icon={icon} onClick={undefined!} />
         </div>
       </div>
     </div>

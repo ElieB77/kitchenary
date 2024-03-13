@@ -17,14 +17,14 @@ export async function GET(request: NextRequest) {
 
     return NextResponse.json(
       {
-        message: "Favorite recipe succesfully removed!",
+        message: "Success retrieving user favorite recipes!",
         recipes: user.recipes,
       },
       { status: 200 }
     );
   } catch (error) {
     return NextResponse.json(
-      { message: "Error removing recipe" },
+      { message: "Something went wrong. Please try again later." },
       { status: 500 }
     );
   }

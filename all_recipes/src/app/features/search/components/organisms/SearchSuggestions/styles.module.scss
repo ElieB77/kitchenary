@@ -1,3 +1,5 @@
+@use "../../../../../shared/styles/utils/variables" as *;
+
 .searchSuggestions {
   display: flex;
   justify-content: center;
@@ -11,5 +13,11 @@
     margin: 20px 0 10px 0;
     justify-content: center;
     gap: 5px;
+  }
+
+  @media only screen and (min-width: $breakpoint-lg) {
+    & form {
+      margin: 0 auto;
+    }
   }
 }

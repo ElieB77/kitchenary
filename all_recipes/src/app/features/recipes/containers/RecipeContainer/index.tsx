@@ -17,13 +17,16 @@ import * as DOMPurify from "dompurify";
 import { IngredientsType, StepsType, NutrientsType } from "../../types";
 import ErrorPage from "@/app/shared/components/templates/ErrorPage";
 import { useRouter } from "next/navigation";
+import { AccountContext } from "@/app/features/account/contexts/AccountContext";
 
 interface RecipeContainerProps {
-  recipeId: number;
+  recipeId: string;
 }
 
 const RecipeContainer: FC<RecipeContainerProps> = ({ recipeId }) => {
   const { getRecipeInformations, recipeInformations } = useContext(LibContext);
+  const { addAndRemoveFavoriteRecipe, favoriteRecipeAlreadyExists } =
+    useContext(AccountContext);
   const router = useRouter();
 
   useEffect(() => {
@@ -31,19 +34,6 @@ const RecipeContainer: FC<RecipeContainerProps> = ({ recipeId }) => {
   }, [recipeId]);
 
   if (!recipeInformations) return null;
-
-  // if (!recipeInformations) {
-  //   return (
-  //     <ErrorPage
-  //       status={"500"}
-  //       message={
-  //         "Oops! It looks like something went wrong on our end. Please try again later. We apologize for any inconvenience."
-  //       }
-  //       btnText={"Back to home page"}
-  //       btnOnClick={() => router.push("/")}
-  //     />
-  //   );
-  // }
 
   const {
     title,
@@ -126,6 +116,10 @@ const RecipeContainer: FC<RecipeContainerProps> = ({ recipeId }) => {
       ingredients={renderIngredientsList}
       steps={renderSteps}
       nutrientCards={renderNutrientCards}
+      handleLikeBtnClick={(event: any) =>
+        addAndRemoveFavoriteRecipe(event, title, id, imageType)
+      }
+      isSaved={favoriteRecipeAlreadyExists(id) ? true : false}
     />
   );
 };

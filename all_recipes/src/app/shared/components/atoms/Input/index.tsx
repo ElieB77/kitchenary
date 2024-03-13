@@ -8,11 +8,19 @@ export interface InputProps {
   type: string;
   onChange: any;
   value: any;
+  disabled?: boolean;
 }
 
-const Input: FC<InputProps> = ({ id, label, type, onChange, value }) => {
+const Input: FC<InputProps> = ({
+  id,
+  label,
+  type,
+  onChange,
+  value,
+  disabled,
+}) => {
   return (
-    <div className={styles.input}>
+    <div className={`${styles.input} ${disabled ? styles.disabled : ""}`}>
       <label htmlFor={id}>{label}</label>
       <input
         className={ebGaramond.className}
@@ -20,6 +28,7 @@ const Input: FC<InputProps> = ({ id, label, type, onChange, value }) => {
         id={id}
         type={type}
         value={value}
+        required
       />
     </div>
   );

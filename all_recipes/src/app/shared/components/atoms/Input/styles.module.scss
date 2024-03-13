@@ -27,3 +27,12 @@
     }
   }
 }
+
+.disabled {
+  pointer-events: none;
+  opacity: 5;
+
+  & input {
+    color: rgba($text-color, $alpha: 0.5);
+  }
+}
