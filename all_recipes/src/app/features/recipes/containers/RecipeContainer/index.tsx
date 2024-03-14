@@ -13,9 +13,8 @@ import {
 import IngredientListItem from "../../components/atoms/IngredientListItem";
 import Step from "../../components/atoms/Step";
 import CardNutrient from "../../components/molecules/CardNutrient";
-import * as DOMPurify from "dompurify";
+import DOMPurify from "dompurify";
 import { IngredientsType, StepsType, NutrientsType } from "../../types";
-import ErrorPage from "@/app/shared/components/templates/ErrorPage";
 import { useRouter } from "next/navigation";
 import { AccountContext } from "@/app/features/account/contexts/AccountContext";
 
