@@ -34,7 +34,7 @@ export async function POST(request: NextRequest) {
       }
     );
 
-    const resetLink = `http://localhost:3000/auth/reset-password?token=${token}`;
+    const resetLink = `${process.env.BASE_URL}/auth/reset-password?token=${token}`;
     const emailSubject = "Reset password";
     const emailBody =
       "Someone just requested to change your Kitchenary password. If this was you, click on the link below to reset.";

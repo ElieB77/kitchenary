@@ -63,7 +63,7 @@ export async function POST(request: NextRequest) {
       }
     );
 
-    const emailLink = `http://localhost:3000/auth/verify-email?token=${token}&email=${email}
+    const emailLink = `${process.env.BASE_URL}/auth/verify-email?token=${token}&email=${email}
     `;
     const emailSubject = "Activate my account";
     const emailBody =
