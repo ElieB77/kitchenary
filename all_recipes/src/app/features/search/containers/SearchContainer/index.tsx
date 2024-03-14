@@ -48,7 +48,6 @@ const SearchPageContainer = () => {
     return getCurrentPageData(searchResults).map(
       (result: RecipeType, index: number) => {
         const { id, imageType, title } = result;
-        console.log("$$$", favoriteRecipeAlreadyExists(id));
         return (
           <Card
             key={index}

@@ -114,11 +114,11 @@ function AuthProvider({ children }: { children: React.ReactNode }) {
       });
       router.push("/auth/login");
     } catch (error: any) {
-      console.log(error);
       if (error.response.status === 409) {
         router.push("/");
       }
       setter(true);
+      throw new Error(error);
     }
   };
 

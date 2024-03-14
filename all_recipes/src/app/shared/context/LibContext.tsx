@@ -51,7 +51,7 @@ function LibProvider({ children }: { children: React.ReactNode }) {
       );
       setter(response.data);
     } catch (error: any) {
-      console.error(`Error fetching data: ${error.message}`);
+      throw new Error(`Error fetching data: ${error.message}`);
     }
   };
 
@@ -62,7 +62,7 @@ function LibProvider({ children }: { children: React.ReactNode }) {
       );
       setRecipes(response.data.results);
     } catch (error: any) {
-      console.error(`Error fetching recipe details: ${error.message}`);
+      throw new Error(`Error fetching recipe details: ${error.message}`);
     }
   };
 
@@ -106,7 +106,7 @@ function LibProvider({ children }: { children: React.ReactNode }) {
       );
       setSearchResults(response.data.results);
     } catch (error: any) {
-      console.error(`Error fetching recipe details: ${error.message}`);
+      throw new Error(`Error fetching recipe details: ${error.message}`);
     }
   };
 
@@ -117,7 +117,7 @@ function LibProvider({ children }: { children: React.ReactNode }) {
       );
       setRecipeInformations(response.data);
     } catch (error: any) {
-      console.error(`Error fetching recipe details: ${error.message}`);
+      throw new Error(`Error fetching recipe details: ${error.message}`);
     }
   };
 
