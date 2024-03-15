@@ -1,3 +1,4 @@
+"use client";
 import { useSearchParams } from "next/navigation";
 import useAuthFormForm from "../../hooks/useAuthForm";
 import { ERROR_ICON } from "@/app/shared/constants";
