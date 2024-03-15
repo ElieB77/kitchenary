@@ -18,7 +18,7 @@ import { QueryItemType } from "../shared/types";
 import { LibProvider } from "../shared/context/LibContext";
 import useSearchBar from "../features/search/hooks/useSearchBar";
 import { QueryClient, QueryClientProvider } from "react-query";
-import { ThemeProvider, Zoom, createTheme } from "@mui/material";
+import { ThemeProvider, createTheme } from "@mui/material";
 import { AuthProvider } from "../features/authentication/contexts/AuthContext";
 import { ToastContainer, Slide } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
