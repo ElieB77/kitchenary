@@ -76,7 +76,11 @@ const FeaturedContainer: FC<FeaturedContainerProps> = ({ slug }) => {
       return (
         <FeaturedCard
           key={index}
-          title={recipe.title}
+          title={
+            recipe.title.length > 50
+              ? recipe.title.substring(0, 50) + "..."
+              : recipe.title
+          }
           count={index + 1}
           totalCount={`of ${pancakeRecipes.number}`}
           imageSrc={getProperImageUrl(recipe.id, recipe.imageType)}
