@@ -1,13 +1,6 @@
 import Image from "next/image";
 import styles from "./styles.module.scss";
-import {
-  ChangeEvent,
-  FC,
-  FormEvent,
-  useContext,
-  useEffect,
-  useState,
-} from "react";
+import { FC, useContext, useEffect, useState } from "react";
 import { ImageType, QueryItemType } from "@/app/shared/types";
 import Logo, { LogoProps } from "../../atoms/Logo";
 import Menu, { MenuProps } from "../Menu";
@@ -16,8 +9,7 @@ import SearchBar, {
 } from "@/app/features/search/components/molecules/SearchBar";
 import UserMenu, { UserMenuProps } from "../../molecules/UserMenu";
 import { usePathname, useSearchParams } from "next/navigation";
-import { CUISINES, MEALS, SEARCH_ICON } from "@/app/shared/constants";
-import Link from "next/link";
+import { SEARCH_ICON } from "@/app/shared/constants";
 import NavLinksDropdown from "../../molecules/NavLinksDropdown";
 import { AuthContext } from "@/app/features/authentication/contexts/AuthContext";
 import useSearchBar from "@/app/features/search/hooks/useSearchBar";

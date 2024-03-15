@@ -1,6 +1,5 @@
 import Title, { TitleProps } from "@/app/shared/components/atoms/Title";
 import styles from "./styles.module.scss";
-import SavedItems, { SavedItemsProps } from "../../molecules/SavedItems";
 import { FC } from "react";
 
 interface SavedItemsPageProps extends TitleProps {

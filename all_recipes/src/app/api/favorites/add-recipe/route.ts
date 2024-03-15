@@ -1,4 +1,3 @@
-import RecipeTitle from "@/app/features/recipes/components/atoms/RecipeTitle";
 import { connect } from "@/app/shared/config/dbConfig";
 import { User } from "@/app/shared/models/userModel";
 import { NextRequest, NextResponse } from "next/server";

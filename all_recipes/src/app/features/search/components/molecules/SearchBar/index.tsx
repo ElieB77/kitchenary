@@ -1,7 +1,6 @@
 import { FC } from "react";
 import styles from "./styles.module.scss";
 import Image from "next/image";
-import { SEARCH_ICON } from "@/app/shared/constants";
 import { ImageType } from "@/app/shared/types";
 
 export interface SearchBarProps {

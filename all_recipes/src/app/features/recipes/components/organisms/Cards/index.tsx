@@ -1,6 +1,5 @@
 import { FC } from "react";
 import styles from "./styles.module.scss";
-import Button, { ButtonProps } from "@/app/shared/components/atoms/Button";
 
 export interface CardsProps {
   cards: JSX.Element | JSX.Element[];

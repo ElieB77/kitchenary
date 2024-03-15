@@ -1,4 +1,3 @@
-import axios from "axios";
 import { CORRECT_FORMAT_EMAIL } from "../constants";
 
 export const checkPasswordRequirements = (password: string) => {

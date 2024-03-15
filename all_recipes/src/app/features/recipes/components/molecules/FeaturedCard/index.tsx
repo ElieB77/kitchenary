@@ -3,7 +3,6 @@ import styles from "./styles.module.scss";
 import Image from "next/image";
 import Button, { ButtonProps } from "@/app/shared/components/atoms/Button";
 import LikeButton, { LikeButtonProps } from "../../atoms/LikeButton";
-import { ImageType } from "@/app/shared/types";
 
 export interface FeaturedCardProps extends ButtonProps, LikeButtonProps {
   title: string;

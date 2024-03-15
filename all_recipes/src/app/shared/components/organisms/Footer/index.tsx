@@ -2,7 +2,6 @@ import { FC } from "react";
 import styles from "./styles.module.scss";
 import Logo, { LogoProps } from "../../atoms/Logo";
 import RoundedButton, { RoundedButtonProps } from "../../atoms/RoundedButton";
-import { UP_ARROW_ICON } from "@/app/shared/constants";
 
 interface FooterProps extends LogoProps, RoundedButtonProps {
   catchLine: string;

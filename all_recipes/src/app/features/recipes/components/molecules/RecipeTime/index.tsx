@@ -1,7 +1,6 @@
 import { FC } from "react";
 import styles from "./styles.module.scss";
 import { ebGaramond } from "@/app/(routes)/layout";
-import { TIME_ICON } from "../../../constants";
 import Image from "next/image";
 import { ImageType } from "@/app/shared/types";
 

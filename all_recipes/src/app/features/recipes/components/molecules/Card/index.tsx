@@ -1,5 +1,3 @@
-import { RIGHT_ARROW_ICON } from "@/app/shared/constants";
-import { HEART_ICON, NOODLES_IMG } from "../../../constants";
 import LikeButton, { LikeButtonProps } from "../../atoms/LikeButton";
 import styles from "./styles.module.scss";
 import Image from "next/image";

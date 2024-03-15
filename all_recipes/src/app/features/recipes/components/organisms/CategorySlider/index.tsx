@@ -1,6 +1,5 @@
 import { FC } from "react";
 import styles from "./styles.module.scss";
-import Title from "@/app/shared/components/atoms/Title";
 
 export interface CategorySliderProps {
   roundedCards: JSX.Element;

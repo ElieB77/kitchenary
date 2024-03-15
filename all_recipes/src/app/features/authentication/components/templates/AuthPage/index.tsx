@@ -3,11 +3,10 @@ import Button, { ButtonProps } from "@/app/shared/components/atoms/Button";
 import styles from "./styles.module.scss";
 import Input from "@/app/shared/components/atoms/Input";
 import { ebGaramond } from "@/app/(routes)/layout";
-import CheckBox, { CheckBoxProps } from "../../atoms/CheckBox";
+import { CheckBoxProps } from "../../atoms/CheckBox";
 import { FC } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { ImageType } from "@/app/shared/types";
 import FormErrorMessage, {
   FormErrorMessageProps,
 } from "../../molecules/FormErrorMessage";
