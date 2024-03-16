@@ -1,19 +1,11 @@
 "use client";
+import { PANCAKE_IMG } from "../features/recipes/constants";
 import {
-  BROWNIES_IMG,
-  BURGER_IMG,
-  COOKIE_IMG,
-  COUSCOUS_IMG,
-  HOT_WINGS_IMG,
-  MAC_AND_CHEESE_IMG,
-  NOODLES_IMG,
-  PANCAKE_IMG,
-  PASTA_IMG,
-  SALAD_IMG,
-  SMOOTHIE_IMG,
-  SOUP_IMG,
-} from "../features/recipes/constants";
-import { RIGHT_ARROW_ICON, SEARCH_ICON } from "../shared/constants";
+  POPULAR_CARDS,
+  RIGHT_ARROW_ICON,
+  ROUNDED_CARDS,
+  SEARCH_ICON,
+} from "../shared/constants";
 import RoundedCard from "../features/recipes/components/molecules/RoundedCard";
 import HomePage from "../shared/components/templates/HomePage";
 import Card from "../features/recipes/components/molecules/Card";
@@ -21,7 +13,11 @@ import Tab from "../features/search/components/atoms/Tab";
 import { TABS } from "../features/search/constants";
 import { useRouter } from "next/navigation";
 import useSearchBar from "../features/search/hooks/useSearchBar";
-import { NavLinksType } from "../shared/types";
+import {
+  NavLinksType,
+  PopularCardsType,
+  RoundedCardsType,
+} from "../shared/types";
 
 export default function Home() {
   const router = useRouter();
@@ -37,117 +33,37 @@ export default function Home() {
         }
         footerText={"Discover More Pancakes Here"}
         icon={RIGHT_ARROW_ICON}
-        roundedCards={
-          <>
+        roundedCards={ROUNDED_CARDS.map((roundedCard: RoundedCardsType) => {
+          return (
             <RoundedCard
-              image={SMOOTHIE_IMG}
-              title={"smoothies"}
-              onClick={() => router.push("/featured/smoothie")}
+              key={roundedCard.id}
+              image={roundedCard.image}
+              title={roundedCard.title}
+              onClick={() => router.push(roundedCard.navigateTo)}
             />
-            <RoundedCard
-              image={BURGER_IMG}
-              title={"burgers"}
-              onClick={() => router.push("/featured/burger")}
-            />
-            <RoundedCard
-              image={PASTA_IMG}
-              title={"Pastas"}
-              onClick={() => router.push("/featured/pasta")}
-            />
-            <RoundedCard
-              image={COOKIE_IMG}
-              title={"Cookies"}
-              onClick={() => router.push("/featured/cookie")}
-            />
-            <RoundedCard
-              image={SALAD_IMG}
-              title={"Salads"}
-              onClick={() => router.push("/featured/salad")}
-            />
-          </>
-        }
+          );
+        })}
         categorySliderTitleFirstWord={"tasty"}
         categorySliderTitleSecondWord={"selection"}
         popularRecipesTitleFirstWord={"popular"}
         popularRecipesTitleSecondWord={"recipes"}
-        cards={
-          <>
+        cards={POPULAR_CARDS.map((popularCard: PopularCardsType) => {
+          return (
             <Card
-              imageSrc={MAC_AND_CHEESE_IMG.src}
-              title={"main course"}
-              subtitle={"mac & cheese"}
-              descriptionIcon={RIGHT_ARROW_ICON}
+              key={popularCard.id}
+              imageSrc={popularCard.imageSrc}
+              title={popularCard.title}
+              subtitle={popularCard.subtitle}
+              descriptionIcon={popularCard.descriptionIcon}
               hasLikeButton={false}
               secondaryColor={false}
               likeIcon={undefined!}
-              onClick={() => router.push("/recipes?query=mac-and-cheese")}
+              onClick={() => router.push(popularCard.navigateTo)}
               handleLikeBtnClick={undefined!}
               isSaved={false}
             />
-            <Card
-              imageSrc={HOT_WINGS_IMG.src}
-              title={"fingerfood"}
-              subtitle={"hot wings"}
-              descriptionIcon={RIGHT_ARROW_ICON}
-              hasLikeButton={false}
-              secondaryColor={false}
-              likeIcon={undefined!}
-              onClick={() => router.push("/recipes?query=hot-wings")}
-              handleLikeBtnClick={undefined!}
-              isSaved={false}
-            />
-            <Card
-              imageSrc={NOODLES_IMG.src}
-              title={"main course"}
-              subtitle={"chicken noodles"}
-              descriptionIcon={RIGHT_ARROW_ICON}
-              hasLikeButton={false}
-              secondaryColor={false}
-              likeIcon={undefined!}
-              onClick={() => router.push("/recipes?query=chicken-noodles")}
-              handleLikeBtnClick={undefined!}
-              isSaved={false}
-            />
-            <Card
-              imageSrc={BROWNIES_IMG.src}
-              title={"dessert"}
-              subtitle={"peanut butter brownies"}
-              descriptionIcon={RIGHT_ARROW_ICON}
-              hasLikeButton={false}
-              secondaryColor={false}
-              likeIcon={undefined!}
-              onClick={() =>
-                router.push("/recipes?query=peanut-butter-brownies")
-              }
-              handleLikeBtnClick={undefined!}
-              isSaved={false}
-            />
-            <Card
-              imageSrc={SOUP_IMG.src}
-              title={"soup"}
-              subtitle={"mushroom soup"}
-              descriptionIcon={RIGHT_ARROW_ICON}
-              hasLikeButton={false}
-              secondaryColor={false}
-              likeIcon={undefined!}
-              onClick={() => router.push("/recipes?query=mushroom-soup")}
-              handleLikeBtnClick={undefined!}
-              isSaved={false}
-            />
-            <Card
-              imageSrc={COUSCOUS_IMG.src}
-              title={"main course"}
-              subtitle={"couscous"}
-              descriptionIcon={RIGHT_ARROW_ICON}
-              hasLikeButton={false}
-              secondaryColor={false}
-              likeIcon={undefined!}
-              onClick={() => router.push("/recipes?query=couscous")}
-              handleLikeBtnClick={undefined!}
-              isSaved={false}
-            />
-          </>
-        }
+          );
+        })}
         btnText={"view all"}
         btnIcon={RIGHT_ARROW_ICON}
         searchSuggestionsTabs={TABS.map((tab: NavLinksType, index: number) => {

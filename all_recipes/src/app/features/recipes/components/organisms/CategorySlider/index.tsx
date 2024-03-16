@@ -2,7 +2,7 @@ import { FC } from "react";
 import styles from "./styles.module.scss";
 
 export interface CategorySliderProps {
-  roundedCards: JSX.Element;
+  roundedCards: JSX.Element[];
 }
 
 const CategorySlider: FC<CategorySliderProps> = ({ roundedCards }) => {

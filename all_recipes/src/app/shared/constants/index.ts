@@ -1,4 +1,23 @@
-import { ImageType, NavLinkButtonsType, NavLinksType } from "../types";
+import {
+  BROWNIES_IMG,
+  BURGER_IMG,
+  COOKIE_IMG,
+  COUSCOUS_IMG,
+  HOT_WINGS_IMG,
+  MAC_AND_CHEESE_IMG,
+  NOODLES_IMG,
+  PASTA_IMG,
+  SALAD_IMG,
+  SMOOTHIE_IMG,
+  SOUP_IMG,
+} from "@/app/features/recipes/constants";
+import {
+  ImageType,
+  NavLinkButtonsType,
+  NavLinksType,
+  PopularCardsType,
+  RoundedCardsType,
+} from "../types";
 
 /*------------------
 Images
@@ -84,7 +103,7 @@ export const TRASH_ICON: ImageType = {
 };
 
 /*--------------------------
-Navigation Links Data
+Navigation
 --------------------------*/
 export const INGREDIENTS: NavLinksType[] = [
   { id: "chicken", name: "Chicken" },
@@ -172,5 +191,93 @@ export const NAV_DROPDOWN_BTN: NavLinkButtonsType[] = [
   {
     name: "diets",
     id: 3,
+  },
+];
+
+/*----------------------------------------
+Cards
+----------------------------------------*/
+
+export const ROUNDED_CARDS: RoundedCardsType[] = [
+  {
+    id: 1,
+    image: SMOOTHIE_IMG,
+    title: "smoothies",
+    navigateTo: "/featured/smoothie",
+  },
+  {
+    id: 2,
+    image: BURGER_IMG,
+    title: "burgers",
+    navigateTo: "/featured/burger",
+  },
+  {
+    id: 3,
+    image: PASTA_IMG,
+    title: "pastas",
+    navigateTo: "/featured/pasta",
+  },
+  {
+    id: 4,
+    image: COOKIE_IMG,
+    title: "cookies",
+    navigateTo: "/featured/cookie",
+  },
+  {
+    id: 5,
+    image: SALAD_IMG,
+    title: "salads",
+    navigateTo: "/featured/salad",
+  },
+];
+
+export const POPULAR_CARDS: PopularCardsType[] = [
+  {
+    id: 1,
+    imageSrc: MAC_AND_CHEESE_IMG.src,
+    title: "main course",
+    subtitle: "mac & cheese",
+    descriptionIcon: RIGHT_ARROW_ICON,
+    navigateTo: "/recipes?query=mac-and-cheese",
+  },
+  {
+    id: 2,
+    imageSrc: HOT_WINGS_IMG.src,
+    title: "fingerfood",
+    subtitle: "hot wings",
+    descriptionIcon: RIGHT_ARROW_ICON,
+    navigateTo: "/recipes?query=hot-wings",
+  },
+  {
+    id: 3,
+    imageSrc: NOODLES_IMG.src,
+    title: "main course",
+    subtitle: "chicken noodles",
+    descriptionIcon: RIGHT_ARROW_ICON,
+    navigateTo: "/recipes?query=chicken-noodles",
+  },
+  {
+    id: 4,
+    imageSrc: BROWNIES_IMG.src,
+    title: "dessert",
+    subtitle: "peanut butter brownies",
+    descriptionIcon: RIGHT_ARROW_ICON,
+    navigateTo: "/recipes?query=peanut-butter-brownies",
+  },
+  {
+    id: 5,
+    imageSrc: SOUP_IMG.src,
+    title: "soup",
+    subtitle: "mushroom soup",
+    descriptionIcon: RIGHT_ARROW_ICON,
+    navigateTo: "/recipes?query=mushroom-soup",
+  },
+  {
+    id: 6,
+    imageSrc: COUSCOUS_IMG.src,
+    title: "main course",
+    subtitle: "couscous",
+    descriptionIcon: RIGHT_ARROW_ICON,
+    navigateTo: "/recipes?query=couscous",
   },
 ];
