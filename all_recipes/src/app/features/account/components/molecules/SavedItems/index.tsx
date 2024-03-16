@@ -8,7 +8,7 @@ export interface SavedItemsProps {
   imageSrc: string;
   deleteIcon: ImageType;
   handleClick: () => void;
-  handleDeleteClick: any;
+  handleDeleteClick: (event: React.MouseEvent<HTMLDivElement>) => void;
 }
 
 const SavedItems: FC<SavedItemsProps> = ({

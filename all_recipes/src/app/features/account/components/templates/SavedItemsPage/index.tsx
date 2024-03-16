@@ -3,7 +3,7 @@ import styles from "./styles.module.scss";
 import { FC } from "react";
 
 interface SavedItemsPageProps extends TitleProps {
-  savedItems: any;
+  savedItems: JSX.Element[];
   description: string;
   isEmpty: boolean;
   descriptionIfEmpty: string;

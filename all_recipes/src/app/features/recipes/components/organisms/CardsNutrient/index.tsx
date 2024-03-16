@@ -2,7 +2,7 @@ import { FC } from "react";
 import styles from "./styles.module.scss";
 
 export interface CardsNutrientProps {
-  nutrientCards: JSX.Element;
+  nutrientCards: JSX.Element[];
 }
 
 const CardsNutrient: FC<CardsNutrientProps> = ({ nutrientCards }) => {

@@ -32,7 +32,7 @@ interface AuthPageProps
   forgotPasswordLinkHref?: string;
   bottomLinkText: string;
   bottomLinkHref: string;
-  onSubmit: any;
+  onSubmit: (event: React.FormEvent<HTMLFormElement>) => Promise<void>;
 }
 
 const AuthPage: FC<AuthPageProps> = ({
@@ -55,7 +55,6 @@ const AuthPage: FC<AuthPageProps> = ({
   bottomLinkHref,
   forgotPasswordLinkText,
   forgotPasswordLinkHref,
-  label,
   onSubmit,
   errorMessage,
   errorIcon,

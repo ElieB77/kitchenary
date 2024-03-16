@@ -21,7 +21,9 @@ const ResetPasswordContainer = () => {
       infoText={
         "Enter a new password below to complete the process and securely access your account once again."
       }
-      onSubmit={(event: any) => handleSubmit(event, "reset-password", token)}
+      onSubmit={(event: React.FormEvent<HTMLFormElement>) =>
+        handleSubmit(event, "reset-password", token)
+      }
       id={"password"}
       label={"new password"}
       type={"password"}

@@ -9,11 +9,12 @@ import styles from "./styles.module.scss";
 import { useEffect, useState } from "react";
 import { renderNavigationLinks } from "@/app/shared/utils";
 import { usePathname, useSearchParams } from "next/navigation";
+import { NavLinkButtonsType } from "@/app/shared/types";
 
 const NavLinksDropdown = () => {
   const pathname = usePathname();
   const searchParams = useSearchParams();
-  const [openMenu, setOpenMenu] = useState<any>(null);
+  const [openMenu, setOpenMenu] = useState<string | null>(null);
   let timeout: ReturnType<typeof setTimeout>;
 
   const toggleDropdown = (menuName: string) => {
@@ -37,7 +38,7 @@ const NavLinksDropdown = () => {
   return (
     <div className={styles.navLinksDesktop}>
       <div className={styles.navLinksDesktop__buttons}>
-        {NAV_DROPDOWN_BTN.map((button: any) => {
+        {NAV_DROPDOWN_BTN.map((button: NavLinkButtonsType) => {
           return (
             <button
               key={button.id}

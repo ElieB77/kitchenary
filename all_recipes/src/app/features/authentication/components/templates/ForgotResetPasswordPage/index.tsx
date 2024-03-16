@@ -14,7 +14,7 @@ interface ForgotResetPasswordPageProps
     FormErrorMessageProps {
   title: string;
   infoText: string;
-  onSubmit: any;
+  onSubmit: (event: React.FormEvent<HTMLFormElement>) => Promise<void>;
 }
 
 const ForgotResetPasswordPage: FC<ForgotResetPasswordPageProps> = ({

@@ -1,3 +1,4 @@
+import { FavoriteRecipeType } from "@/app/features/recipes/types";
 import { connect } from "@/app/shared/config/dbConfig";
 import { User } from "@/app/shared/models/userModel";
 import { NextRequest, NextResponse } from "next/server";
@@ -23,7 +24,7 @@ export async function POST(request: NextRequest) {
     }
 
     const alreadyExist = user.recipes.find(
-      (recipe: any) => recipe.recipeId === recipeId
+      (recipe: FavoriteRecipeType) => recipe.recipeId === recipeId
     );
 
     if (alreadyExist) {

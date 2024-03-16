@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { QueryItemType } from "../types";
+import { NavLinkButtonsType, NavLinksType } from "../types";
 
 export const getProperImageUrl = (id: number, imageType: string) => {
   return `https://spoonacular.com/recipeImages/${id}-556x370.${imageType}`;
@@ -12,14 +12,17 @@ export const scrollToTop = () => {
   });
 };
 
-export const renderNavigationLinks = (data: any, typeOfQuery: string) => {
+export const renderNavigationLinks = (
+  data: NavLinksType[],
+  typeOfQuery: string
+) => {
   if (!data) return;
 
   {
-    return data.map((el: QueryItemType) => {
+    return data.map((navLink: NavLinksType) => {
       return (
-        <Link key={el.id} href={`/recipes?${typeOfQuery}=${el.id}`}>
-          {el.name}
+        <Link key={navLink.id} href={`/recipes?${typeOfQuery}=${navLink.id}`}>
+          {navLink.name}
         </Link>
       );
     });

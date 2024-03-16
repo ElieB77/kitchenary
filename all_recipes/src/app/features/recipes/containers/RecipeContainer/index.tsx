@@ -15,7 +15,6 @@ import Step from "../../components/atoms/Step";
 import CardNutrient from "../../components/molecules/CardNutrient";
 import DOMPurify from "dompurify";
 import { IngredientsType, StepsType, NutrientsType } from "../../types";
-import { useRouter } from "next/navigation";
 import { AccountContext } from "@/app/features/account/contexts/AccountContext";
 
 interface RecipeContainerProps {
@@ -26,13 +25,14 @@ const RecipeContainer: FC<RecipeContainerProps> = ({ recipeId }) => {
   const { getRecipeInformations, recipeInformations } = useContext(LibContext);
   const { addAndRemoveFavoriteRecipe, favoriteRecipeAlreadyExists } =
     useContext(AccountContext);
-  const router = useRouter();
 
   useEffect(() => {
     getRecipeInformations(recipeId);
   }, [recipeId]);
 
   if (!recipeInformations) return null;
+
+  console.log(recipeInformations);
 
   const {
     title,
@@ -115,7 +115,7 @@ const RecipeContainer: FC<RecipeContainerProps> = ({ recipeId }) => {
       ingredients={renderIngredientsList}
       steps={renderSteps}
       nutrientCards={renderNutrientCards}
-      handleLikeBtnClick={(event: any) =>
+      handleLikeBtnClick={(event: React.MouseEvent<HTMLButtonElement>) =>
         addAndRemoveFavoriteRecipe(event, title, id, imageType)
       }
       isSaved={favoriteRecipeAlreadyExists(id) ? true : false}

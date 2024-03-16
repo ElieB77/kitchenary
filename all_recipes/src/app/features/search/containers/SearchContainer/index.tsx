@@ -34,6 +34,8 @@ const SearchPageContainer = () => {
 
   if (!searchResults) return null;
 
+  console.log(searchResults);
+
   const renderResults = () => {
     if (searchResults.length === 0) {
       return (
@@ -61,7 +63,7 @@ const SearchPageContainer = () => {
             secondaryColor={false}
             likeIcon={HEART_ICON}
             onClick={() => router.push(`/recipe/${id}`)}
-            handleLikeBtnClick={(event: any) =>
+            handleLikeBtnClick={(event: React.MouseEvent<HTMLButtonElement>) =>
               addAndRemoveFavoriteRecipe(event, title, id, imageType)
             }
             isSaved={favoriteRecipeAlreadyExists(id) ? true : false}

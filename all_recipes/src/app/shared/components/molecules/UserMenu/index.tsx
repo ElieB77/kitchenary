@@ -12,7 +12,6 @@ export interface UserMenuProps {
   registerLinkText: string;
   registerLinkHref: string;
   isUserMenuOpen?: boolean;
-  setIsUserMenuOpen: any;
 }
 
 const UserMenu: FC<UserMenuProps> = ({
@@ -23,7 +22,6 @@ const UserMenu: FC<UserMenuProps> = ({
   registerLinkText,
   registerLinkHref,
   isUserMenuOpen,
-  setIsUserMenuOpen,
 }) => {
   const { isLoggedIn, handleLogout } = useContext(AuthContext);
 

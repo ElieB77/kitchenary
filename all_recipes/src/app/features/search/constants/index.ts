@@ -1,6 +1,6 @@
-import { QueryItemType } from "@/app/shared/types";
+import { NavLinksType } from "@/app/shared/types";
 
-export const TABS: QueryItemType[] = [
+export const TABS: NavLinksType[] = [
   { name: "Lasagna", id: "lasagna" },
   { name: "Meatloaf", id: "meatloaf" },
   { name: "Pancakes", id: "pancakes" },

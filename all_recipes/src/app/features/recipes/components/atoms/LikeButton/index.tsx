@@ -7,7 +7,7 @@ import { HEART_FILLED_ICON } from "../../../constants";
 export interface LikeButtonProps {
   secondaryColor: boolean;
   likeIcon: ImageType;
-  handleLikeBtnClick: any;
+  handleLikeBtnClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
   isSaved: boolean;
 }
 

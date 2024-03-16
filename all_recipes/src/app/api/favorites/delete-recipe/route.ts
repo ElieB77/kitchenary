@@ -1,3 +1,4 @@
+import { FavoriteRecipeType } from "@/app/features/recipes/types";
 import { connect } from "@/app/shared/config/dbConfig";
 import { User } from "@/app/shared/models/userModel";
 import { NextRequest, NextResponse } from "next/server";
@@ -17,7 +18,8 @@ export async function DELETE(request: NextRequest) {
     }
 
     const recipeIndex = user.recipes.findIndex(
-      (recipe: any) => Number(recipe.recipeId) === Number(recipeId)
+      (recipe: FavoriteRecipeType) =>
+        Number(recipe.recipeId) === Number(recipeId)
     );
 
     if (recipeIndex === -1) {

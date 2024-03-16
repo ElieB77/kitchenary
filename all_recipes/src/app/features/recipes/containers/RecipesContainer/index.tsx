@@ -56,7 +56,7 @@ const RecipesPageContainer = () => {
             secondaryColor={false}
             likeIcon={HEART_ICON}
             onClick={() => router.push(`/recipe/${id}`)}
-            handleLikeBtnClick={(event: any) =>
+            handleLikeBtnClick={(event: React.MouseEvent<HTMLButtonElement>) =>
               addAndRemoveFavoriteRecipe(event, title, id, imageType)
             }
             isSaved={favoriteRecipeAlreadyExists(id) ? true : false}

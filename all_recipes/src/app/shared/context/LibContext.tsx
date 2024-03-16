@@ -1,19 +1,24 @@
 "use client";
+import {
+  RecipeInformationsResultsType,
+  RecipeResultType,
+  RecipeType,
+} from "@/app/features/recipes/types";
 import axios from "axios";
 import { createContext, useEffect, useState } from "react";
 
 interface LibContextState {
-  pancakeRecipes: any;
-  smoothieRecipes: any;
-  burgerRecipes: any;
-  pastaRecipes: any;
-  cookieRecipes: any;
-  saladRecipes: any;
-  recipeInformations: any;
+  pancakeRecipes: RecipeResultType | null | undefined;
+  smoothieRecipes: RecipeResultType | null | undefined;
+  burgerRecipes: RecipeResultType | null | undefined;
+  pastaRecipes: RecipeResultType | null | undefined;
+  cookieRecipes: RecipeResultType | null | undefined;
+  saladRecipes: RecipeResultType | null | undefined;
+  recipeInformations: RecipeInformationsResultsType | null | undefined;
   getRecipeInformations: (id: string) => void;
   getRecipesBySearch: (query: string) => void;
-  searchResults: any;
-  recipes: any;
+  searchResults: RecipeType[] | null | undefined;
+  recipes: RecipeType[] | null | undefined;
   getRecipes: (fullQuery: string) => void;
 }
 
@@ -24,26 +29,41 @@ const LibContext = createContext<LibContextState>({
   pastaRecipes: null,
   cookieRecipes: null,
   saladRecipes: null,
-  recipeInformations: undefined,
+  recipeInformations: null,
   getRecipeInformations: () => {},
   getRecipesBySearch: () => {},
-  searchResults: undefined,
-  recipes: undefined,
+  searchResults: null,
+  recipes: null,
   getRecipes: () => {},
 });
 
 function LibProvider({ children }: { children: React.ReactNode }) {
-  const [pancakeRecipes, setPancakeRecipes] = useState<any>();
-  const [smoothieRecipes, setSmoothieRecipes] = useState<any>();
-  const [burgerRecipes, setBurgerRecipes] = useState<any>();
-  const [pastaRecipes, setPastaRecipes] = useState<any>();
-  const [cookieRecipes, setCookieRecipes] = useState<any>();
-  const [saladRecipes, setSaladRecipes] = useState<any>();
-  const [recipeInformations, setRecipeInformations] = useState<any>();
-  const [searchResults, setSearchResults] = useState<any>();
-  const [recipes, setRecipes] = useState<any>();
+  const [pancakeRecipes, setPancakeRecipes] = useState<RecipeResultType | null>(
+    null
+  );
+  const [smoothieRecipes, setSmoothieRecipes] =
+    useState<RecipeResultType | null>();
+  const [burgerRecipes, setBurgerRecipes] = useState<RecipeResultType | null>(
+    null
+  );
+  const [pastaRecipes, setPastaRecipes] = useState<RecipeResultType | null>(
+    null
+  );
+  const [cookieRecipes, setCookieRecipes] = useState<RecipeResultType | null>(
+    null
+  );
+  const [saladRecipes, setSaladRecipes] = useState<RecipeResultType | null>(
+    null
+  );
+  const [recipeInformations, setRecipeInformations] =
+    useState<RecipeInformationsResultsType | null>(null);
+  const [searchResults, setSearchResults] = useState<RecipeType[] | null>(null);
+  const [recipes, setRecipes] = useState<RecipeType[] | null>(null);
 
-  const getRecipe = async (endpoint: string, setter: (data: any) => void) => {
+  const getRecipe = async (
+    endpoint: string,
+    setter: (data: RecipeResultType) => void
+  ) => {
     try {
       const response = await axios.get(
         `${process.env.NEXT_PUBLIC_API_URI}${endpoint}&apiKey=${process.env.NEXT_PUBLIC_API_KEY}`

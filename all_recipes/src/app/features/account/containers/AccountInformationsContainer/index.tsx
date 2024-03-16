@@ -16,7 +16,7 @@ const AccountInformationsContainer = () => {
       id={"email"}
       label={"email address"}
       type={"text"}
-      onChange={undefined}
+      onChange={undefined!}
       value={userEmail}
       changePasswordTitle={"change password"}
       changePasswordDescription={

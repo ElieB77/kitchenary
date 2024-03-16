@@ -16,7 +16,7 @@ interface FeaturedContainerProps {
 
 const FeaturedContainer: FC<FeaturedContainerProps> = ({ slug }) => {
   const router = useRouter();
-  const [data, setData] = useState<RecipeType[] | null>(null);
+  const [data, setData] = useState<RecipeType[] | undefined>([]);
   const [title, setTitle] = useState<string>("");
   const {
     pancakeRecipes,
@@ -57,7 +57,7 @@ const FeaturedContainer: FC<FeaturedContainerProps> = ({ slug }) => {
           setTitle("salad");
           break;
         default:
-          setData(null);
+          setData([]);
           setTitle("");
       }
     }
@@ -82,13 +82,13 @@ const FeaturedContainer: FC<FeaturedContainerProps> = ({ slug }) => {
               : recipe.title
           }
           count={index + 1}
-          totalCount={`of ${pancakeRecipes.number}`}
+          totalCount={`of ${pancakeRecipes?.number}`}
           imageSrc={getProperImageUrl(recipe.id, recipe.imageType)}
           btnText={"view recipe"}
           secondaryColor={false}
           likeIcon={HEART_ICON}
           btnOnClick={() => router.push(`/recipe/${recipe.id}`)}
-          handleLikeBtnClick={(event: any) =>
+          handleLikeBtnClick={(event: React.MouseEvent<HTMLButtonElement>) =>
             addAndRemoveFavoriteRecipe(
               event,
               recipe.title,

@@ -1,11 +1,11 @@
 export type RecipeType = {
   title: string;
-  number: number;
   id: number;
   imageType: string;
 };
 
-export type RecipeResponseType = {
+export type RecipeResultType = {
+  number: number;
   results: RecipeType[];
 };
 
@@ -22,4 +22,31 @@ export type NutrientsType = {
   amount: number;
   unit: string;
   percentOfDailyNeeds: number;
+};
+
+export type RecipeInformationsResultsType = {
+  id: number;
+  analyzedInstructions: {
+    0: {
+      steps: StepsType[];
+    };
+  };
+  dishTypes: string[];
+  extendedIngredients: IngredientsType[];
+  nutrition: {
+    nutrients: NutrientsType[];
+  };
+  title: string;
+  servings: number;
+  summary: string;
+  readyInMinutes: number;
+  cookingMinutes: number;
+  preparationMinutes: number;
+  imageType: string;
+};
+
+export type FavoriteRecipeType = {
+  recipeId: number;
+  recipeImageType: string;
+  recipeTitle: string;
 };

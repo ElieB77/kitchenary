@@ -21,7 +21,7 @@ import Tab from "../features/search/components/atoms/Tab";
 import { TABS } from "../features/search/constants";
 import { useRouter } from "next/navigation";
 import useSearchBar from "../features/search/hooks/useSearchBar";
-import { QueryItemType } from "../shared/types";
+import { NavLinksType } from "../shared/types";
 
 export default function Home() {
   const router = useRouter();
@@ -81,7 +81,7 @@ export default function Home() {
               secondaryColor={false}
               likeIcon={undefined!}
               onClick={() => router.push("/recipes?query=mac-and-cheese")}
-              handleLikeBtnClick={undefined}
+              handleLikeBtnClick={undefined!}
               isSaved={false}
             />
             <Card
@@ -93,7 +93,7 @@ export default function Home() {
               secondaryColor={false}
               likeIcon={undefined!}
               onClick={() => router.push("/recipes?query=hot-wings")}
-              handleLikeBtnClick={undefined}
+              handleLikeBtnClick={undefined!}
               isSaved={false}
             />
             <Card
@@ -105,7 +105,7 @@ export default function Home() {
               secondaryColor={false}
               likeIcon={undefined!}
               onClick={() => router.push("/recipes?query=chicken-noodles")}
-              handleLikeBtnClick={undefined}
+              handleLikeBtnClick={undefined!}
               isSaved={false}
             />
             <Card
@@ -119,7 +119,7 @@ export default function Home() {
               onClick={() =>
                 router.push("/recipes?query=peanut-butter-brownies")
               }
-              handleLikeBtnClick={undefined}
+              handleLikeBtnClick={undefined!}
               isSaved={false}
             />
             <Card
@@ -131,7 +131,7 @@ export default function Home() {
               secondaryColor={false}
               likeIcon={undefined!}
               onClick={() => router.push("/recipes?query=mushroom-soup")}
-              handleLikeBtnClick={undefined}
+              handleLikeBtnClick={undefined!}
               isSaved={false}
             />
             <Card
@@ -143,14 +143,14 @@ export default function Home() {
               secondaryColor={false}
               likeIcon={undefined!}
               onClick={() => router.push("/recipes?query=couscous")}
-              handleLikeBtnClick={undefined}
+              handleLikeBtnClick={undefined!}
               isSaved={false}
             />
           </>
         }
         btnText={"view all"}
         btnIcon={RIGHT_ARROW_ICON}
-        searchSuggestionsTabs={TABS.map((tab: QueryItemType, index: number) => {
+        searchSuggestionsTabs={TABS.map((tab: NavLinksType, index: number) => {
           return (
             <Tab
               key={index}

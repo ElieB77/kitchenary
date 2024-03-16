@@ -20,7 +20,9 @@ const ForgotPasswordContainer = () => {
       onChange={handleEmailChange}
       value={emailValue}
       btnOnClick={undefined!}
-      onSubmit={(event: any) => handleSubmit(event, "forgot-password")}
+      onSubmit={(event: React.FormEvent<HTMLFormElement>) =>
+        handleSubmit(event, "forgot-password")
+      }
       errorMessage={errorMessage}
       errorIcon={ERROR_ICON}
     />

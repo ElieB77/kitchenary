@@ -33,7 +33,9 @@ const RegisterContainer = () => {
       emailValue={emailValue}
       passwordValue={passwordValue}
       passwordOnChange={handlePasswordChange}
-      onSubmit={(event: any) => handleSubmit(event, "register")}
+      onSubmit={(event: React.FormEvent<HTMLFormElement>) =>
+        handleSubmit(event, "register")
+      }
       errorMessage={errorMessage}
       errorIcon={ERROR_ICON}
     />

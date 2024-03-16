@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import { AuthContext } from "@/app/features/authentication/contexts/AuthContext";
 
 const useAuthForm = () => {

@@ -45,7 +45,7 @@ const AuthContext = createContext<AuthContextState>({
 function AuthProvider({ children }: { children: React.ReactNode }) {
   const router = useRouter();
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
-  const [authToken, setAuthToken] = useState<any>("");
+  const [authToken, setAuthToken] = useState<string | undefined>("");
   const [userEmail, setUserEmail] = useState<string>("");
 
   const handleSuccesfulResponse = (

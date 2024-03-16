@@ -7,6 +7,7 @@ import { getProperImageUrl } from "@/app/shared/utils";
 import SavedItems from "../../components/molecules/SavedItems";
 import { useRouter } from "next/navigation";
 import { AuthContext } from "@/app/features/authentication/contexts/AuthContext";
+import { FavoriteRecipeType } from "@/app/features/recipes/types";
 
 const SavedItemsPageContainer = () => {
   const router = useRouter();
@@ -14,21 +15,28 @@ const SavedItemsPageContainer = () => {
   const { favoriteRecipes, deleteFavoriteRecipe } = useContext(AccountContext);
 
   const renderSavedItems = () => {
-    return favoriteRecipes.map((el: any, index: number) => {
-      return (
-        <SavedItems
-          key={index}
-          title={el.recipeTitle}
-          imageSrc={getProperImageUrl(el.recipeId, el.recipeImageType)}
-          deleteIcon={TRASH_ICON}
-          handleClick={() => router.push(`/recipe/${el.recipeId}`)}
-          handleDeleteClick={(event: any) => {
-            event.stopPropagation();
-            deleteFavoriteRecipe(el.recipeId, userEmail);
-          }}
-        />
-      );
-    });
+    return favoriteRecipes.map(
+      (favoriteRecipe: FavoriteRecipeType, index: number) => {
+        return (
+          <SavedItems
+            key={index}
+            title={favoriteRecipe.recipeTitle}
+            imageSrc={getProperImageUrl(
+              favoriteRecipe.recipeId,
+              favoriteRecipe.recipeImageType
+            )}
+            deleteIcon={TRASH_ICON}
+            handleClick={() =>
+              router.push(`/recipe/${favoriteRecipe.recipeId}`)
+            }
+            handleDeleteClick={(event: React.MouseEvent<HTMLDivElement>) => {
+              event.stopPropagation();
+              deleteFavoriteRecipe(favoriteRecipe.recipeId, userEmail);
+            }}
+          />
+        );
+      }
+    );
   };
 
   return (

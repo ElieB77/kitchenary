@@ -36,7 +36,9 @@ const LoginContainer = () => {
       emailValue={emailValue}
       passwordValue={passwordValue}
       passwordOnChange={handlePasswordChange}
-      onSubmit={(event: any) => handleSubmit(event, "login")}
+      onSubmit={(event: React.FormEvent<HTMLFormElement>) =>
+        handleSubmit(event, "login")
+      }
       errorMessage={errorMessage}
       errorIcon={ERROR_ICON}
     />

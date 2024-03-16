@@ -1,4 +1,4 @@
-import { ImageType, QueryItemType } from "../types";
+import { ImageType, NavLinkButtonsType, NavLinksType } from "../types";
 
 /*------------------
 Images
@@ -86,7 +86,7 @@ export const TRASH_ICON: ImageType = {
 /*--------------------------
 Navigation Links Data
 --------------------------*/
-export const INGREDIENTS: QueryItemType[] = [
+export const INGREDIENTS: NavLinksType[] = [
   { id: "chicken", name: "Chicken" },
   { id: "beef", name: "Beef" },
   { id: "pork", name: "Pork" },
@@ -96,7 +96,7 @@ export const INGREDIENTS: QueryItemType[] = [
   { id: "vegetables", name: "Vegetables" },
 ];
 
-export const MEALS: QueryItemType[] = [
+export const MEALS: NavLinksType[] = [
   { id: "main-course", name: "Main Course" },
   { id: "side-dish", name: "Side Dish" },
   { id: "dessert", name: "Dessert" },
@@ -113,7 +113,7 @@ export const MEALS: QueryItemType[] = [
   { id: "drink", name: "Drink" },
 ];
 
-export const CUISINES: QueryItemType[] = [
+export const CUISINES: NavLinksType[] = [
   { id: "african", name: "African" },
   { id: "asian", name: "Asian" },
   { id: "american", name: "American" },
@@ -142,7 +142,7 @@ export const CUISINES: QueryItemType[] = [
   { id: "vietnamese", name: "Vietnamese" },
 ];
 
-export const DIETS: QueryItemType[] = [
+export const DIETS: NavLinksType[] = [
   { id: "gluten-free", name: "Gluten-Free" },
   { id: "ketogenic", name: "Ketogenic" },
   { id: "vegetarian", name: "Vegetarian" },
@@ -156,7 +156,7 @@ export const DIETS: QueryItemType[] = [
   { id: "whole30", name: "Whole30" },
 ];
 
-export const NAV_DROPDOWN_BTN = [
+export const NAV_DROPDOWN_BTN: NavLinkButtonsType[] = [
   {
     name: "meals",
     id: 0,

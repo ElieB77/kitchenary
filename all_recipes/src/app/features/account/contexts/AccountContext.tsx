@@ -3,23 +3,33 @@ import axios from "axios";
 import { createContext, useContext, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { AuthContext } from "../../authentication/contexts/AuthContext";
+import { FavoriteRecipeType } from "../../recipes/types";
 
 interface AccountContextState {
-  favoriteRecipes: any;
-  addAndRemoveFavoriteRecipe: any;
-  deleteFavoriteRecipe: any;
-  favoriteRecipeAlreadyExists: any;
+  favoriteRecipes: FavoriteRecipeType[];
+  addAndRemoveFavoriteRecipe: (
+    event: React.MouseEvent<HTMLButtonElement>,
+    recipeTitle: string,
+    recipeId: number,
+    recipeImageType: string
+  ) => void;
+  deleteFavoriteRecipe: (recipeId: number, userEmail: string) => Promise<void>;
+  favoriteRecipeAlreadyExists: (
+    recipeId: number
+  ) => FavoriteRecipeType | undefined;
 }
 
 const AccountContext = createContext<AccountContextState>({
-  favoriteRecipes: undefined,
-  addAndRemoveFavoriteRecipe: undefined,
-  deleteFavoriteRecipe: undefined,
-  favoriteRecipeAlreadyExists: undefined,
+  favoriteRecipes: [],
+  addAndRemoveFavoriteRecipe: () => {},
+  deleteFavoriteRecipe: async () => {},
+  favoriteRecipeAlreadyExists: () => undefined,
 });
 
 function AccountProvider({ children }: { children: React.ReactNode }) {
-  const [favoriteRecipes, setFavoriteRecipes] = useState<any>([]);
+  const [favoriteRecipes, setFavoriteRecipes] = useState<FavoriteRecipeType[]>(
+    []
+  );
   const { userEmail, isLoggedIn } = useContext(AuthContext);
 
   const getUserFavoriteRecipes = async () => {
@@ -34,9 +44,10 @@ function AccountProvider({ children }: { children: React.ReactNode }) {
     }
   };
 
-  const favoriteRecipeAlreadyExists = (recipeId: any) => {
+  const favoriteRecipeAlreadyExists = (recipeId: number) => {
     return favoriteRecipes?.find(
-      (favoriteRecipe: any) => favoriteRecipe.recipeId === recipeId
+      (favoriteRecipe: FavoriteRecipeType) =>
+        favoriteRecipe.recipeId === recipeId
     );
   };
 
@@ -57,7 +68,10 @@ function AccountProvider({ children }: { children: React.ReactNode }) {
         recipeId: recipeId,
         recipeImageType: recipeImageType,
       };
-      setFavoriteRecipes((prevRecipes: any[]) => [...prevRecipes, newRecipe]);
+      setFavoriteRecipes((prevRecipes: FavoriteRecipeType[]) => [
+        ...prevRecipes,
+        newRecipe,
+      ]);
     } catch (error: any) {
       toast.error("Something went wrong. Please try again later.");
       throw new Error(error);
@@ -69,7 +83,7 @@ function AccountProvider({ children }: { children: React.ReactNode }) {
       await axios.delete(
         `/api/favorites/delete-recipe?email=${userEmail}&recipeId=${recipeId}`
       );
-      setFavoriteRecipes((prevRecipes: any[]) =>
+      setFavoriteRecipes((prevRecipes: FavoriteRecipeType[]) =>
         prevRecipes.filter((recipe) => recipe.recipeId !== recipeId)
       );
     } catch (error: any) {
@@ -79,7 +93,7 @@ function AccountProvider({ children }: { children: React.ReactNode }) {
   };
 
   const addAndRemoveFavoriteRecipe = (
-    event: any,
+    event: React.MouseEvent<HTMLButtonElement>,
     recipeTitle: string,
     recipeId: number,
     recipeImageType: string

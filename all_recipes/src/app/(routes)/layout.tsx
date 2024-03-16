@@ -14,7 +14,7 @@ import {
 } from "../shared/constants";
 import Footer from "../shared/components/organisms/Footer";
 import Link from "next/link";
-import { QueryItemType } from "../shared/types";
+import { NavLinksType } from "../shared/types";
 import { LibProvider } from "../shared/context/LibContext";
 import useSearchBar from "../features/search/hooks/useSearchBar";
 import { QueryClient, QueryClientProvider } from "react-query";
@@ -75,14 +75,14 @@ export default function RootLayout({
                     secondTitle={"cuisines"}
                     thirdTitle={"ingredients"}
                     fourthTitle={"diets"}
-                    meals={MEALS.map((meal: QueryItemType) => {
+                    meals={MEALS.map((meal: NavLinksType) => {
                       return (
                         <Link key={meal.id} href={`/recipes?type=${meal.id}`}>
                           {meal.name}
                         </Link>
                       );
                     })}
-                    cuisines={CUISINES.map((cuisine: QueryItemType) => {
+                    cuisines={CUISINES.map((cuisine: NavLinksType) => {
                       return (
                         <Link
                           key={cuisine.id}
@@ -92,19 +92,17 @@ export default function RootLayout({
                         </Link>
                       );
                     })}
-                    ingredients={INGREDIENTS.map(
-                      (ingredient: QueryItemType) => {
-                        return (
-                          <Link
-                            key={ingredient.id}
-                            href={`/recipes?includeIngredients=${ingredient.id}`}
-                          >
-                            {ingredient.name}
-                          </Link>
-                        );
-                      }
-                    )}
-                    diets={DIETS.map((diet: QueryItemType) => {
+                    ingredients={INGREDIENTS.map((ingredient: NavLinksType) => {
+                      return (
+                        <Link
+                          key={ingredient.id}
+                          href={`/recipes?includeIngredients=${ingredient.id}`}
+                        >
+                          {ingredient.name}
+                        </Link>
+                      );
+                    })}
+                    diets={DIETS.map((diet: NavLinksType) => {
                       return (
                         <Link key={diet.id} href={`/recipes?diet=${diet.id}`}>
                           {diet.name}
@@ -123,7 +121,6 @@ export default function RootLayout({
                     onSubmit={handleSubmit}
                     value={searchValue}
                     type={"text"}
-                    setIsUserMenuOpen={undefined}
                   />
                   <div className="container">{children}</div>
                   <Footer

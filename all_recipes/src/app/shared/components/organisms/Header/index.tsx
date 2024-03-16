@@ -1,7 +1,7 @@
 import Image from "next/image";
 import styles from "./styles.module.scss";
 import { FC, useContext, useEffect, useState } from "react";
-import { ImageType, QueryItemType } from "@/app/shared/types";
+import { ImageType } from "@/app/shared/types";
 import Logo, { LogoProps } from "../../atoms/Logo";
 import Menu, { MenuProps } from "../Menu";
 import SearchBar, {
@@ -119,7 +119,6 @@ const Header: FC<HeaderProps> = ({
                   registerLinkText={registerLinkText}
                   registerLinkHref={registerLinkHref}
                   isUserMenuOpen={isUserMenuOpen}
-                  setIsUserMenuOpen={setIsUserMenuOpen}
                 />
               </div>
             </div>
