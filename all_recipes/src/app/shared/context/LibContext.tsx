@@ -65,10 +65,8 @@ function LibProvider({ children }: { children: React.ReactNode }) {
     setter: (data: RecipeResultType) => void
   ) => {
     try {
-      const response = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_URI}${endpoint}&apiKey=${process.env.NEXT_PUBLIC_API_KEY}`
-      );
-      setter(response.data);
+      const response = await axios.get(`/api/lib-proxy/get?path=${endpoint}`);
+      setter(response.data.data);
     } catch (error: any) {
       throw new Error(`Error fetching data: ${error.message}`);
     }
@@ -77,9 +75,9 @@ function LibProvider({ children }: { children: React.ReactNode }) {
   const getRecipes = async (fullQuery: string) => {
     try {
       const response = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_URI}/complexSearch?${fullQuery}&number=50&apiKey=${process.env.NEXT_PUBLIC_API_KEY}`
+        `/api/lib-proxy/get?path=/complexSearch?${fullQuery}&number=50`
       );
-      setRecipes(response.data.results);
+      setRecipes(response.data.data.results);
     } catch (error: any) {
       throw new Error(`Error fetching recipe details: ${error.message}`);
     }
@@ -121,9 +119,9 @@ function LibProvider({ children }: { children: React.ReactNode }) {
   const getRecipesBySearch = async (query: string) => {
     try {
       const response = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_URI}/complexSearch?query=${query}&number=50&apiKey=${process.env.NEXT_PUBLIC_API_KEY}`
+        `/api/lib-proxy/get?path=/complexSearch?query=${query}&number=50`
       );
-      setSearchResults(response.data.results);
+      setSearchResults(response.data.data.results);
     } catch (error: any) {
       throw new Error(`Error fetching recipe details: ${error.message}`);
     }
@@ -132,9 +130,9 @@ function LibProvider({ children }: { children: React.ReactNode }) {
   const getRecipeInformations = async (id: string) => {
     try {
       const response = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_URI}/${id}/information?includeNutrition=true&apiKey=${process.env.NEXT_PUBLIC_API_KEY}`
+        `/api/lib-proxy/get?path=/${id}/information?includeNutrition=true`
       );
-      setRecipeInformations(response.data);
+      setRecipeInformations(response.data.data);
     } catch (error: any) {
       throw new Error(`Error fetching recipe details: ${error.message}`);
     }
