@@ -13,7 +13,7 @@ export async function GET(request: NextRequest) {
     }
 
     const response = await axios.get(
-      `https://api.spoonacular.com/recipes${path}&apiKey=dfc24af160234e84b4f9808f7a0fa988`
+      `${process.env.API_URI}${path}&apiKey=${process.env.API_KEY}`
     );
 
     const data = response.data;
