@@ -60,8 +60,6 @@ function LibProvider({ children }: { children: React.ReactNode }) {
   const [searchResults, setSearchResults] = useState<RecipeType[] | null>(null);
   const [recipes, setRecipes] = useState<RecipeType[] | null>(null);
 
-  console.log(pancakeRecipes);
-
   const getRecipe = async (
     endpoint: string,
     setter: (data: RecipeResultType) => void

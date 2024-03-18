@@ -32,8 +32,6 @@ const RecipeContainer: FC<RecipeContainerProps> = ({ recipeId }) => {
 
   if (!recipeInformations) return null;
 
-  console.log(recipeInformations);
-
   const {
     title,
     id,

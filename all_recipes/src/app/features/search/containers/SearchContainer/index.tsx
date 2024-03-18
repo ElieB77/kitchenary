@@ -34,8 +34,6 @@ const SearchPageContainer = () => {
 
   if (!searchResults) return null;
 
-  console.log(searchResults);
-
   const renderResults = () => {
     if (searchResults.length === 0) {
       return (

@@ -16,6 +16,13 @@ export async function GET(request: NextRequest) {
       `${process.env.API_URI}${path}&apiKey=${process.env.API_KEY}`
     );
 
+    if (!response) {
+      return NextResponse.json(
+        { message: "Error fetching api" },
+        { status: 404 }
+      );
+    }
+
     const data = response.data;
 
     return NextResponse.json({ data }, { status: 200 });
