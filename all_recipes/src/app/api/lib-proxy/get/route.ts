@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(request: NextRequest) {
   try {
-    const path = request.nextUrl.search.split("?path=")[1];
+    const path = decodeURIComponent(request.nextUrl.search.split("?path=")[1]);
 
     if (!path) {
       return NextResponse.json(
