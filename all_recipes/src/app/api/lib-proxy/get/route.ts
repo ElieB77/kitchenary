@@ -13,15 +13,10 @@ export async function GET(request: NextRequest) {
     }
 
     const response = await axios.get(
-      `https://api.spoonacular.com/recipes${path}&apiKey=63997e14bebe4b10b3864437f1f4b758`,
-      {
-        headers: {
-          "Cache-Control": "no-cache",
-          Pragma: "no-cache",
-          Expires: "0",
-        },
-      }
+      `https://api.spoonacular.com/recipes${path}&apiKey=63997e14bebe4b10b3864437f1f4b758`
     );
+
+    console.log(response);
 
     if (!response) {
       return NextResponse.json(
@@ -34,20 +29,11 @@ export async function GET(request: NextRequest) {
 
     return NextResponse.json({ data }, { status: 200 });
   } catch (error: any) {
-    if (error.response) {
-      const { status, data } = error.response;
-      return NextResponse.json(
-        { success: false, message: data.error || "Something went wrong" },
-        { status }
-      );
-    } else {
-      return NextResponse.json(
-        {
-          success: false,
-          message: "Something went wrong, please try again later.",
-        },
-        { status: 500 }
-      );
-    }
+    return NextResponse.json(
+      {
+        error,
+      },
+      { status: 500 }
+    );
   }
 }
