@@ -13,7 +13,12 @@ export async function GET(request: NextRequest) {
     }
 
     const response = await axios.get(
-      `${process.env.API_URI}${path}&apiKey=${process.env.API_KEY}`
+      `${process.env.API_URI}${path}&apiKey=${process.env.API_KEY}`,
+      {
+        headers: {
+          "Cache-Control": "no-cache",
+        },
+      }
     );
 
     if (!response) {
