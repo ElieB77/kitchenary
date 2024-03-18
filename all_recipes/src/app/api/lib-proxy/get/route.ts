@@ -13,22 +13,8 @@ export async function GET(request: NextRequest) {
     }
 
     const response = await axios.get(
-      `https://api.spoonacular.com/recipes${path}&apiKey=63997e14bebe4b10b3864437f1f4b758`,
-      {
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
-      }
+      `${process.env.API_URI}${path}&apiKey=${process.env.API_KEY}`
     );
-
-    console.log(response);
-
-    if (!response) {
-      return NextResponse.json(
-        { message: "Error fetching api" },
-        { status: 404 }
-      );
-    }
 
     const data = response.data;
 
