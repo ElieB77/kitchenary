@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(request: NextRequest) {
   try {
-    console.log(process.env.API_URI, process.env.API_KEY);
+    console.log(process.env.API_URI, process.env.API_KEY, process.env.EMAIL);
     const path = request.nextUrl.search.split("?path=")[1];
 
     if (!path) {
