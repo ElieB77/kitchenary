@@ -13,7 +13,7 @@ export async function GET(request: NextRequest) {
     }
 
     const response = await axios.get(
-      `${process.env.API_URI}${path}&apiKey=${process.env.API_KEY}`,
+      `https://api.spoonacular.com/recipes${path}&apiKey=63997e14bebe4b10b3864437f1f4b758`,
       {
         headers: {
           "Cache-Control": "no-cache",
