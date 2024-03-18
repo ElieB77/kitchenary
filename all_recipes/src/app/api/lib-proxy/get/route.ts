@@ -3,14 +3,6 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(request: NextRequest) {
   try {
-    console.log(
-      "uri",
-      process.env.API_URI,
-      "key",
-      process.env.API_KEY,
-      "email",
-      process.env.EMAIL
-    );
     const path = request.nextUrl.search.split("?path=")[1];
 
     if (!path) {
@@ -28,6 +20,20 @@ export async function GET(request: NextRequest) {
 
     return NextResponse.json({ data }, { status: 200 });
   } catch (error: any) {
-    return NextResponse.json({ message: error.message }, { status: 500 });
+    if (error.response) {
+      const { status, data } = error.response;
+      return NextResponse.json(
+        { success: false, message: data.error || "Something went wrong" },
+        { status }
+      );
+    } else {
+      return NextResponse.json(
+        {
+          success: false,
+          message: "Something went wrong, please try again later.",
+        },
+        { status: 500 }
+      );
+    }
   }
 }
