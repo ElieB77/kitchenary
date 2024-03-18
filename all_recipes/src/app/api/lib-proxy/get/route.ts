@@ -28,9 +28,6 @@ export async function GET(request: NextRequest) {
 
     return NextResponse.json({ data }, { status: 200 });
   } catch (error: any) {
-    return NextResponse.json(
-      { message: "Something went wrong, please try again later." },
-      { status: 500 }
-    );
+    return NextResponse.json({ message: error.message }, { status: 500 });
   }
 }
