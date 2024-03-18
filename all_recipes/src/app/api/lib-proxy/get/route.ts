@@ -17,6 +17,8 @@ export async function GET(request: NextRequest) {
       {
         headers: {
           "Cache-Control": "no-cache",
+          Pragma: "no-cache",
+          Expires: "0",
         },
       }
     );
