@@ -12,7 +12,14 @@ const LoginContainer = () => {
     handleSubmit,
     errorMessage,
     loading,
+    setEmailValue,
+    setPasswordValue,
   } = useAuthForm();
+
+  const authenticateWithDemoAccount = () => {
+    setEmailValue("demo@kitchenary.com");
+    setPasswordValue(process.env.NEXT_PUBLIC_DEMO_PASSWORD as string);
+  };
 
   return (
     <AuthPage
@@ -41,6 +48,8 @@ const LoginContainer = () => {
       }
       errorMessage={errorMessage}
       errorIcon={ERROR_ICON}
+      demoAccountClick={authenticateWithDemoAccount}
+      demoAccountText="use demo account"
     />
   );
 };

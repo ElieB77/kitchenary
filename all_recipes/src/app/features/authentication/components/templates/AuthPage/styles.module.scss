@@ -49,20 +49,29 @@
       display: flex;
       font-size: 12px;
       gap: 5px;
+      margin-bottom: 40px;
 
       & p {
         line-height: 20px !important;
       }
     }
 
+    &__useDemo {
+      cursor: pointer;
+      text-decoration: underline;
+      &::first-letter {
+        text-transform: uppercase;
+      }
+    }
+
     &__rememberMe {
-      margin-top: 30px;
       display: flex;
       flex-direction: column;
+      margin-top: 50px;
     }
 
     & button {
-      margin: 50px auto 10px auto;
+      margin: 10px auto;
     }
   }
 

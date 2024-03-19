@@ -33,6 +33,8 @@ interface AuthPageProps
   bottomLinkText: string;
   bottomLinkHref: string;
   onSubmit: (event: React.FormEvent<HTMLFormElement>) => Promise<void>;
+  demoAccountText?: string;
+  demoAccountClick?: () => void;
 }
 
 const AuthPage: FC<AuthPageProps> = ({
@@ -58,6 +60,8 @@ const AuthPage: FC<AuthPageProps> = ({
   onSubmit,
   errorMessage,
   errorIcon,
+  demoAccountClick,
+  demoAccountText,
 }) => {
   return (
     <div className={styles.authPage}>
@@ -113,6 +117,15 @@ const AuthPage: FC<AuthPageProps> = ({
               1 number.
             </p>
           </div>
+        )}
+
+        {isLogin && (
+          <p
+            className={styles.authPage__container__useDemo}
+            onClick={demoAccountClick}
+          >
+            {demoAccountText}
+          </p>
         )}
 
         {isLogin && (

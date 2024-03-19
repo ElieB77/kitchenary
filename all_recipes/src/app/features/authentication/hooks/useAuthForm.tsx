@@ -63,6 +63,8 @@ const useAuthForm = () => {
     handleSubmit,
     errorMessage,
     loading,
+    setEmailValue,
+    setPasswordValue,
   };
 };
 
