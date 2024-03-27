@@ -16,6 +16,7 @@ import CardNutrient from "../../components/molecules/CardNutrient";
 import DOMPurify from "dompurify";
 import { IngredientsType, StepsType, NutrientsType } from "../../types";
 import { AccountContext } from "@/app/features/account/contexts/AccountContext";
+import { getHoursAndMinutes } from "../../utils";
 
 interface RecipeContainerProps {
   recipeId: string;
@@ -96,7 +97,7 @@ const RecipeContainer: FC<RecipeContainerProps> = ({ recipeId }) => {
       secondaryColor={true}
       likeIcon={HEART_ICON}
       totalTimeIcon={TIME_ICON}
-      totalTime={`${readyInMinutes}min`}
+      totalTime={getHoursAndMinutes(readyInMinutes)}
       preparationText={"preparation"}
       preparationTime={`${
         preparationMinutes !== -1
@@ -105,7 +106,9 @@ const RecipeContainer: FC<RecipeContainerProps> = ({ recipeId }) => {
       }`}
       cookingText={"cooking"}
       cookingTime={`${
-        cookingMinutes !== -1 ? `${cookingMinutes}'` : "time not available"
+        cookingMinutes !== -1
+          ? `${getHoursAndMinutes(cookingMinutes)}'`
+          : "time not available"
       }`}
       estimation={`(estimated approx. for ${servings} persons)`}
       servingsIcon={CUTLERY_ICON}
