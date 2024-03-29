@@ -14,6 +14,7 @@ import CardsNutrient, {
 } from "../../organisms/CardsNutrient";
 import TimerModal, { TimerModalProps } from "../../molecules/TimerModal";
 import Button, { ButtonProps } from "@/app/shared/components/atoms/Button";
+import ShareModal, { ShareModalProps } from "../../molecules/ShareModal";
 
 interface RecipePageProps
   extends ShareButtonProps,
@@ -23,7 +24,8 @@ interface RecipePageProps
     RecipeStepsProps,
     CardsNutrientProps,
     TimerModalProps,
-    ButtonProps {
+    ButtonProps,
+    ShareModalProps {
   recipeType: string;
   recipeTitle: string;
   recipeImage: string;
@@ -83,6 +85,9 @@ const RecipePage: FC<RecipePageProps> = ({
   btnOnClick,
   btnText,
   btnIcon,
+  shareBtnOnClick,
+  isShareModalOpen,
+  shareButtons,
 }) => {
   return (
     <div className={styles.recipePage}>
@@ -109,7 +114,14 @@ const RecipePage: FC<RecipePageProps> = ({
             handleLikeBtnClick={handleLikeBtnClick}
             isSaved={isSaved}
           />
-          <ShareButton shareIcon={shareIcon} />
+          <ShareButton
+            shareIcon={shareIcon}
+            shareBtnOnClick={shareBtnOnClick}
+          />
+          <ShareModal
+            isShareModalOpen={isShareModalOpen}
+            shareButtons={shareButtons}
+          />
         </div>
 
         <div className={styles.recipePage__top__timerButton}>

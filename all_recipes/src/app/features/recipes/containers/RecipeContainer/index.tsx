@@ -22,6 +22,14 @@ import { IngredientsType, StepsType, NutrientsType } from "../../types";
 import { AccountContext } from "@/app/features/account/contexts/AccountContext";
 import { getHoursAndMinutes } from "../../utils";
 import { useCountdown } from "../../hooks/useCountdown";
+import {
+  EmailShareButton,
+  TwitterShareButton,
+  FacebookShareButton,
+  EmailIcon,
+  TwitterIcon,
+  FacebookIcon,
+} from "react-share";
 
 interface RecipeContainerProps {
   recipeId: string;
@@ -41,6 +49,7 @@ const RecipeContainer: FC<RecipeContainerProps> = ({ recipeId }) => {
   const { addAndRemoveFavoriteRecipe, favoriteRecipeAlreadyExists } =
     useContext(AccountContext);
   const [checkedSteps, setCheckedSteps] = useState<String[]>([]);
+  const [isShareModalOpen, setIsShareModalOpen] = useState<boolean>(false);
 
   useEffect(() => {
     getRecipeInformations(recipeId);
@@ -169,6 +178,29 @@ const RecipeContainer: FC<RecipeContainerProps> = ({ recipeId }) => {
       btnOnClick={toggleCountdown}
       btnIcon={HOURGLASS_ICON}
       textSteps={"steps completed"}
+      shareBtnOnClick={() => setIsShareModalOpen(!isShareModalOpen)}
+      isShareModalOpen={isShareModalOpen}
+      shareButtons={
+        <>
+          <TwitterShareButton
+            url={`${process.env.NEXT_PUBLIC_BASE_URL}/recipe/${id}`}
+            title="Check out this recipe!"
+          >
+            <TwitterIcon size={40} round />
+          </TwitterShareButton>
+          <EmailShareButton
+            subject="Check out this recipe!"
+            url={`${process.env.NEXT_PUBLIC_BASE_URL}/recipe/${id}`}
+          >
+            <EmailIcon size={40} round />
+          </EmailShareButton>
+          <FacebookShareButton
+            url={`${process.env.NEXT_PUBLIC_BASE_URL}/recipe/${id}`}
+          >
+            <FacebookIcon size={40} round />
+          </FacebookShareButton>
+        </>
+      }
     />
   );
 };

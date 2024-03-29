@@ -1,0 +1,19 @@
+@use "../../../../../shared/styles/utils/colors" as *;
+
+.shareModal {
+  background-color: $primary-color;
+  position: absolute;
+  right: -80px;
+  padding: 15px;
+  border-radius: 10px;
+
+  &__buttons {
+    gap: 5px;
+    display: flex;
+    flex-direction: column;
+
+    & > button:hover {
+      opacity: 0.8;
+    }
+  }
+}

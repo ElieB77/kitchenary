@@ -17,6 +17,10 @@
     transform: scale(1.05);
     transition: all 0.3s ease;
   }
+
+  &:hover {
+    outline: solid 2px $accent-color;
+  }
 }
 
 .secondaryColor {

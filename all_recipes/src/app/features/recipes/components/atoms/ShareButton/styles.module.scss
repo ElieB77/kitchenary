@@ -10,4 +10,8 @@
   justify-content: center;
   cursor: pointer;
   border: none;
+
+  &:hover {
+    outline: solid 2px $accent-color;
+  }
 }

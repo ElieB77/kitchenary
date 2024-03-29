@@ -41,15 +41,18 @@
     &__buttons {
       display: flex;
       justify-content: center;
-      border-bottom: solid 1px $border-color;
       padding: 25px 0;
       gap: 5px;
+      position: relative;
+      width: fit-content;
+      margin: 0 auto;
     }
 
     &__timerButton {
       display: flex;
       justify-content: center;
       border-bottom: solid 1px $border-color;
+      border-top: solid 1px $border-color;
       padding: 25px 0;
     }
 
