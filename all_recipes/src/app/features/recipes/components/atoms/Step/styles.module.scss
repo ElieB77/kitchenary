@@ -13,9 +13,23 @@
     background: url(/icons/check-icon.svg) $accent-color no-repeat center;
     font-size: 10px;
     left: -50px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+  }
+
+  &:hover {
+    &::before {
+      outline: solid 2px $success-color;
+    }
   }
 
   @media only screen and (min-width: $breakpoint-xlg) {
     width: 800px;
+  }
+}
+
+.checked {
+  &::before {
+    background-color: $success-color;
   }
 }

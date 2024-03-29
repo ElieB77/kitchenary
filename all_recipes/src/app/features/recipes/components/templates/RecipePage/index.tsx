@@ -12,6 +12,8 @@ import RecipeSteps, { RecipeStepsProps } from "../../organisms/RecipeSteps";
 import CardsNutrient, {
   CardsNutrientProps,
 } from "../../organisms/CardsNutrient";
+import TimerModal, { TimerModalProps } from "../../molecules/TimerModal";
+import Button, { ButtonProps } from "@/app/shared/components/atoms/Button";
 
 interface RecipePageProps
   extends ShareButtonProps,
@@ -19,7 +21,9 @@ interface RecipePageProps
     RecipeTimeProps,
     IngredientsProps,
     RecipeStepsProps,
-    CardsNutrientProps {
+    CardsNutrientProps,
+    TimerModalProps,
+    ButtonProps {
   recipeType: string;
   recipeTitle: string;
   recipeImage: string;
@@ -62,6 +66,23 @@ const RecipePage: FC<RecipePageProps> = ({
   nutrientCards,
   handleLikeBtnClick,
   isSaved,
+  xmarkIcon,
+  pauseIcon,
+  resetIcon,
+  hours,
+  minutes,
+  seconds,
+  isTimerModalOpen,
+  timerOnClose,
+  timerOnPause,
+  timerOnReset,
+  isRunning,
+  completedSteps,
+  totalSteps,
+  textSteps,
+  btnOnClick,
+  btnText,
+  btnIcon,
 }) => {
   return (
     <div className={styles.recipePage}>
@@ -89,6 +110,10 @@ const RecipePage: FC<RecipePageProps> = ({
             isSaved={isSaved}
           />
           <ShareButton shareIcon={shareIcon} />
+        </div>
+
+        <div className={styles.recipePage__top__timerButton}>
+          <Button btnText={btnText} btnOnClick={btnOnClick} btnIcon={btnIcon} />
         </div>
 
         <div className={styles.recipePage__top__time}>
@@ -146,6 +171,23 @@ const RecipePage: FC<RecipePageProps> = ({
         </h3>
         <CardsNutrient nutrientCards={nutrientCards} />
       </div>
+
+      <TimerModal
+        xmarkIcon={xmarkIcon}
+        pauseIcon={pauseIcon}
+        resetIcon={resetIcon}
+        hours={hours}
+        minutes={minutes}
+        seconds={seconds}
+        isTimerModalOpen={isTimerModalOpen}
+        timerOnPause={timerOnPause}
+        timerOnReset={timerOnReset}
+        timerOnClose={timerOnClose}
+        isRunning={isRunning}
+        completedSteps={completedSteps}
+        totalSteps={totalSteps}
+        textSteps={textSteps}
+      />
     </div>
   );
 };

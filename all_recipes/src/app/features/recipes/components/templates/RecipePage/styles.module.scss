@@ -46,6 +46,13 @@
       gap: 5px;
     }
 
+    &__timerButton {
+      display: flex;
+      justify-content: center;
+      border-bottom: solid 1px $border-color;
+      padding: 25px 0;
+    }
+
     &__time {
       padding-top: 50px;
     }

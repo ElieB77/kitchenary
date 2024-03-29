@@ -132,6 +132,41 @@ export const CUTLERY_ICON: ImageType = {
   height: 25,
 };
 
+export const HOURGLASS_ICON: ImageType = {
+  src: "/icons/hourglass-icon.svg",
+  alt: "Hour glass",
+  width: 20,
+  height: 20,
+};
+
+export const XMARK_ICON: ImageType = {
+  src: "/icons/xmark-icon.svg",
+  alt: "Close",
+  width: 15,
+  height: 15,
+};
+
+export const PAUSE_ICON: ImageType = {
+  src: "/icons/pause-icon.svg",
+  alt: "Pause",
+  width: 15,
+  height: 15,
+};
+
+export const PLAY_ICON: ImageType = {
+  src: "/icons/play-icon.svg",
+  alt: "Play",
+  width: 15,
+  height: 15,
+};
+
+export const RESET_ICON: ImageType = {
+  src: "/icons/reset-icon.svg",
+  alt: "Reset",
+  width: 15,
+  height: 15,
+};
+
 /*--------------------------
 Objects
 ---------------------------*/
